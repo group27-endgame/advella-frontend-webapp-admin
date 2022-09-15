@@ -2,6 +2,12 @@
   "name": "advella-frontend-webapp-admin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://admin.advella.popal.dev",
+  "author": {
+    "name": "Nicolas Popal",
+    "url": "https://popal.dev/",
+    "email": "popal.nicolas@gmail.com"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
