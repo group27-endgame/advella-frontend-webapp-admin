@@ -11,7 +11,7 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
-export const Template: ComponentStory<typeof Button> = (props) => <Button color='primary' {...props}>Button</Button>;
+export const Template: ComponentStory<typeof Button> = (props) => <Button {...props}>Button</Button>;
 
 export const Sizes = () => (
   <Grid>
@@ -20,9 +20,9 @@ export const Sizes = () => (
     </Button>
     <Button size='medium'>
       Medium
-    </Button>
+    </Button> 
     <Button size='large'>
-      Large
+      Chromatic test
     </Button>
   </Grid>
 )
