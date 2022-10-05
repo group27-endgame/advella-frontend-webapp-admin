@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
     
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -27,7 +27,11 @@ jobs:
     
     - name: install
       run: yarn install
-    # - name: test
-    #   run: yarn test
+
+    - name: Publish Project 1 to Chromatic
+      uses: chromaui/action@v1
+      with:
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
     - name: build
       run: yarn build
