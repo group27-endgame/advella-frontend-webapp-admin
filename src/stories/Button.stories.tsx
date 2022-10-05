@@ -22,7 +22,7 @@ export const Sizes = () => (
       Medium
     </Button> 
     <Button size='large'>
-      Chromatic test
+      Large
     </Button>
   </Grid>
 )
