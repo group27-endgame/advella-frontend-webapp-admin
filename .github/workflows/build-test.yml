@@ -5,10 +5,12 @@ on:
     branches: [ "main" ]
     
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     
     - name: Set up Node.js
       id: yarn-cache
@@ -27,7 +29,11 @@ jobs:
     
     - name: install
       run: yarn install
-    # - name: test
-    #   run: yarn test
+
+    - name: Publish Project to Chromatic
+      uses: chromaui/action@v1
+      with:
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
     - name: build
       run: yarn build
