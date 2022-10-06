@@ -11,8 +11,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Node.js
-      id: yarn-cache
-      run: echo "::set-output name=dir::$(yarn cache dir)"
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
       
       - uses: actions/cache@v1
         with:
