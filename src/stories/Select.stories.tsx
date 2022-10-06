@@ -17,7 +17,7 @@ export default {
 
 export const Template: ComponentStory<typeof Select> = (props) => <Select {...props}><MenuItem value="select">Select</MenuItem></Select>;
 
-export const Variants: ComponentStory<typeof Select> = () => (
+export const Variants = () => (
   <Stack>
     <FormControl variant="standard">
         <InputLabel id="demo-simple-select-filled-label">Age</InputLabel>
@@ -55,7 +55,7 @@ export const Variants: ComponentStory<typeof Select> = () => (
   </Stack>
 )
 
-export const Other: ComponentStory<typeof Select> = () => (
+export const Other = () => (
   <Stack>
     <Select required><MenuItem value="select">Select</MenuItem></Select>
     <Select error><MenuItem value="select">Select</MenuItem></Select>
