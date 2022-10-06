@@ -45,14 +45,16 @@ function LoginPage() {
             // call API
         }
 
-        // setIsLoading(false);
+        setTimeout(function () {
+            setIsLoading(false);
+        }, 5000);
     }
 
     return ( 
-        <Container maxWidth="sm" sx={{height: "100vh", pt: 20}}>
+        <Container maxWidth="sm" sx={{height: "100vh", pt: 25}}>
             <Paper sx={{ p: 8 }}>
-                {isLoading && <LoadingLottie />}
-                {!isLoading && <Grid container spacing={2}>
+                <LoadingLottie open={isLoading} />
+                <Grid container spacing={2}>
                     <Grid item xs={12} textAlign="center" mb={2}>
                         <Typography variant="h4">
                             Admin Panel
@@ -67,7 +69,7 @@ function LoginPage() {
                     <Grid item xs={12} textAlign="center">
                         <Button variant="contained" onClick={handleClick}>Login</Button>
                     </Grid>
-                </Grid>}
+                </Grid>
             </Paper>
         </Container>
      );
