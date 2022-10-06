@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
 import FourOhFourPage from '../../../pages/FourOhFour.page';
 
 export default {
-  title: 'Advella/Pages/404 Page',
+  title: 'Advella/Pages',
   component: FourOhFourPage,
   parameters: {
     chromatic: {
@@ -12,4 +13,4 @@ export default {
 
 } as ComponentMeta<typeof FourOhFourPage>;
 
-export const ReactPage: ComponentStory<typeof FourOhFourPage> = () => <FourOhFourPage />;
+export const Page404: ComponentStory<typeof FourOhFourPage> = () => <BrowserRouter><FourOhFourPage /></BrowserRouter>;
