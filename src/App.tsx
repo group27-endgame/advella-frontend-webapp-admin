@@ -7,7 +7,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />}></Route>
-      <Route path="/main" element={<MainPage />}></Route>
 
       <Route path="*" element={<FourOhFourPage />}></Route>
     </Routes>
