@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { FormControl, InputLabel, MenuItem, Slider, Stack } from '@mui/material';
+import { Slider, Stack } from '@mui/material';
 
 export default {
   title: 'MUI/Slider',
