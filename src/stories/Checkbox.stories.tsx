@@ -8,7 +8,7 @@ export default {
   component: Checkbox,
   args: {
     size: 'medium',
-    variant: 'outlined',
+    checked: true,
     disabled: false,
   },
 } as ComponentMeta<typeof Checkbox>;

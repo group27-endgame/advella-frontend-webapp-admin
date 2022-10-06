@@ -7,8 +7,9 @@ export default {
   component: Rating,
   args: {
     size: 'medium',
-    variant: 'outlined',
-    disabled: false,
+    defaultValue: 2,
+    precision: 1,
+    disabled: false
   },
 } as ComponentMeta<typeof Rating>;
 

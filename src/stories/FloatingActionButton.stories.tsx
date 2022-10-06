@@ -7,7 +7,7 @@ export default {
   component: Fab,
   args: {
     size: 'medium',
-    variant: 'outlined',
+    color: 'primary',
     disabled: false,
   },
 } as ComponentMeta<typeof Button>;

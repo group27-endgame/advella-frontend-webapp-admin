@@ -7,7 +7,7 @@ export default {
   component: Radio,
   args: {
     size: 'medium',
-    variant: 'outlined',
+    checked: true,
     disabled: false,
   },
 } as ComponentMeta<typeof Radio>;

@@ -5,8 +5,11 @@ export default {
   title: 'MUI/Textfield',
   component: TextField,
   args: {
+    label: "Label",
+    type: "text",
     size: 'medium',
     variant: 'outlined',
+    error: false,
     disabled: false,
   },
 } as ComponentMeta<typeof TextField>;
