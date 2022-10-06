@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import LoadingButton from '../../components/LoadingButton.component';
+import LoadingButton from '../../../components/LoadingButton.component';
 
 export default {
-  title: 'Advella/Loading Button',
+  title: 'Advella/Components/Loading Button',
   component: LoadingButton,
   args: {
     children: "Button"
