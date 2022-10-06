@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Avatar, Stack } from '@mui/material';
-import { primaryColor, secondaryColor, tertiaryColor } from '../constants';
+import { primaryColor, secondaryColor, tertiaryColor } from '../../constants';
 
 export default {
   title: 'MUI/Avatar',
