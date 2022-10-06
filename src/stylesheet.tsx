@@ -26,4 +26,13 @@ export const theme = createTheme({
         secondary: primaryColor,
       },
     },
+    components: {
+      MuiFormControlLabel: {
+        styleOverrides: {
+          root: {
+            color: fontColor
+          }
+        }
+      }
+    }
   });
