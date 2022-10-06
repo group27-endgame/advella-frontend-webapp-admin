@@ -6,7 +6,7 @@ type RouterLinkProps = {
     href: string
 }
 
-function RouterLink(props: RouterLinkProps) {
+export const RouterLink = (props: RouterLinkProps) => {
     return ( 
         <Link to={props.href} style={{ textDecoration: "none", color: primaryColor }}>
             {props.children}
