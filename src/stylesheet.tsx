@@ -1,12 +1,12 @@
 import { createTheme } from "@mui/material";
-import { backgroundColor, disabledColor, errorColor, primaryColor, secondaryColor } from "./constants";
+import { backgroundColor, disabledColor, errorColor, fontColor, paperColor, primaryColor, secondaryColor } from "./constants";
 
 export const theme = createTheme({
     palette: {
       mode: "dark",
       background: {
         default: backgroundColor,
-        // paper: greyLight,
+        paper: paperColor,
       },
       action: {
         // disabledBackground: greenLight,
@@ -21,18 +21,9 @@ export const theme = createTheme({
       error: {
         main: errorColor,
       },
-      // text: {
-      //   primary: white,
-      //   secondary: greyLight,
-      // },
+      text: {
+        primary: fontColor,
+        secondary: primaryColor,
+      },
     },
-    // components: {
-    //   MuiAppBar: {
-    //     styleOverrides: {
-    //       colorPrimary: {
-    //         backgroundColor: greyLight,
-    //       },
-    //     },
-    //   },
-    // },
   });
