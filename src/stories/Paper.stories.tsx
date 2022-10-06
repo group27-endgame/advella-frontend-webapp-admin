@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Box, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 
 export default {
   title: 'MUI/Paper',
