@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Button, Grid } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 
 export default {
   title: 'MUI/Button',
@@ -14,7 +14,7 @@ export default {
 export const Template: ComponentStory<typeof Button> = (props) => <Button {...props}>Button</Button>;
 
 export const Sizes = () => (
-  <Grid>
+  <Stack>
     <Button size='small'>
       Small
     </Button>
@@ -24,11 +24,11 @@ export const Sizes = () => (
     <Button size='large'>
       Large
     </Button>
-  </Grid>
+  </Stack>
 )
 
 export const Variants = () => (
-  <Grid>
+  <Stack>
     <Button variant='contained'>
       Contained
     </Button>
@@ -38,9 +38,11 @@ export const Variants = () => (
     <Button variant='text'>
       Text
     </Button>
-  </Grid>
+  </Stack>
 )
 
 export const Disabled = () => (
-  <Button disabled={true}>Disabled</Button>
+  <Stack>
+    <Button disabled={true}>Disabled</Button>
+  </Stack>
 )
