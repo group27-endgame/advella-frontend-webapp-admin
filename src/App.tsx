@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import FourOhFourPage from "./pages/FourOhFour.page";
 import LoginPage from "./pages/Login.page";
-import MainPage from "./pages/Main.page";
 
 function App() {
   return (
