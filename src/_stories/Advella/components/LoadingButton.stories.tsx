@@ -9,4 +9,4 @@ export default {
   },
 } as ComponentMeta<typeof LoadingButton>;
 
-export const Template: ComponentStory<typeof LoadingButton> = (props) => <LoadingButton {...props} />;
+export const CustomComponent: ComponentStory<typeof LoadingButton> = (props) => <LoadingButton {...props} />;

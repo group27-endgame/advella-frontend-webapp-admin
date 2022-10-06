@@ -8,4 +8,4 @@ export default {
   },
 } as ComponentMeta<typeof LoginPage>;
 
-export const Template: ComponentStory<typeof LoginPage> = () => <LoginPage />;
+export const ReactPage: ComponentStory<typeof LoginPage> = () => <LoginPage />;
