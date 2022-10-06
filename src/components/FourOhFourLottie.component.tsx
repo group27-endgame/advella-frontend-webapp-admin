@@ -7,6 +7,8 @@ function FourOhFourLottie() {
         const instance = Lottie.loadAnimation({
           container: document.getElementById('FourOhFourAnimation')!,
           animationData: FourOhFour,
+          autoplay: true,
+          loop: true,
         });
 
         return () => instance.destroy();
