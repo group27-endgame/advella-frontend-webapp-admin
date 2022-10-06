@@ -11,4 +11,4 @@ export default {
   }
 } as ComponentMeta<typeof LoadingLottie>;
 
-export const LottieLoading: ComponentStory<typeof LoadingLottie> = (props) => <LoadingLottie />;
+export const LottieLoading: ComponentStory<typeof LoadingLottie> = () => <LoadingLottie />;
