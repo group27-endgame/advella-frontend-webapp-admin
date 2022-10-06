@@ -2,7 +2,7 @@ import { Button, Grid, Paper, TextField, Typography, Container } from "@mui/mate
 import { useState } from "react";
 import LoadingButton from "../components/LoadingButton.component";
 
-export const LoginPage = () => {
+function LoginPage() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

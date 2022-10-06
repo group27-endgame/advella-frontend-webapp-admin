@@ -2,7 +2,7 @@ import { Container, Grid, Typography } from '@mui/material';
 import FourOhFourLottie from '../components/FourOhFourLottie.component';
 import RouterLink from '../components/RouterLink.component';
 
-export const FourOhFourPage = () => {
+function FourOhFourPage() {
     return ( 
         <Container maxWidth="sm">
             <Grid container pt={20}>

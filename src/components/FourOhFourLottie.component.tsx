@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Lottie from 'lottie-web';
 import FourOhFour from '../lottie/404.json'
 
-export const FourOhFourLottie = () => {
+function FourOhFourLottie() {
     useEffect(() => {
         const instance = Lottie.loadAnimation({
           container: document.getElementById('FourOhFourAnimation')!,
