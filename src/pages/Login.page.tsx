@@ -1,6 +1,7 @@
 import { Button, Grid, Paper, TextField, Typography, Container } from "@mui/material";
 import { useState } from "react";
 import LoadingButton from "../components/LoadingButton.component";
+import LoadingLottie from "../components/LoadingLottie.component";
 
 function LoginPage() {
 
@@ -39,19 +40,19 @@ function LoginPage() {
     }
 
     const handleClick = () => {
-        setIsLoading(true);
-
         if(validateForm()){
+            setIsLoading(true);
             // call API
         }
 
-        setIsLoading(false);
+        // setIsLoading(false);
     }
 
     return ( 
         <Container maxWidth="sm" sx={{height: "100vh", pt: 20}}>
             <Paper sx={{ p: 8 }}>
-                <Grid container spacing={2}>
+                {isLoading && <LoadingLottie />}
+                {!isLoading && <Grid container spacing={2}>
                     <Grid item xs={12} textAlign="center" mb={2}>
                         <Typography variant="h4">
                             Admin Panel
@@ -64,10 +65,9 @@ function LoginPage() {
                         <TextField fullWidth={true} error={passwordErr} helperText={passwordErrMsg} placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </Grid>
                     <Grid item xs={12} textAlign="center">
-                        {!isLoading && <Button variant="contained" onClick={handleClick}>Login</Button>}
-                        {isLoading && <LoadingButton>Loading</LoadingButton>}
+                        <Button variant="contained" onClick={handleClick}>Login</Button>
                     </Grid>
-                </Grid>
+                </Grid>}
             </Paper>
         </Container>
      );
