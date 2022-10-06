@@ -11,4 +11,4 @@ export default {
   }
 } as ComponentMeta<typeof FourOhFourLottie>;
 
-export const Lottie404: ComponentStory<typeof FourOhFourLottie> = (props) => <FourOhFourLottie />;
+export const Lottie404: ComponentStory<typeof FourOhFourLottie> = () => <FourOhFourLottie />;
