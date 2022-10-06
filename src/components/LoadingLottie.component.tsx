@@ -1,8 +1,13 @@
 import { useEffect } from 'react';
 import Lottie from 'lottie-web';
 import Loading from '../lottie/loading.json'
+import { Backdrop } from '@mui/material';
 
-function LoadingLottie() {
+type LoadingLottieProps = {
+  open: boolean
+}
+
+function LoadingLottie(props: LoadingLottieProps) {
     useEffect(() => {
         const instance = Lottie.loadAnimation({
           container: document.getElementById('LoadingLottieAnimation')!,
@@ -15,7 +20,10 @@ function LoadingLottie() {
       }, []);
   
       return (
-            <div id="LoadingLottieAnimation"></div>
+           <Backdrop open={props.open}        sx={{zIndex: (theme) => theme.zIndex.drawer + 1 }}
+           >
+             <div id="LoadingLottieAnimation"></div>
+           </Backdrop>
       );
 }
 

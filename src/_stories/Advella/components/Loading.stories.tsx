@@ -4,6 +4,9 @@ import LoadingLottie from '../../../components/LoadingLottie.component';
 export default {
   title: 'Advella/Components',
   component: LoadingLottie,
+  args: {
+    open: true
+  },
   parameters: {
     chromatic: {
       disableSnapshot: true
@@ -11,4 +14,4 @@ export default {
   }
 } as ComponentMeta<typeof LoadingLottie>;
 
-export const LottieLoading: ComponentStory<typeof LoadingLottie> = () => <LoadingLottie />;
+export const LottieLoading: ComponentStory<typeof LoadingLottie> = (props) => <LoadingLottie {...props} />;
