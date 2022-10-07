@@ -17,4 +17,19 @@ export const links = [
         icon: <HomeIcon sx={{ color: fontColor }} />,
         link: "/" 
     },
+    {
+        name: "Users",
+        icon: <HomeIcon sx={{ color: fontColor }} />,
+        link: "/" 
+    },
+    {
+        name: "Users",
+        icon: <HomeIcon sx={{ color: fontColor }} />,
+        link: "/" 
+    },
+    {
+        name: "Users",
+        icon: <HomeIcon sx={{ color: fontColor }} />,
+        link: "/" 
+    },
 ];
