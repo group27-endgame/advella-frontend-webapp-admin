@@ -31,7 +31,7 @@ export const PhoneAppBar: ComponentStory<typeof AdvellaAppBar> = (props) => (
 );
 
 PhoneAppBar.parameters = {
-  chromatic: { viewports: [400, 500] },
+  chromatic: { viewports: [400] },
   viewport: {
     defaultViewport: "phone",
   },
@@ -39,7 +39,7 @@ PhoneAppBar.parameters = {
 
 export const OpenDrawer = PhoneAppBar.bind({});
 OpenDrawer.parameters = {
-  chromatic: { viewports: [400, 500] },
+  chromatic: { viewports: [400] },
   viewport: {
     defaultViewport: "phone",
   },
