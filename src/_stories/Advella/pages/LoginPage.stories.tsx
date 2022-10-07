@@ -15,12 +15,10 @@ export const GoodCredentials = PageLogin.bind({});
 export const WrongCredentials = PageLogin.bind({});
 
 GoodCredentials.play = async ({ canvasElement }) => {
-  // Starts querying the component from its root
   const canvas = within(canvasElement);
 
   // Looks up the inputs and fills them.
   const emailInput = canvas.getByPlaceholderText("Username");
-
   await userEvent.type(emailInput, "Example");
 
   const passwordInput = canvas.getByPlaceholderText("Password");
@@ -32,12 +30,10 @@ GoodCredentials.play = async ({ canvasElement }) => {
 };
 
 WrongCredentials.play = async ({ canvasElement }) => {
-  // Starts querying the component from its root
   const canvas = within(canvasElement);
 
   // Looks up the inputs and fills them.
   const emailInput = canvas.getByPlaceholderText("Username");
-
   await userEvent.type(emailInput, "");
 
   const passwordInput = canvas.getByPlaceholderText("Password");
