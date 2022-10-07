@@ -51,7 +51,7 @@ function LoginPage() {
     }
 
     return ( 
-        <Container maxWidth="sm" sx={{height: "100vh", pt: 25}}>
+        <Container maxWidth="sm" sx={{ pt: 25 }}>
             <Paper sx={{ p: 8 }}>
                 <LoadingLottie open={isLoading} />
                 <Grid container spacing={2}>
