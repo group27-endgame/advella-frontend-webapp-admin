@@ -2,10 +2,10 @@ import { Typography } from "@mui/material";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
 import AdvellaAppBar from "../../../components/AppBar.component";
-import { userEvent, within } from '@storybook/testing-library';
+import { userEvent, within } from "@storybook/testing-library";
 
 export default {
-  title: "Advella/AppBar",
+  title: "Advella/Components/AppBar",
   component: AdvellaAppBar,
   args: {
     title: "Advella",
@@ -31,6 +31,7 @@ export const PhoneAppBar: ComponentStory<typeof AdvellaAppBar> = (props) => (
 );
 
 PhoneAppBar.parameters = {
+  chromatic: { viewports: [400, 500] },
   viewport: {
     defaultViewport: "phone",
   },
@@ -38,13 +39,14 @@ PhoneAppBar.parameters = {
 
 export const OpenDrawer = PhoneAppBar.bind({});
 OpenDrawer.parameters = {
-    viewport: {
-      defaultViewport: "phone",
-    },
-  };
+  chromatic: { viewports: [400, 500] },
+  viewport: {
+    defaultViewport: "phone",
+  },
+};
 OpenDrawer.play = async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  
-    const submitButton = canvas.getByRole("button");
-    await userEvent.click(submitButton);
-  };
+  const canvas = within(canvasElement);
+
+  const submitButton = canvas.getByRole("button");
+  await userEvent.click(submitButton);
+};
