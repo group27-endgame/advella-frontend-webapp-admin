@@ -94,7 +94,7 @@ export const links: MainLink[] = [
     },
     {
         name: "Ratings",
-        icon: <EmailIcon sx={{ color: fontColor }} />,
+        icon: <GradeIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
                 name: "All Ratings",
@@ -105,7 +105,7 @@ export const links: MainLink[] = [
     },
     {
         name: "Messages",
-        icon: <HomeIcon sx={{ color: fontColor }} />,
+        icon: <EmailIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
                 name: "All Messages",
