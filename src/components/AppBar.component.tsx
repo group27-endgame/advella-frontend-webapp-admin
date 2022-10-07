@@ -4,16 +4,11 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 import { fontColor, paperColor, primaryColor } from "../constants";
 import {
   Accordion,
@@ -23,6 +18,8 @@ import {
   Paper,
 } from "@mui/material";
 import { MainLink } from "../links";
+import RouterLink from "./RouterLink.component";
+import LogoutComponent from "./Logout.component";
 
 type AdvellaAppBarProps = {
   window?: () => Window;
@@ -51,9 +48,9 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   const drawer = (
     <Box>
       <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-        <Link to="/" style={{ textDecoration: "none", color: primaryColor }}>
+        <RouterLink to="/dashboard" color={primaryColor}>
           {title}
-        </Link>
+        </RouterLink>
       </Typography>
       <Divider />
       {links.map((item) => (
@@ -76,17 +73,13 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
           <AccordionDetails sx={{ pb: 0 }}>
             {item.subLinks.map((sl) => (
               <Box pb={2} key={sl.name}>
-                <Link
-                  to={sl.link}
-                  style={{ textDecoration: "none", color: fontColor }}
-                >
-                  {sl.name}
-                </Link>
+                <RouterLink to={sl.link}>{sl.name}</RouterLink>
               </Box>
             ))}
           </AccordionDetails>
         </Accordion>
       ))}
+      <LogoutComponent />
     </Box>
   );
 
@@ -108,12 +101,9 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
               }}
             >
               <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-                <Link
-                  to="/"
-                  style={{ textDecoration: "none", color: primaryColor }}
-                >
+                <RouterLink to="/dashboard" color={primaryColor}>
                   {title}
-                </Link>
+                </RouterLink>
               </Typography>
               {links.map((item) => (
                 <Accordion
@@ -135,17 +125,13 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   <AccordionDetails sx={{ pb: 0 }}>
                     {item.subLinks.map((sl) => (
                       <Box pb={2} key={sl.name}>
-                        <Link
-                          to={sl.link}
-                          style={{ textDecoration: "none", color: fontColor }}
-                        >
-                          {sl.name}
-                        </Link>
+                        <RouterLink to={sl.link}>{sl.name}</RouterLink>
                       </Box>
                     ))}
                   </AccordionDetails>
                 </Accordion>
               ))}
+              <LogoutComponent />
             </Box>
           </Toolbar>
         </Paper>

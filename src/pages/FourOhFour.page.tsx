@@ -1,6 +1,7 @@
 import { Container, Grid, Typography } from '@mui/material';
 import FourOhFourLottie from '../components/FourOhFourLottie.component';
 import RouterLink from '../components/RouterLink.component';
+import { primaryColor } from '../constants';
 
 function FourOhFourPage() {
     return ( 
@@ -11,7 +12,7 @@ function FourOhFourPage() {
                 </Grid>
                 <Grid item xs={12} textAlign="center">
                     <Typography variant='body1'>
-                        Click <RouterLink href='/'>HERE</RouterLink> to go to main page.
+                        Click <RouterLink to='/' color={primaryColor}>HERE</RouterLink> to go to main page.
                     </Typography>
                 </Grid>
             </Grid>

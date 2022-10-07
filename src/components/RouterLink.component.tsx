@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom";
-import { primaryColor } from "../constants";
+import { Link, NavLinkProps } from "react-router-dom";
+import { fontColor } from "../constants";
 
-type RouterLinkProps = {
+interface RouterLinkProps extends NavLinkProps {
     children: string,
-    href: string
+    color?: string,
 }
 
 function RouterLink(props: RouterLinkProps) {
+    const { children, style, className, color = fontColor, ...rest } = props;
     return ( 
-        <Link to={props.href} style={{ textDecoration: "none", color: primaryColor }}>
+        <Link style={{ textDecoration: "none", color: color }} {...rest}>
             {props.children}
         </Link>
      );
