@@ -58,7 +58,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
       <Divider />
       {links.map((item) => (
         <Accordion
-        defaultExpanded={defaultExpanded}
+          defaultExpanded={defaultExpanded}
           key={item.name}
           elevation={0}
           sx={{
@@ -75,7 +75,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
           </AccordionSummary>
           <AccordionDetails sx={{ pb: 0 }}>
             {item.subLinks.map((sl) => (
-              <Box pb={2}>
+              <Box pb={2} key={sl.name}>
                 <Link
                   to={sl.link}
                   style={{ textDecoration: "none", color: fontColor }}
@@ -117,7 +117,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
               </Typography>
               {links.map((item) => (
                 <Accordion
-                defaultExpanded={defaultExpanded}
+                  defaultExpanded={defaultExpanded}
                   key={item.name}
                   elevation={0}
                   sx={{
@@ -134,7 +134,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   </AccordionSummary>
                   <AccordionDetails sx={{ pb: 0 }}>
                     {item.subLinks.map((sl) => (
-                      <Box pb={2}>
+                      <Box pb={2} key={sl.name}>
                         <Link
                           to={sl.link}
                           style={{ textDecoration: "none", color: fontColor }}

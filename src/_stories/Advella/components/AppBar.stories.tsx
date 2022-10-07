@@ -10,16 +10,22 @@ export default {
   args: {
     title: "Advella",
     children: "Content",
-    defaultExpanded: true
+    defaultExpanded: true,
   },
 } as ComponentMeta<typeof AdvellaAppBar>;
 
-export const WebAppBar: ComponentStory<typeof AdvellaAppBar> = ({links: _links, ...props}) => (
+export const WebAppBar: ComponentStory<typeof AdvellaAppBar> = ({
+  links: _links,
+  ...props
+}) => (
   <BrowserRouter>
     <AdvellaAppBar links={links} {...props} />
   </BrowserRouter>
 );
-export const PhoneAppBar: ComponentStory<typeof AdvellaAppBar> = ({links: _links, ...props}) => {
+export const PhoneAppBar: ComponentStory<typeof AdvellaAppBar> = ({
+  links: _links,
+  ...props
+}) => {
   return (
     <BrowserRouter>
       <AdvellaAppBar links={links} {...props} />
