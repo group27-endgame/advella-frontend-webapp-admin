@@ -1,4 +1,3 @@
-import HomeIcon from '@mui/icons-material/Home';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
