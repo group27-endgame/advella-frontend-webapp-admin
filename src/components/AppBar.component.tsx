@@ -21,7 +21,7 @@ type AdvellaAppBarProps = {
   window?: () => Window;
   title?: string;
   children: React.ReactElement | string;
-  links: { name: string; icon: React.ReactElement; }[];
+  links: { name: string; link: string; icon: React.ReactElement; }[];
   drawerWidth?: number;
 };
 
