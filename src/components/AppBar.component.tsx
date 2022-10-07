@@ -9,19 +9,26 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { fontColor, paperColor, primaryColor } from "../constants";
-import { Accordion, AccordionDetails, AccordionSummary, Grid, Paper } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Grid,
+  Paper,
+} from "@mui/material";
+import { MainLink } from "../links";
 
 type AdvellaAppBarProps = {
   window?: () => Window;
   title?: string;
   children: React.ReactElement | string;
-  links: { name: string; link: string; icon: React.ReactElement; }[];
+  links: MainLink[];
   drawerWidth?: number;
 };
 
@@ -40,27 +47,43 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box>
+      <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
         <Link to="/" style={{ textDecoration: "none", color: primaryColor }}>
           {title}
         </Link>
       </Typography>
       <Divider />
-      <List>
-        {links.map((item) => (
-          <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <Link
-                to={item.link}
-                style={{ textDecoration: "none", color: fontColor }}
-              >
-                <ListItemText primary={item.name} />
-              </Link>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      {links.map((item) => (
+        <Accordion
+          key={item.name}
+          elevation={0}
+          sx={{
+            ":before": { backgroundColor: "transparent" },
+          }}
+        >
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Button
+              startIcon={item.icon}
+              sx={{ p: 0, minWidth: 0, color: fontColor }}
+            >
+              {item.name}
+            </Button>
+          </AccordionSummary>
+          <AccordionDetails sx={{ pb: 0 }}>
+            {item.subLinks.map((sl) => (
+              <Box pb={2}>
+                <Link
+                  to={sl.link}
+                  style={{ textDecoration: "none", color: fontColor }}
+                >
+                  {sl.name}
+                </Link>
+              </Box>
+            ))}
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </Box>
   );
 
@@ -90,18 +113,33 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                 </Link>
               </Typography>
               {links.map((item) => (
-                <Accordion key={item.name} elevation={0}>
-                    <AccordionSummary  expandIcon={<ExpandMoreIcon />}>Title</AccordionSummary>
-                    <AccordionDetails>
-                    <Button startIcon={item.icon}>
-                    <Link
-                      to={item.link}
-                      style={{ textDecoration: "none", color: fontColor }}
+                <Accordion
+                  key={item.name}
+                  elevation={0}
+                  sx={{
+                    ":before": { backgroundColor: "transparent" },
+                  }}
+                >
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Button
+                      startIcon={item.icon}
+                      sx={{ p: 0, minWidth: 0, color: fontColor }}
                     >
                       {item.name}
-                    </Link>
-                  </Button>
-                    </AccordionDetails>
+                    </Button>
+                  </AccordionSummary>
+                  <AccordionDetails sx={{ pb: 0 }}>
+                    {item.subLinks.map((sl) => (
+                      <Box pb={2}>
+                        <Link
+                          to={sl.link}
+                          style={{ textDecoration: "none", color: fontColor }}
+                        >
+                          {sl.name}
+                        </Link>
+                      </Box>
+                    ))}
+                  </AccordionDetails>
                 </Accordion>
               ))}
             </Box>

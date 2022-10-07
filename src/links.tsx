@@ -2,35 +2,106 @@ import HomeIcon from '@mui/icons-material/Home';
 import { ReactElement } from 'react';
 import { fontColor } from './constants';
 
-export const links = [
+export type SubLink = {
+    name: string;
+    link: string;
+};
+
+export type MainLink = {
+    name: string;
+    icon: ReactElement;
+    subLinks: SubLink[];
+}
+
+export const links: MainLink[] = [
     {
         name: "Home",
         icon: <HomeIcon sx={{ color: fontColor }} />,
-        link: "/" 
+        subLinks: [
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            } 
+        ]
     },
     {
-        name: "Graphs",
+        name: "Home",
         icon: <HomeIcon sx={{ color: fontColor }} />,
-        link: "/" 
+        subLinks: [
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            } 
+        ]
     },
     {
-        name: "Users",
+        name: "Home",
         icon: <HomeIcon sx={{ color: fontColor }} />,
-        link: "/" 
+        subLinks: [
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            } 
+        ]
     },
     {
-        name: "Users",
+        name: "Home",
         icon: <HomeIcon sx={{ color: fontColor }} />,
-        link: "/" 
+        subLinks: [
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            } 
+        ]
     },
     {
-        name: "Users",
+        name: "Home",
         icon: <HomeIcon sx={{ color: fontColor }} />,
-        link: "/" 
-    },
-    {
-        name: "Users",
-        icon: <HomeIcon sx={{ color: fontColor }} />,
-        link: "/" 
+        subLinks: [
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "Home",
+                link: "/"
+            } 
+        ]
     },
 ];
