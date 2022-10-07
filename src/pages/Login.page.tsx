@@ -79,7 +79,7 @@ function LoginPage() {
                     </Grid>
                 </Grid>
             </Paper>
-            <SnackbarComponent message={"This account does not exist."} open={true} type={"error"} />
+            <SnackbarComponent message={"This account does not exist. Try to login with any username and password"} open={true} type={"error"} />
         </Container>
      );
 }
