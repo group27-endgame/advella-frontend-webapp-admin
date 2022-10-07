@@ -18,6 +18,8 @@ export const Page404: ComponentStory<typeof FourOhFourPage> = () => <BrowserRout
 
 export const LinkRedirect = Page404.bind({});
 
+//* Not possible to test if it is redirected, cuz SB is not using Router-Dom
+//* But still can test if the link is reachable
 LinkRedirect.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const submitButton = canvas.getByRole("link");
