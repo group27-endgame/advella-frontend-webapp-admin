@@ -10,7 +10,6 @@ export default {
       disableSnapshot: true
     }
   }
-
 } as ComponentMeta<typeof FourOhFourPage>;
 
 export const Page404: ComponentStory<typeof FourOhFourPage> = () => <BrowserRouter><FourOhFourPage /></BrowserRouter>;
