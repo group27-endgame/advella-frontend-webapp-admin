@@ -10,6 +10,7 @@ export default {
   args: {
     title: "Advella",
     children: "Content",
+    defaultExpanded: true
   },
 } as ComponentMeta<typeof AdvellaAppBar>;
 
@@ -43,6 +44,6 @@ OpenDrawer.parameters = {
 OpenDrawer.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  const submitButton = canvas.getByRole("button");
-  await userEvent.click(submitButton);
+  const button = canvas.getByRole("button");
+  await userEvent.click(button);
 };

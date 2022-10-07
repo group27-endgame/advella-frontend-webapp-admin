@@ -30,6 +30,7 @@ type AdvellaAppBarProps = {
   children: React.ReactElement | string;
   links: MainLink[];
   drawerWidth?: number;
+  defaultExpanded?: boolean;
 };
 
 export default function AdvellaAppBar(props: AdvellaAppBarProps) {
@@ -39,6 +40,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
     title = "Admin Panel",
     links,
     drawerWidth = 250,
+    defaultExpanded = false,
   } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -56,6 +58,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
       <Divider />
       {links.map((item) => (
         <Accordion
+        defaultExpanded={defaultExpanded}
           key={item.name}
           elevation={0}
           sx={{
@@ -114,6 +117,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
               </Typography>
               {links.map((item) => (
                 <Accordion
+                defaultExpanded={defaultExpanded}
                   key={item.name}
                   elevation={0}
                   sx={{
