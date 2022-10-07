@@ -1,4 +1,5 @@
 import HomeIcon from '@mui/icons-material/Home';
+import { ReactElement } from 'react';
 import { fontColor } from './constants';
 
 export const links = [

@@ -34,6 +34,14 @@ export const theme = createTheme({
           }
         }
       },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundColor: paperColor,
+            backgroundImage: "none"
+          }
+        }
+      },
       MuiTypography: {
         styleOverrides: {
           h1: {

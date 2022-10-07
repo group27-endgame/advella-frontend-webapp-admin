@@ -9,18 +9,19 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import { fontColor, paperColor, tertiaryColor } from "../constants";
-import { Grid, Paper } from "@mui/material";
+import { fontColor, paperColor, primaryColor } from "../constants";
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Paper } from "@mui/material";
 
 type AdvellaAppBarProps = {
   window?: () => Window;
   title?: string;
   children: React.ReactElement | string;
-  links: { name: string; icon: React.ReactElement; link: string }[];
+  links: { name: string; icon: React.ReactElement; }[];
   drawerWidth?: number;
 };
 
@@ -41,7 +42,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link to="/" style={{ textDecoration: "none", color: tertiaryColor }}>
+        <Link to="/" style={{ textDecoration: "none", color: primaryColor }}>
           {title}
         </Link>
       </Typography>
@@ -70,7 +71,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
     <Grid container>
       <Grid item md={2} sx={{ display: { xs: "none", md: "block" } }}>
         <Paper
-          sx={{ backgroundColor: paperColor, height: "100vh", overflowY: "scroll", pb: 5 }}
+          sx={{ height: "100vh", overflowY: "scroll", pb: 5 }}
           elevation={12}
         >
           <Toolbar>
@@ -83,14 +84,16 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
               <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
                 <Link
                   to="/"
-                  style={{ textDecoration: "none", color: tertiaryColor }}
+                  style={{ textDecoration: "none", color: primaryColor }}
                 >
                   {title}
                 </Link>
               </Typography>
               {links.map((item) => (
-                <Box key={item.name}>
-                  <Button startIcon={item.icon}>
+                <Accordion key={item.name} elevation={0}>
+                    <AccordionSummary  expandIcon={<ExpandMoreIcon />}>Title</AccordionSummary>
+                    <AccordionDetails>
+                    <Button startIcon={item.icon}>
                     <Link
                       to={item.link}
                       style={{ textDecoration: "none", color: fontColor }}
@@ -98,7 +101,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                       {item.name}
                     </Link>
                   </Button>
-                </Box>
+                    </AccordionDetails>
+                </Accordion>
               ))}
             </Box>
           </Toolbar>
