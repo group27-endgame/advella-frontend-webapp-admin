@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../src/stylesheet'
+import { MINIMAL_VIEWPORTS} from '@storybook/addon-viewport';
 
 export const decorators = [
   (Story) => (
@@ -9,9 +10,25 @@ export const decorators = [
   ),
 ];
 
+const customViewports = {
+  phone: {
+    name: 'Phone',
+    styles: {
+      width: '600px',
+      height: '963px',
+    },
+  },
+};
+
 export const parameters = {
   decorators: theme,
   actions: { argTypesRegex: "^on[A-Z].*" },
+  viewport: {
+    viewports: {
+       ...MINIMAL_VIEWPORTS,
+      ...customViewports,
+    },
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
