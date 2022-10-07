@@ -2,6 +2,7 @@ import { Button, Grid, Paper, TextField, Typography, Container } from "@mui/mate
 import { useState } from "react";
 import LoadingLottie from "../components/LoadingLottie.component";
 import { Navigate } from 'react-router-dom';
+import SnackbarComponent from "../components/Snackbar.component";
 
 function LoginPage() {
 
@@ -78,6 +79,7 @@ function LoginPage() {
                     </Grid>
                 </Grid>
             </Paper>
+            <SnackbarComponent message={"This account does not exist."} open={true} type={"error"} />
         </Container>
      );
 }
