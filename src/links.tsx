@@ -1,4 +1,10 @@
 import HomeIcon from '@mui/icons-material/Home';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import EqualizerIcon from '@mui/icons-material/Equalizer';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import GradeIcon from '@mui/icons-material/Grade';
+import EmailIcon from '@mui/icons-material/Email';
 import { ReactElement } from 'react';
 import { fontColor } from './constants';
 
@@ -15,93 +21,84 @@ export type MainLink = {
 
 export const links: MainLink[] = [
     {
-        name: "Home",
-        icon: <HomeIcon sx={{ color: fontColor }} />,
+        name: "Dashboard",
+        icon: <EqualizerIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
-                name: "Home",
+                name: "Users",
                 link: "/"
             },
             {
-                name: "Home",
+                name: "Products",
                 link: "/"
             },
+
             {
-                name: "Home",
+                name: "Services",
                 link: "/"
-            } 
+            },
         ]
     },
     {
-        name: "Home",
-        icon: <HomeIcon sx={{ color: fontColor }} />,
+        name: "Users",
+        icon: <PeopleAltIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
-                name: "Home",
+                name: "All Users",
                 link: "/"
             },
             {
-                name: "Home",
+                name: "Users Chat",
                 link: "/"
             },
-            {
-                name: "Home",
-                link: "/"
-            } 
         ]
     },
     {
-        name: "Home",
-        icon: <HomeIcon sx={{ color: fontColor }} />,
+        name: "Products",
+        icon: <InventoryIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
-                name: "Home",
+                name: "All Products",
                 link: "/"
             },
             {
-                name: "Home",
+                name: "Bids",
                 link: "/"
             },
-            {
-                name: "Home",
-                link: "/"
-            } 
         ]
     },
     {
-        name: "Home",
-        icon: <HomeIcon sx={{ color: fontColor }} />,
+        name: "Services",
+        icon: <CleaningServicesIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
-                name: "Home",
+                name: "All Services",
                 link: "/"
             },
             {
-                name: "Home",
+                name: "Bids",
                 link: "/"
             },
-            {
-                name: "Home",
-                link: "/"
-            } 
         ]
     },
     {
-        name: "Home",
+        name: "Ratings",
+        icon: <EmailIcon sx={{ color: fontColor }} />,
+        subLinks: [
+            {
+                name: "All Ratings",
+                link: "/"
+            },
+        ]
+    },
+    {
+        name: "Messages",
         icon: <HomeIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
-                name: "Home",
+                name: "All Messages",
                 link: "/"
             },
-            {
-                name: "Home",
-                link: "/"
-            },
-            {
-                name: "Home",
-                link: "/"
-            } 
         ]
     },
 ];

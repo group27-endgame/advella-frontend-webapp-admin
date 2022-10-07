@@ -47,6 +47,7 @@ OpenDrawer.parameters = {
     defaultViewport: "phone",
   },
 };
+
 OpenDrawer.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
