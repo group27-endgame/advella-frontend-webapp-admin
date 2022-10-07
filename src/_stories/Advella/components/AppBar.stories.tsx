@@ -9,7 +9,7 @@ export default {
   component: AdvellaAppBar,
   args: {
     title: "Advella",
-    children: <Typography>Content</Typography>,
+    children: "Content",
     links: [
       {
         name: "Link",
