@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 import FourOhFourPage from '../../../pages/FourOhFour.page';
-import { userEvent, within } from '@storybook/testing-library';
 
 export default {
   title: 'Advella/Pages/404',
