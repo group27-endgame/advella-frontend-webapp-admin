@@ -20,12 +20,18 @@ type AdvellaAppBarProps = {
   window?: () => Window;
   title?: string;
   children: React.ReactElement | string;
-  links: [{ name: string; link: string }];
+  links: { name: string; icon: React.ReactElement; link: string }[];
   drawerWidth?: number;
 };
 
 export default function AdvellaAppBar(props: AdvellaAppBarProps) {
-  const { window, children, title = "Admin Panel", links, drawerWidth = 250 } = props;
+  const {
+    window,
+    children,
+    title = "Admin Panel",
+    links,
+    drawerWidth = 250,
+  } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -71,25 +77,28 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
             <Box
               sx={{
                 display: { xs: "none", sm: "block" },
-                textAlign: "center",
                 width: "100%",
               }}
             >
-              <Typography variant="h6" sx={{ my: 2 }}>
-              <Link
-                to="/"
-                style={{ textDecoration: "none", color: tertiaryColor }}
-              >{title}</Link>
+              <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
+                <Link
+                  to="/"
+                  style={{ textDecoration: "none", color: tertiaryColor }}
+                >
+                  {title}
+                </Link>
               </Typography>
               {links.map((item) => (
-                <Button key={item.name}>
-                  <Link
-                    to={item.link}
-                    style={{ textDecoration: "none", color: fontColor }}
-                  >
-                    {item.name}
-                  </Link>
-                </Button>
+                <Box>
+                  <Button key={item.name} startIcon={item.icon}>
+                    <Link
+                      to={item.link}
+                      style={{ textDecoration: "none", color: fontColor }}
+                    >
+                      {item.name}
+                    </Link>
+                  </Button>
+                </Box>
               ))}
             </Box>
           </Toolbar>
@@ -130,8 +139,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
       </Box>
       <Grid item xs={12} md={10}>
         <Box sx={{ p: 2 }}>
-            <Toolbar sx={{ display: {md: "none"} }} />
-            {children}
+          <Toolbar sx={{ display: { md: "none" } }} />
+          {children}
         </Box>
       </Grid>
     </Grid>

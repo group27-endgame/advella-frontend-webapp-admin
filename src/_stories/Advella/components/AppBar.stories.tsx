@@ -1,8 +1,8 @@
-import { Typography } from "@mui/material";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
 import AdvellaAppBar from "../../../components/AppBar.component";
 import { userEvent, within } from "@storybook/testing-library";
+import { links } from "../../../links";
 
 export default {
   title: "Advella/Components/AppBar",
@@ -10,25 +10,21 @@ export default {
   args: {
     title: "Advella",
     children: "Content",
-    links: [
-      {
-        name: "Link",
-        link: "/",
-      },
-    ],
   },
 } as ComponentMeta<typeof AdvellaAppBar>;
 
-export const WebAppBar: ComponentStory<typeof AdvellaAppBar> = (props) => (
+export const WebAppBar: ComponentStory<typeof AdvellaAppBar> = ({links: _links, ...props}) => (
   <BrowserRouter>
-    <AdvellaAppBar {...props} />
+    <AdvellaAppBar links={links} {...props} />
   </BrowserRouter>
 );
-export const PhoneAppBar: ComponentStory<typeof AdvellaAppBar> = (props) => (
-  <BrowserRouter>
-    <AdvellaAppBar {...props} />
-  </BrowserRouter>
-);
+export const PhoneAppBar: ComponentStory<typeof AdvellaAppBar> = ({links: _links, ...props}) => {
+  return (
+    <BrowserRouter>
+      <AdvellaAppBar links={links} {...props} />
+    </BrowserRouter>
+  );
+};
 
 PhoneAppBar.parameters = {
   chromatic: { viewports: [400] },
