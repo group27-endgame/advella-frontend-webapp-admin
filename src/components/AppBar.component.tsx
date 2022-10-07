@@ -4,10 +4,6 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Toolbar from "@mui/material/Toolbar";
@@ -51,7 +47,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   const drawer = (
     <Box>
       <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-        <Link to="/" style={{ textDecoration: "none", color: primaryColor }}>
+        <Link to="/dashboard" style={{ textDecoration: "none", color: primaryColor }}>
           {title}
         </Link>
       </Typography>
@@ -109,7 +105,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
             >
               <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
                 <Link
-                  to="/"
+                  to="/dashboard"
                   style={{ textDecoration: "none", color: primaryColor }}
                 >
                   {title}

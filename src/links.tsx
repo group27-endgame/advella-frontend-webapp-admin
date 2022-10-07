@@ -7,10 +7,12 @@ import GradeIcon from '@mui/icons-material/Grade';
 import EmailIcon from '@mui/icons-material/Email';
 import { ReactElement } from 'react';
 import { fontColor } from './constants';
+import { Box } from '@mui/material';
 
 export type SubLink = {
     name: string;
     link: string;
+    element: ReactElement;
 };
 
 export type MainLink = {
@@ -26,16 +28,19 @@ export const links: MainLink[] = [
         subLinks: [
             {
                 name: "Users",
-                link: "/"
+                link: "/dashboard/users",
+                element: <Box>Dashboard Users</Box>
             },
             {
                 name: "Products",
-                link: "/"
+                link: "/dashboard/products",
+                element: <Box>Dashboard Products</Box>
             },
 
             {
                 name: "Services",
-                link: "/"
+                link: "/dashboard/services",
+                element: <Box>Dashboard Services</Box>
             },
         ]
     },
@@ -45,11 +50,13 @@ export const links: MainLink[] = [
         subLinks: [
             {
                 name: "All Users",
-                link: "/"
+                link: "/users",
+                element: <Box>All Users</Box>
             },
             {
                 name: "Users Chat",
-                link: "/"
+                link: "/users/chat",
+                element: <Box>Users Chat</Box>
             },
         ]
     },
@@ -59,11 +66,13 @@ export const links: MainLink[] = [
         subLinks: [
             {
                 name: "All Products",
-                link: "/"
+                link: "/products",
+                element: <Box>All Products</Box>
             },
             {
                 name: "Bids",
-                link: "/"
+                link: "/products/bids",
+                element: <Box>Products Bids</Box>
             },
         ]
     },
@@ -73,11 +82,13 @@ export const links: MainLink[] = [
         subLinks: [
             {
                 name: "All Services",
-                link: "/"
+                link: "/services",
+                element: <Box>All Services</Box>
             },
             {
                 name: "Bids",
-                link: "/"
+                link: "/services/bids",
+                element: <Box>Services Bids</Box>
             },
         ]
     },
@@ -87,7 +98,8 @@ export const links: MainLink[] = [
         subLinks: [
             {
                 name: "All Ratings",
-                link: "/"
+                link: "/ratings",
+                element: <Box>Ratings</Box>
             },
         ]
     },
@@ -97,7 +109,8 @@ export const links: MainLink[] = [
         subLinks: [
             {
                 name: "All Messages",
-                link: "/"
+                link: "/messages",
+                element: <Box>Messages</Box>
             },
         ]
     },

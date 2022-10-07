@@ -1,7 +1,7 @@
 import { Button, Grid, Paper, TextField, Typography, Container } from "@mui/material";
 import { useState } from "react";
-import LoadingButton from "../components/LoadingButton.component";
 import LoadingLottie from "../components/LoadingLottie.component";
+import { Navigate } from 'react-router-dom';
 
 function LoginPage() {
 
@@ -15,6 +15,8 @@ function LoginPage() {
     const [passwordErrMsg, setPasswordErrMsg] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const validateForm = () => {
 
@@ -43,12 +45,17 @@ function LoginPage() {
         if(validateForm()){
             setIsLoading(true);
             // call API
-        }
 
-        setTimeout(function () {
-            setIsLoading(false);
-        }, 5000);
+            setTimeout(function () {
+                setIsLoading(false);
+                
+                setIsLoggedIn(true);
+            }, 5000);
+        }
     }
+
+    if(isLoggedIn)
+        return (<Navigate to="/dashboard" />)
 
     return ( 
         <Container maxWidth="sm" sx={{ pt: 25 }}>
