@@ -89,8 +89,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                 </Link>
               </Typography>
               {links.map((item) => (
-                <Box>
-                  <Button key={item.name} startIcon={item.icon}>
+                <Box key={item.name}>
+                  <Button startIcon={item.icon}>
                     <Link
                       to={item.link}
                       style={{ textDecoration: "none", color: fontColor }}
