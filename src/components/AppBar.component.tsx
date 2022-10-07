@@ -9,7 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { fontColor, paperColor } from "../constants";
+import { fontColor, paperColor, primaryColor } from "../constants";
 import {
   Accordion,
   AccordionDetails,
@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import { MainLink } from "../links";
 import RouterLink from "./RouterLink.component";
+import LogoutComponent from "./Logout.component";
 
 type AdvellaAppBarProps = {
   window?: () => Window;
@@ -47,7 +48,9 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   const drawer = (
     <Box>
       <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-        <RouterLink to="/dashboard">{title}</RouterLink>
+        <RouterLink to="/dashboard" color={primaryColor}>
+          {title}
+        </RouterLink>
       </Typography>
       <Divider />
       {links.map((item) => (
@@ -76,6 +79,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
           </AccordionDetails>
         </Accordion>
       ))}
+      <LogoutComponent />
     </Box>
   );
 
@@ -97,7 +101,9 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
               }}
             >
               <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-                <RouterLink to="/dashboard">{title}</RouterLink>
+                <RouterLink to="/dashboard" color={primaryColor}>
+                  {title}
+                </RouterLink>
               </Typography>
               {links.map((item) => (
                 <Accordion
@@ -125,6 +131,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   </AccordionDetails>
                 </Accordion>
               ))}
+              <LogoutComponent />
             </Box>
           </Toolbar>
         </Paper>
