@@ -13,19 +13,19 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import { fontColor, paperColor, primaryColor, secondaryColor } from "../constants";
+import { fontColor, paperColor, tertiaryColor } from "../constants";
 import { Grid, Paper } from "@mui/material";
 
 type AdvellaAppBarProps = {
   window?: () => Window;
-  title: string;
-  children: React.ReactElement;
+  title?: string;
+  children: React.ReactElement | string;
   links: [{ name: string; link: string }];
   drawerWidth?: number;
 };
 
 export default function AdvellaAppBar(props: AdvellaAppBarProps) {
-  const { window, children, title, links, drawerWidth = 250 } = props;
+  const { window, children, title = "Admin Panel", links, drawerWidth = 250 } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -35,7 +35,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link to="/" style={{ textDecoration: "none", color: secondaryColor }}>
+        <Link to="/" style={{ textDecoration: "none", color: tertiaryColor }}>
           {title}
         </Link>
       </Typography>
@@ -78,7 +78,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
               <Typography variant="h6" sx={{ my: 2 }}>
               <Link
                 to="/"
-                style={{ textDecoration: "none", color: secondaryColor }}
+                style={{ textDecoration: "none", color: tertiaryColor }}
               >{title}</Link>
               </Typography>
               {links.map((item) => (
