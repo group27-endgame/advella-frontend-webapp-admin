@@ -51,19 +51,19 @@ function CardComponent(props: CardComponentProps) {
             >
               {trendingPercentage > 0 && (
                 <>
-                  <TrendingUpIcon fontSize="small" sx={{ pr: 1 }} /> +
+                  <TrendingUpIcon fontSize="small" sx={{ pr: 1 }} />+
                   {trendingPercentage}%
                 </>
               )}
               {trendingPercentage === 0 && (
                 <>
-                  <TrendingFlatIcon fontSize="small" sx={{ pr: 1 }} />{" "}
+                  <TrendingFlatIcon fontSize="small" sx={{ pr: 1 }} />
                   {trendingPercentage}%
                 </>
               )}
               {trendingPercentage < 0 && (
                 <>
-                  <TrendingDownIcon fontSize="small" sx={{ pr: 1 }} />{" "}
+                  <TrendingDownIcon fontSize="small" sx={{ pr: 1 }} />
                   {trendingPercentage}%
                 </>
               )}
