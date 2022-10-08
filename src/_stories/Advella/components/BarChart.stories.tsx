@@ -12,3 +12,7 @@ export default {
 } as ComponentMeta<typeof BarChartComponent>;
 
 export const BarChart: ComponentStory<typeof BarChartComponent> = (props) => <BarChartComponent {...props} />;
+
+BarChart.parameters = {
+  chromatic: { delay: 1000 },
+}
