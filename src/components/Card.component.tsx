@@ -7,7 +7,8 @@ import { motion } from "framer-motion";
 interface CardComponentProps extends PaperProps {
   cardTitle: string;
   trendingPercentage: number;
-  trendingValue: string;
+  trendingValue: number;
+  valueSign?: string;
 }
 
 function CardComponent(props: CardComponentProps) {
@@ -16,6 +17,7 @@ function CardComponent(props: CardComponentProps) {
     cardTitle,
     trendingPercentage,
     trendingValue,
+    valueSign,
     children: _children,
     ...rest
   } = props;
@@ -71,7 +73,7 @@ function CardComponent(props: CardComponentProps) {
           </Grid>
           <Grid item xs={12} mt={2}>
             <Typography textAlign="left" variant="body2" fontSize={24}>
-              {trendingValue}
+            {valueSign}{trendingValue}
             </Typography>
           </Grid>
         </Grid>

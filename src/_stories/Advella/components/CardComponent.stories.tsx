@@ -6,8 +6,9 @@ export default {
   component: CardComponent,
   args: {
     trendingPercentage: 10,
-    trendingValue: "$10.000",
+    trendingValue: 10000,
     cardTitle: "Total Earnings",
+    valueSign: "$"
   },
 } as ComponentMeta<typeof CardComponent>;
 
