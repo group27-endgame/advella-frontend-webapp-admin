@@ -1,10 +1,13 @@
 import { Button, Grid, Paper, TextField, Typography, Container } from "@mui/material";
 import { useState } from "react";
 import LoadingLottie from "../components/LoadingLottie.component";
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import SnackbarComponent from "../components/Snackbar.component";
+import { useCookies } from "react-cookie";
 
 function LoginPage() {
+
+    const [,setCookie,] = useCookies(["token"]);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -17,7 +20,7 @@ function LoginPage() {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     const validateForm = () => {
 
@@ -50,13 +53,11 @@ function LoginPage() {
             setTimeout(function () {
                 setIsLoading(false);
                 
-                setIsLoggedIn(true);
+                setCookie("token", "TOKEN_WILL_BE_HERE")
+                navigate("/dashboard");
             }, 5000);
         }
     }
-
-    if(isLoggedIn)
-        return (<Navigate to="/dashboard" />)
 
     return ( 
         <Container maxWidth="sm" sx={{ pt: 25 }}>
