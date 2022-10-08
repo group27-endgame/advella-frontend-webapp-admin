@@ -73,7 +73,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
           <AccordionDetails sx={{ pb: 0 }}>
             {item.subLinks.map((sl) => (
               <Box pb={2} key={sl.name}>
-                <RouterLink to={sl.link}>{sl.name}</RouterLink>
+                <RouterLink onClick={handleDrawerToggle} to={sl.link}>{sl.name}</RouterLink>
               </Box>
             ))}
           </AccordionDetails>
