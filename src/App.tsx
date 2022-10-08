@@ -4,18 +4,38 @@ import { links } from "./links";
 import DashboardPage from "./pages/Dashboard.page";
 import FourOhFourPage from "./pages/FourOhFour.page";
 import LoginPage from "./pages/Login.page";
+import { useCookies } from "react-cookie";
 
 function App() {
+  const [cookie, ,] = useCookies(["token"]);
+
   return (
     <Routes>
       <Route path="/" element={<LoginPage />}></Route>
-      <Route path="/dashboard" element={<AdvellaAppBar links={links}><DashboardPage /></AdvellaAppBar>}></Route>
+      <Route
+        path="/dashboard"
+        element={
+          cookie.token ? (
+            <AdvellaAppBar links={links}>
+              <DashboardPage />
+            </AdvellaAppBar>
+          ) : (
+            <FourOhFourPage />
+          )
+        }
+      ></Route>
 
       {links.map((l) =>
         l.subLinks.map((ls) => (
           <Route
             path={ls.link}
-            element={<AdvellaAppBar links={links}>{ls.element}</AdvellaAppBar>}
+            element={
+              cookie.token ? (
+                <AdvellaAppBar links={links}>{ls.element}</AdvellaAppBar>
+              ) : (
+                <FourOhFourPage />
+              )
+            }
           ></Route>
         ))
       )}

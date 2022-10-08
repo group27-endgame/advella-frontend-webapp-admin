@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import LoginPage from '../../../pages/Login.page';
 import { userEvent, within } from '@storybook/testing-library';
+import { BrowserRouter } from 'react-router-dom';
 
 export default {
   title: 'Advella/Pages/Login',
@@ -9,7 +10,7 @@ export default {
   },
 } as ComponentMeta<typeof LoginPage>;
 
-export const PageLogin: ComponentStory<typeof LoginPage> = () => <LoginPage />;
+export const PageLogin: ComponentStory<typeof LoginPage> = () => <BrowserRouter><LoginPage /></BrowserRouter>;
 
 //* Cannot test this case, because of animation loading
 // export const GoodCredentials = PageLogin.bind({});

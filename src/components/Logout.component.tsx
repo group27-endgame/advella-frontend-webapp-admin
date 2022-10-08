@@ -1,18 +1,19 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { Navigate, useNavigate } from "react-router-dom";
 import { fontColor } from "../constants";
 
 function LogoutComponent() {
-  const [isLoggedOut, setIsLoggedOut] = useState(false);
+  const [, , removeCookie] = useCookies(["token"]);
+
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    setIsLoggedOut(true);
+    navigate("/");
 
-    //TODO: remove cookie
+    removeCookie("token");
   };
-
-  if (isLoggedOut) return <Navigate to="/" />;
 
   return (
     <Button

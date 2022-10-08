@@ -12,3 +12,7 @@ export default {
 } as ComponentMeta<typeof PieChartComponent>;
 
 export const PieChart: ComponentStory<typeof PieChartComponent> = (props) => <PieChartComponent {...props} />;
+
+PieChart.parameters = {
+  chromatic: { delay: 1000 },
+}
