@@ -4,7 +4,7 @@ Administration panel for management for Advella WebApp and App. Part of bachelor
 
 ## Pages
 
-- [404 Page](https://admin.advella.popal.dev/dashboard)
+- [404 Page](https://admin.advella.popal.dev/404)
 - [Login Page](https://admin.advella.popal.dev/)
 - [Dashboard Page](https://admin.advella.popal.dev/dashboard)
 
