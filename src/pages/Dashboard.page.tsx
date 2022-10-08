@@ -49,12 +49,6 @@ function DashboardPage() {
             <Grid item xs={12} lg={6}>
                 <PieChart graphLabel="Product/Services" labels={["Products", "Services"]} data={[350, 400]} />
             </Grid>
-            <Grid item xs={12} lg={6}>
-                <PieChart graphLabel="Product/Services" labels={["Products", "Services"]} data={[350, 400]} />
-            </Grid>
-            <Grid item xs={12} lg={6}>
-                <PieChart graphLabel="Product/Services" labels={["Products", "Services"]} data={[350, 400]} />
-            </Grid>
         </Grid>
      );
 }
