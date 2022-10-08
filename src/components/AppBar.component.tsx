@@ -88,9 +88,10 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
 
   return (
     <Grid container>
-      <Grid item md={2} sx={{ display: { xs: "none", md: "block" } }}>
+      <Grid item md={2} sx={{ display: { xs: "none", md: "block" } }} >
+        <Box position="fixed" width="17%">
         <Paper
-          sx={{ height: "100vh", overflowY: "scroll", pb: 5 }}
+          sx={{ height: "100%", minHeight: "100vh", overflowY: "scroll", pb: 5 }}
           elevation={12}
         >
           <Toolbar>
@@ -135,6 +136,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
             </Box>
           </Toolbar>
         </Paper>
+        </Box>
       </Grid>
       <AppBar sx={{ backgroundColor: paperColor, display: { md: "none" } }}>
         <Box>
