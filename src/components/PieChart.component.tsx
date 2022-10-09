@@ -12,13 +12,13 @@ interface PieChartProps extends PaperProps {
 }
 
 function PieChartComponent(props: PieChartProps) {
-  const { elevation = 12, children: _children, ...rest } = props;
+  const { elevation = 12, graphLabel, children: _children, ...rest } = props;
 
   const data = {
     labels: props.labels,
     datasets: [
       {
-        label: props.graphLabel,
+        label: graphLabel,
         data: props.data,
         backgroundColor: [
           "#e60049",
@@ -53,7 +53,7 @@ function PieChartComponent(props: PieChartProps) {
         <Grid container p={5}>
           <Grid item xs={12} textAlign="center">
             <Typography variant="h6" fontSize={30}>
-              {props.graphLabel}
+              {graphLabel}
             </Typography>
           </Grid>
           <Grid item xs={12}>

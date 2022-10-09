@@ -90,7 +90,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   return (
     <Grid container>
       <Grid item md={2} sx={{ display: { xs: "none", md: "block" } }} >
-        <Box width="17%" sx={{overflowY: "scroll", position: "fixed", height: "100%"}}>
+        <Box width="16.5%" sx={{overflowY: "scroll", position: "fixed", height: "100%"}}>
         <Paper
           sx={{ pb: 5,  height: "100%" }}
           elevation={12}

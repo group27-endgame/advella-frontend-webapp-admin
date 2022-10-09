@@ -27,7 +27,7 @@ interface BarChartProps extends PaperProps {
 }
 
 function BarChartComponent(props: BarChartProps) {
-  const { elevation = 12, children: _children, ...rest } = props;
+  const { elevation = 12, graphLabel, children: _children, ...rest } = props;
 
   const options = {
     responsive: true,
@@ -80,7 +80,7 @@ function BarChartComponent(props: BarChartProps) {
         <Grid container p={5}>
           <Grid item xs={12} textAlign="center">
             <Typography variant="h6" fontSize={30}>
-              {props.graphLabel}
+              {graphLabel}
             </Typography>
           </Grid>
           <Grid item xs={12}>
