@@ -40,6 +40,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
     defaultExpanded = false,
   } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [expanded, setExpanded] = React.useState("");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -89,9 +90,9 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
   return (
     <Grid container>
       <Grid item md={2} sx={{ display: { xs: "none", md: "block" } }} >
-        <Box width="17%" sx={{overflowY: "scroll", position: "fixed", height: "100%", minHeight: "100vh"}}>
+        <Box width="17%" sx={{overflowY: "scroll", position: "fixed", height: "100%"}}>
         <Paper
-          sx={{ pb: 5 }}
+          sx={{ pb: 5,  height: "100%" }}
           elevation={12}
         >
           <Toolbar>
@@ -111,6 +112,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   defaultExpanded={defaultExpanded}
                   key={item.name}
                   elevation={0}
+                  expanded={expanded === item.name}
+                  onChange={() => setExpanded(item.name)}
                   sx={{
                     ":before": { backgroundColor: "transparent" },
                   }}
