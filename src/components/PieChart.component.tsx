@@ -52,7 +52,8 @@ function PieChartComponent(props: PieChartProps) {
       <Paper elevation={elevation} {...rest}>
         <Grid container p={5}>
           <Grid item xs={12} textAlign="center">
-            <Typography variant="h6" fontSize={30}>
+            <Typography sx={{ textTransform: "uppercase", fontSize: 24 }}
+              variant="h6">
               {graphLabel}
             </Typography>
           </Grid>

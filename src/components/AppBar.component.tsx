@@ -9,7 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { fontColor, paperColor, primaryColor } from "../constants";
+import { fontColor, paperColor, tertiaryColor } from "../constants";
 import {
   Accordion,
   AccordionDetails,
@@ -48,8 +48,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
 
   const drawer = (
     <Box>
-      <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-        <RouterLink to="/dashboard" color={primaryColor}>
+      <Typography variant="h6" sx={{ my: 2, textTransform: "uppercase", fontSize: 18 }} textAlign="center">
+        <RouterLink to="/dashboard" color={tertiaryColor}>
           {title}
         </RouterLink>
       </Typography>
@@ -104,8 +104,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                 width: "100%",
               }}
             >
-              <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-                <RouterLink to="/dashboard" color={primaryColor}>
+              <Typography variant="h6" sx={{ my: 2, textTransform: "uppercase", fontSize: 26 }} textAlign="center">
+                <RouterLink to="/dashboard" color={tertiaryColor}>
                   {title}
                 </RouterLink>
               </Typography>
