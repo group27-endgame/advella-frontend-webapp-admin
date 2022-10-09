@@ -1,6 +1,6 @@
 {
   "name": "advella-frontend-webapp-admin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "homepage": "https://admin.advella.popal.dev",
   "author": {
@@ -72,6 +72,5 @@
     "prop-types": "^15.8.1",
     "webpack": "^5.74.0"
   },
-  "readme": "README.md",
-  "_id": "advella-frontend-webapp-admin@0.1.0"
+  "readme": "README.md"
 }
