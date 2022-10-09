@@ -29,19 +29,6 @@ interface BarChartProps extends PaperProps {
 function BarChartComponent(props: BarChartProps) {
   const { elevation = 12, graphLabel, children: _children, ...rest } = props;
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top" as const,
-      },
-      title: {
-        display: true,
-        text: "Chart.js Bar Chart",
-      },
-    },
-  };
-
   const data = {
     labels: props.labels,
     datasets: [
