@@ -2,10 +2,12 @@ name: Build and Test
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: 
+      - "main"
     
 jobs:
   build:
+    if: github.actor!= 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -37,6 +39,5 @@ jobs:
 
     - name: Publish Project to Chromatic
       uses: chromaui/action@v1
-      if: github.actor != 'dependabot[bot]'
       with:
         projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
