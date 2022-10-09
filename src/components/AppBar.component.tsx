@@ -59,6 +59,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
           defaultExpanded={defaultExpanded}
           key={item.name}
           elevation={0}
+          expanded={expanded === item.name}
+          onChange={() => expanded === item.name ? setExpanded("") : setExpanded(item.name)}
           sx={{
             ":before": { backgroundColor: "transparent" },
           }}
@@ -113,7 +115,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   key={item.name}
                   elevation={0}
                   expanded={expanded === item.name}
-                  onChange={() => setExpanded(item.name)}
+                  onChange={() => expanded === item.name ? setExpanded("") : setExpanded(item.name)}
                   sx={{
                     ":before": { backgroundColor: "transparent" },
                   }}
