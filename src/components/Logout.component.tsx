@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
-import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { fontColor } from "../constants";
 
 function LogoutComponent() {

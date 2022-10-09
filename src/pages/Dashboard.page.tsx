@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import ActionListComponent from "../components/ActionList.component";
 import BarChartComponent from "../components/BarChart.component";
