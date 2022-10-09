@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material";
-import { fontSize } from "@mui/system";
 import { backgroundColor, disabledColor, errorColor, fontColor, paperColor, primaryColor, secondaryColor, tertiaryColor } from "./constants";
 
 export const theme = createTheme({

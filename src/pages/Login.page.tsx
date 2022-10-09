@@ -1,7 +1,7 @@
 import { Button, Grid, Paper, TextField, Typography, Container } from "@mui/material";
 import { useState } from "react";
 import LoadingLottie from "../components/LoadingLottie.component";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SnackbarComponent from "../components/Snackbar.component";
 import { useCookies } from "react-cookie";
 
@@ -65,7 +65,7 @@ function LoginPage() {
                 <LoadingLottie open={isLoading} />
                 <Grid container spacing={2}>
                     <Grid item xs={12} textAlign="center" mb={2}>
-                        <Typography variant="h4">
+                        <Typography variant="h3">
                             Admin Panel
                         </Typography>
                     </Grid>
