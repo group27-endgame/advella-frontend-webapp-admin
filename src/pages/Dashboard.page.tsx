@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ActionListComponent from "../components/ActionList.component";
 import BarChartComponent from "../components/BarChart.component";
 import CardComponent from "../components/Card.component";
-import LoadingLottie from "../components/LoadingLottie.component";
+// import LoadingLottie from "../components/LoadingLottie.component";
 import { PieChart } from "../_stories/Advella/components/PieChart.stories";
 
 const list = [
@@ -39,15 +39,15 @@ const list = [
 
 function DashboardPage() {
 
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        setIsLoading(true);
-        setTimeout(function () {
-            setIsLoading(false);
+    // useEffect(() => {
+    //     setIsLoading(true);
+    //     setTimeout(function () {
+    //         setIsLoading(false);
             
-        }, 5000);
-    },[]);
+    //     }, 5000);
+    // },[]);
 
     // if(isLoading)
     //     return <LoadingLottie open={isLoading} />
