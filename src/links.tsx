@@ -7,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import { ReactElement } from 'react';
 import { fontColor } from './constants';
 import { Box } from '@mui/material';
+import ProductsDashboardPage from './pages/dashboard/ProductsDashboard.page';
 
 export type SubLink = {
     name: string;
@@ -33,7 +34,7 @@ export const links: MainLink[] = [
             {
                 name: "Products",
                 link: "/dashboard/products",
-                element: <Box>Dashboard Products</Box>
+                element: <ProductsDashboardPage />
             },
 
             {
