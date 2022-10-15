@@ -1,25 +1,63 @@
 import { Grid } from "@mui/material";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import ActionListComponent from "../components/ActionList.component";
 import BarChartComponent from "../components/BarChart.component";
 import CardComponent from "../components/Card.component";
-import LoadingLottie from "../components/LoadingLottie.component";
+// import LoadingLottie from "../components/LoadingLottie.component";
 import { PieChart } from "../_stories/Advella/components/PieChart.stories";
+
+const list = [
+    {
+        listId: 1,
+        title: "New Product",
+        dateTime: Date.now(),
+        color: "#e60049",
+        subscription: "Seymore added new Product"
+    },
+    {
+        listId: 1,
+        title: "New Product",
+        dateTime: Date.now()-(5*60000),
+        color: "#0bb4ff",
+        subscription: "Seymore added new Product"
+    },
+    {
+        listId: 1,
+        title: "New Product",
+        dateTime: Date.now()-(2*60*60000),
+        color: "#50e991",
+        subscription: "Seymore added new Product"
+    },
+    {
+        listId: 1,
+        title: "New Product",
+        dateTime: Date.now()-(4*60*60000),
+        color: "#e6d800",
+        subscription: "Seymore added new Product"
+    },
+    {
+        listId: 1,
+        title: "New Product",
+        dateTime: Date.now()-(60*60*60000),
+        color: "#b3d4ff",
+        subscription: "Seymore added new Product"
+    }
+]
 
 function DashboardPage() {
 
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        setIsLoading(true);
-        setTimeout(function () {
-            setIsLoading(false);
+    // useEffect(() => {
+    //     setIsLoading(true);
+    //     setTimeout(function () {
+    //         setIsLoading(false);
             
-        }, 5000);
-    },[]);
+    //     }, 5000);
+    // },[]);
 
-    if(isLoading)
-        return <LoadingLottie open={isLoading} />
+    // if(isLoading)
+    //     return <LoadingLottie open={isLoading} />
     
     return ( 
         <Grid container spacing={2}>
@@ -42,7 +80,7 @@ function DashboardPage() {
                         <BarChartComponent graphLabel="Money Spend" labels={["January", "February", "March", "April"]} data={[350, 450, 590, 780]} />
                     </Grid>
                     <Grid item xs={12}>
-                        <ActionListComponent title="Latest Actions" />
+                        <ActionListComponent title="Latest Actions" list={list} />
                     </Grid>
                 </Grid>
             </Grid>
