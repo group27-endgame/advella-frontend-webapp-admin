@@ -7,6 +7,17 @@ Administration panel for management for Advella WebApp and App. Part of bachelor
 - [404 Page](https://admin.advella.popal.dev/404)
 - [Login Page](https://admin.advella.popal.dev/)
 - [Dashboard Page](https://admin.advella.popal.dev/dashboard)
+- [Users Dashboard Page](https://admin.advella.popal.dev/dashboard/users)
+- [Products Dashboard Page](https://admin.advella.popal.dev/dashboard/products)
+- [Services Dashboard Page](https://admin.advella.popal.dev/dashboard/services)
+- [All Users Page](https://admin.advella.popal.dev/users)
+- [Users Chat Page](https://admin.advella.popal.dev/users/chat)
+- [All Products Page](https://admin.advella.popal.dev/products)
+- [Products Bids Page](https://admin.advella.popal.dev/products/bids)
+- [All Services Page](https://admin.advella.popal.dev/services)
+- [Services Bids Page](https://admin.advella.popal.dev/services/bids)
+- [All Ratings Page](https://admin.advella.popal.dev/ratings)
+- [All Messages Page](https://admin.advella.popal.dev/messages)
 
 ## GitHub
 
