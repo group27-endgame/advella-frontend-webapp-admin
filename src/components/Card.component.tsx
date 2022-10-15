@@ -73,7 +73,7 @@ function CardComponent(props: CardComponentProps) {
           </Grid>
           <Grid item xs={12} mt={2}>
             <Typography textAlign="left" variant="body2" fontSize={24}>
-            {valueSign}{trendingValue}
+            {valueSign}{trendingValue.toLocaleString()}
             </Typography>
           </Grid>
         </Grid>
