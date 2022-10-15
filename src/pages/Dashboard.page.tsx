@@ -10,7 +10,7 @@ const list = [
     {
         listId: 1,
         title: "New Product",
-        dateTime: Date.now()-(2*60*60000),
+        dateTime: Date.now(),
         color: "green",
         subscription: "Seymore added new Product"
     },
@@ -18,6 +18,13 @@ const list = [
         listId: 1,
         title: "New Product",
         dateTime: Date.now()-(5*60000),
+        color: "green",
+        subscription: "Seymore added new Product"
+    },
+    {
+        listId: 1,
+        title: "New Product",
+        dateTime: Date.now()-(2*60*60000),
         color: "green",
         subscription: "Seymore added new Product"
     },
