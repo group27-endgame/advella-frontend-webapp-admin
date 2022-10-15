@@ -5,7 +5,14 @@ export default {
   title: 'Advella/Components',
   component: ActionListComponent,
   args: {
-    title: "Title"
+    title: "Title",
+    list: [{
+      listId: 1,
+      title: "New Product",
+      dateTime: Date.now(),
+      color: "#e60049",
+      subscription: "Seymore added new Product"
+  },],
   },
 } as ComponentMeta<typeof ActionListComponent>;
 
