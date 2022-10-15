@@ -24,7 +24,6 @@ function App() {
           )
         }
       ></Route>
-
       {links.map((l) =>
         l.subLinks.map((ls) => (
           <Route
