@@ -4,6 +4,16 @@ import BarChartComponent from "../../components/BarChart.component";
 import CardComponent from "../../components/Card.component";
 import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
+const list = [
+    {
+        listId: 1,
+        title: "New Product",
+        dateTime: Date.now(),
+        color: "#e60049",
+        subscription: "Seymore added new Product"
+    }
+];
+
 function UserDashboardPage() {
     return ( 
         <Grid container spacing={2}>
@@ -26,7 +36,7 @@ function UserDashboardPage() {
                         <BarChartComponent graphLabel="New Users" labels={["January", "February", "March", "April"]} data={[350, 450, 590, 780]} />
                     </Grid>
                     <Grid item xs={12}>
-                        <ActionListComponent title="Latest Actions" />
+                        <ActionListComponent title="Latest Actions" list={list} />
                     </Grid>
                 </Grid>
             </Grid>
