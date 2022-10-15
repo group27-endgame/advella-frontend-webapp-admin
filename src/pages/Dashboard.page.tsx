@@ -11,35 +11,35 @@ const list = [
         listId: 1,
         title: "New Product",
         dateTime: Date.now(),
-        color: "green",
+        color: "#e60049",
         subscription: "Seymore added new Product"
     },
     {
         listId: 1,
         title: "New Product",
         dateTime: Date.now()-(5*60000),
-        color: "green",
+        color: "#0bb4ff",
         subscription: "Seymore added new Product"
     },
     {
         listId: 1,
         title: "New Product",
         dateTime: Date.now()-(2*60*60000),
-        color: "green",
+        color: "#50e991",
         subscription: "Seymore added new Product"
     },
     {
         listId: 1,
         title: "New Product",
         dateTime: Date.now()-(4*60*60000),
-        color: "green",
+        color: "#e6d800",
         subscription: "Seymore added new Product"
     },
     {
         listId: 1,
         title: "New Product",
         dateTime: Date.now()-(60*60*60000),
-        color: "green",
+        color: "#b3d4ff",
         subscription: "Seymore added new Product"
     }
 ]
