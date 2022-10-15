@@ -27,20 +27,7 @@ interface BarChartProps extends PaperProps {
 }
 
 function BarChartComponent(props: BarChartProps) {
-  const { elevation = 12, children: _children, ...rest } = props;
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top" as const,
-      },
-      title: {
-        display: true,
-        text: "Chart.js Bar Chart",
-      },
-    },
-  };
+  const { elevation = 12, graphLabel, children: _children, ...rest } = props;
 
   const data = {
     labels: props.labels,
@@ -79,8 +66,9 @@ function BarChartComponent(props: BarChartProps) {
       <Paper elevation={elevation} {...rest}>
         <Grid container p={5}>
           <Grid item xs={12} textAlign="center">
-            <Typography variant="h6" fontSize={30}>
-              {props.graphLabel}
+            <Typography sx={{ textTransform: "uppercase", fontSize: 24 }}
+              variant="h6">
+              {graphLabel}
             </Typography>
           </Grid>
           <Grid item xs={12}>

@@ -9,7 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { fontColor, paperColor, primaryColor } from "../constants";
+import { fontColor, paperColor, tertiaryColor } from "../constants";
 import {
   Accordion,
   AccordionDetails,
@@ -40,6 +40,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
     defaultExpanded = false,
   } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [expanded, setExpanded] = React.useState("");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -47,8 +48,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
 
   const drawer = (
     <Box>
-      <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-        <RouterLink to="/dashboard" color={primaryColor}>
+      <Typography variant="h6" sx={{ my: 2, textTransform: "uppercase", fontSize: 18 }} textAlign="center">
+        <RouterLink to="/dashboard" color={tertiaryColor}>
           {title}
         </RouterLink>
       </Typography>
@@ -58,6 +59,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
           defaultExpanded={defaultExpanded}
           key={item.name}
           elevation={0}
+          expanded={expanded === item.name}
+          onChange={() => expanded === item.name ? setExpanded("") : setExpanded(item.name)}
           sx={{
             ":before": { backgroundColor: "transparent" },
           }}
@@ -88,9 +91,10 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
 
   return (
     <Grid container>
-      <Grid item md={2} sx={{ display: { xs: "none", md: "block" } }}>
+      <Grid item md={2} sx={{ display: { xs: "none", md: "block" } }} >
+        <Box width="16.5%" sx={{overflowY: "scroll", position: "fixed", height: "100%"}}>
         <Paper
-          sx={{ height: "100vh", overflowY: "scroll", pb: 5 }}
+          sx={{ pb: 5,  height: "100%" }}
           elevation={12}
         >
           <Toolbar>
@@ -100,8 +104,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                 width: "100%",
               }}
             >
-              <Typography variant="h6" sx={{ my: 2 }} textAlign="center">
-                <RouterLink to="/dashboard" color={primaryColor}>
+              <Typography variant="h6" sx={{ my: 2, textTransform: "uppercase", fontSize: 26 }} textAlign="center">
+                <RouterLink to="/dashboard" color={tertiaryColor}>
                   {title}
                 </RouterLink>
               </Typography>
@@ -110,6 +114,8 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   defaultExpanded={defaultExpanded}
                   key={item.name}
                   elevation={0}
+                  expanded={expanded === item.name}
+                  onChange={() => expanded === item.name ? setExpanded("") : setExpanded(item.name)}
                   sx={{
                     ":before": { backgroundColor: "transparent" },
                   }}
@@ -135,6 +141,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
             </Box>
           </Toolbar>
         </Paper>
+        </Box>
       </Grid>
       <AppBar sx={{ backgroundColor: paperColor, display: { md: "none" } }}>
         <Box>
