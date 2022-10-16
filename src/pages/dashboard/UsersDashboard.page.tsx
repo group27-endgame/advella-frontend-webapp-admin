@@ -55,6 +55,7 @@ const regions = [
   { city: "Storstrøm", value: 1000 },
   { city: "Copenhagen", value: 1000 },
   { city: "Bornholm", value: 1000 },
+  { city: "Frederiksborg", value: 1000 },
 ];
 
 function UserDashboardPage() {
