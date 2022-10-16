@@ -86,6 +86,14 @@ const CustomToolbar = () => {
         dialogOpen={removeDialogOpen}
         confirmButton={handleRemove}
         cancelButton={toggleDialog}
+        mainAction={{
+          value: "Remove",
+          state: "error",
+        }}
+        closeAction={{
+          value: "Close",
+          state: "primary",
+        }}
       />
     </Grid>
   );
