@@ -1,15 +1,14 @@
-import { Button, Card, Grid } from "@mui/material";
+import { Button, Card, Grid, TextField } from "@mui/material";
 import {
   DataGrid,
   GridColDef,
   useGridApiContext,
   GridCellEditCommitParams,
-  MuiEvent,
   GridCellEditStartParams,
   GridValidRowModel,
 } from "@mui/x-data-grid";
 import { useState } from "react";
-import ConfirmDialogComponent from "../../components/ConfirmDialog.component";
+import DialogComponent from "../../components/Dialog.component";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID" },
@@ -38,12 +37,33 @@ const rows = [
 
 const CustomToolbar = () => {
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
+  const [addDialogOpen, setAddDialogOpen] = useState(false);
+
+  const [newCategory, setNewCategory] = useState("");
 
   const apiRef = useGridApiContext();
   const selectedRow = apiRef.current.getSelectedRows();
 
-  const toggleDialog = () => {
+  const toggleRemoveDialog = () => {
     setRemoveDialogOpen(!removeDialogOpen);
+  };
+
+  const toggleAddDialogOpen = () => {
+    setAddDialogOpen(!addDialogOpen);
+  };
+
+  const handleAdd = () => {
+    const rows: GridValidRowModel[] = [];
+
+    apiRef.current.getRowModels().forEach((row) => {
+      rows.push(row);
+    });
+
+    rows.push({id: rows.length+1, name: newCategory, products: 0});
+    console.log(rows);
+    apiRef.current.setRows(rows);
+    //TODO: Call POST api to add
+    setRemoveDialogOpen(false);
   };
 
   const handleRemove = () => {
@@ -59,7 +79,7 @@ const CustomToolbar = () => {
         1
       );
 
-      //call DELETE endpoint
+      //TODO: Call DELETE api to remove
     });
 
     apiRef.current.setRows(rows);
@@ -69,23 +89,38 @@ const CustomToolbar = () => {
   return (
     <Grid container>
       <Grid item xs={6} textAlign="left">
-        <Button color="success">Add New Service</Button>
+        <Button color="success" onClick={toggleAddDialogOpen}>Add New Category</Button>
       </Grid>
       <Grid item xs={6} textAlign="right">
         <Button
           color="error"
           disabled={selectedRow.size === 0}
-          onClick={toggleDialog}
+          onClick={toggleRemoveDialog}
         >
           Remove Selected
         </Button>
       </Grid>
-      <ConfirmDialogComponent
+      <DialogComponent
+        dialogTitle={"Add New Category?"}
+        dialogBody={<TextField onChange={(e) => setNewCategory(e.target.value)} sx={{mt:2}} variant="outlined" fullWidth label="Category Name" />}
+        confirmButton={handleAdd}
+        cancelButton={toggleAddDialogOpen}
+        dialogOpen={addDialogOpen}
+        mainAction={{
+          value: "Add",
+          state: "success",
+        }}
+        closeAction={{
+          value: "Cancel",
+          state: "primary",
+        }}
+      />
+      <DialogComponent
         dialogTitle="Remove selected Categories?"
         dialogBody="Are you sure you want to remove all categories, which you selected? Category and all services inside this category will be removed and cannot be restored!"
         dialogOpen={removeDialogOpen}
         confirmButton={handleRemove}
-        cancelButton={toggleDialog}
+        cancelButton={toggleRemoveDialog}
         mainAction={{
           value: "Remove",
           state: "error",
@@ -117,14 +152,12 @@ function ServiceCategoryPage() {
             value: params.formattedValue,
           });
         }}
-        onCellEditCommit={(
-          params: GridCellEditCommitParams
-        ) => {
+        onCellEditCommit={(params: GridCellEditCommitParams) => {
           if (
             editingValue.id !== params.id ||
             editingValue.value !== params.value
           ) {
-            // edit call API
+            //TODO: Call PUT api to edit
           }
         }}
       />

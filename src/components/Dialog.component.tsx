@@ -8,10 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 
-type ConfirmDialogComponentProps = {
+type DialogComponentProps = {
   dialogOpen?: boolean;
   dialogTitle: string;
-  dialogBody: string;
+  dialogBody: string | React.ReactElement;
   confirmButton: () => void;
   cancelButton: () => void;
   mainAction: {
@@ -24,7 +24,7 @@ type ConfirmDialogComponentProps = {
   };
 };
 
-function ConfirmDialogComponent(props: ConfirmDialogComponentProps) {
+function DialogComponent(props: DialogComponentProps) {
   const { dialogOpen = false, dialogTitle, dialogBody, mainAction, closeAction, cancelButton, confirmButton } = props;
 
   return (
@@ -48,4 +48,4 @@ function ConfirmDialogComponent(props: ConfirmDialogComponentProps) {
   );
 }
 
-export default ConfirmDialogComponent;
+export default DialogComponent;
