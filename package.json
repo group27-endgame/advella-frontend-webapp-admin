@@ -9,13 +9,13 @@
     "url": "https://popal.dev/"
   },
   "dependencies": {
-    "chartjs-chart-geo": "3.7.2",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.8",
     "@mui/styled-engine-sc": "^5.10.6",
+    "@mui/x-data-grid": "^5.17.7",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
@@ -34,6 +34,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.0",
     "chart.js": "^3.9.1",
+    "chartjs-chart-geo": "3.7.2",
     "framer-motion": "^7.5.3",
     "lottie-web": "^5.9.6",
     "react": "^18.2.0",
