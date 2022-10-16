@@ -64,14 +64,14 @@ function UserDashboardPage() {
       <Grid item xs={12}>
         <MapChartComponent graphLabel="Users by Regions" regions={regions} />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item md={6}>
         <BarChartComponent
           graphLabel="Registrations per Month"
           labels={["January", "February", "March", "April"]}
           data={[350, 450, 590, 780]}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item md={6}>
         <ActionListComponent title="five newest Users" list={list} />
       </Grid>
     </Grid>
