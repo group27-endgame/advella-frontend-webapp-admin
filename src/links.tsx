@@ -8,6 +8,7 @@ import { ReactElement } from 'react';
 import { fontColor } from './constants';
 import { Box } from '@mui/material';
 import ServicesDashboardPage from './pages/dashboard/ServicesDashboard.page';
+import UserDashboardPage from './pages/dashboard/UsersDashboard.page';
 
 export type SubLink = {
     name: string;
@@ -29,7 +30,7 @@ export const links: MainLink[] = [
             {
                 name: "Users",
                 link: "/dashboard/users",
-                element: <Box>Dashboard Users</Box>
+                element: <UserDashboardPage />
             },
             {
                 name: "Products",
