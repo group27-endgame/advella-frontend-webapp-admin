@@ -111,15 +111,14 @@ function ServiceCategoryPage() {
         pageSize={20}
         rowsPerPageOptions={[20]}
         components={{ Toolbar: CustomToolbar }}
-        onCellEditStart={(params: GridCellEditStartParams, event: MuiEvent) => {
+        onCellEditStart={(params: GridCellEditStartParams) => {
           setEditingValue({
             id: Number(params.id),
             value: params.formattedValue,
           });
         }}
         onCellEditCommit={(
-          params: GridCellEditCommitParams,
-          event: MuiEvent
+          params: GridCellEditCommitParams
         ) => {
           if (
             editingValue.id !== params.id ||
