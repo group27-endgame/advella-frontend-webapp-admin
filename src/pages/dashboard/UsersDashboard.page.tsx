@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import ActionListComponent from "../../components/ActionList.component";
 import BarChartComponent from "../../components/BarChart.component";
-import MapChart from "../../components/MapChart.component";
+import MapChartComponent from "../../components/MapChart.component";
 
 const list = [
   {
@@ -61,7 +61,7 @@ function UserDashboardPage() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <MapChart graphLabel="Users by Regions" regions={regions} />
+        <MapChartComponent graphLabel="Users by Regions" regions={regions} />
       </Grid>
       <Grid item xs={6}>
         <BarChartComponent

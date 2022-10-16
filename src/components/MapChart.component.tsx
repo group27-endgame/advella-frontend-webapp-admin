@@ -22,12 +22,12 @@ ChartJS.register(
   ChartGeo.GeoFeature
 );
 
-type MapChartProps = {
+type MapChartComponentProps = {
     graphLabel: string;
   regions: { city: string; value: number }[];
 };
 
-function MapChart(props: MapChartProps) {
+function MapChartComponent(props: MapChartComponentProps) {
   const chartRef = useRef();
   const [data, setData] = useState<any>([]);
 
@@ -124,4 +124,4 @@ function MapChart(props: MapChartProps) {
   );
 }
 
-export default MapChart;
+export default MapChartComponent;
