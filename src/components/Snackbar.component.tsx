@@ -1,4 +1,5 @@
 import { Alert, Snackbar, SnackbarProps } from "@mui/material";
+import React from "react";
 import { useState } from "react";
 
 interface CustomSnackbarProps extends SnackbarProps {
@@ -11,24 +12,27 @@ function SnackbarComponent(props: CustomSnackbarProps) {
     message,
     action: _action,
     anchorOrigin = { vertical: "bottom", horizontal: "center" },
-    open: _open,
+    open,
     type,
     ...rest
   } = props;
 
-  const [open, setOpen] = useState(true);
+  const [_open, setOpen] = useState(open);
 
-  const handleClose = () => {
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+
     setOpen(false);
   };
 
   return (
     <Snackbar
       anchorOrigin={anchorOrigin}
-      open={open}
+      open={_open}
+      autoHideDuration={4000}
+      onClose={handleClose}
       {...rest}
     >
-      <Alert severity={type} sx={{ width: "100%" }}>
+      <Alert onClose={handleClose} severity={type} sx={{ width: "100%" }}>
         {message}
       </Alert>
     </Snackbar>
