@@ -8,7 +8,9 @@ import { ReactElement } from 'react';
 import { fontColor } from './constants';
 import { Box } from '@mui/material';
 import ProductsDashboardPage from './pages/dashboard/ProductsDashboard.page';
+import ServicesDashboardPage from './pages/dashboard/ServicesDashboard.page';
 import UserDashboardPage from './pages/dashboard/UsersDashboard.page';
+import CategoryIcon from '@mui/icons-material/Category';
 
 export type SubLink = {
     name: string;
@@ -41,7 +43,23 @@ export const links: MainLink[] = [
             {
                 name: "Services",
                 link: "/dashboard/services",
-                element: <Box>Dashboard Services</Box>
+                element: <ServicesDashboardPage />
+            },
+        ]
+    },
+    {
+        name: "Categories",
+        icon: <CategoryIcon sx={{ color: fontColor }} />,
+        subLinks: [
+            {
+                name: "Products",
+                link: "/category/products",
+                element: <Box>Products category</Box>
+            },
+            {
+                name: "Services",
+                link: "/category/services",
+                element: <Box>Services category</Box>
             },
         ]
     },
