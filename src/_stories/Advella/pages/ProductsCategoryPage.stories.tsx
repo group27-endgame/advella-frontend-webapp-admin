@@ -1,15 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
-import ServiceCategoryPage from '../../../pages/categories/ServicesCategory.page';
+import ProductsCategoryPage from '../../../pages/categories/ProductsCategory.page';
 
 export default {
-  title: 'Advella/Pages/Services Categories',
-  component: ServiceCategoryPage,
-} as ComponentMeta<typeof ServiceCategoryPage>;
+  title: 'Advella/Pages/Product Categories',
+  component: ProductsCategoryPage,
+} as ComponentMeta<typeof ProductsCategoryPage>;
 
-export const Main: ComponentStory<typeof ServiceCategoryPage> = () => <ServiceCategoryPage />;
+export const Main: ComponentStory<typeof ProductsCategoryPage> = () => <ProductsCategoryPage />;
 
-export const MainPhone: ComponentStory<typeof ServiceCategoryPage> = () => <ServiceCategoryPage />;
+export const MainPhone: ComponentStory<typeof ProductsCategoryPage> = () => <ProductsCategoryPage />;
 
 Main.parameters = {
   chromatic: { delay: 1000  },
@@ -21,7 +21,6 @@ MainPhone.parameters = {
     defaultViewport: "phone",
   },
 };
-
 
 export const AddNewCategory = Main.bind({});
 

@@ -14,26 +14,26 @@ const columns: GridColDef[] = [
   { field: "id", headerName: "ID", headerAlign: "left", },
   {
     field: "name",
-    headerName: "Service Name",
+    headerName: "Product Name",
     width: 250,
     align: "center",
     editable: true,
     headerAlign: "center",
   },
-  { field: "services", headerName: "Services", width: 150, align: "right", headerAlign: "right", },
+  { field: "products", headerName: "Products", width: 150, align: "right", headerAlign: "right", },
 ];
 
 const rows = [
-  { id: 1, name: "Cars", services: 35 },
-  { id: 2, name: "Houses", services: 35 },
-  { id: 3, name: "Bikes", services: 35 },
-  { id: 4, name: "Kitchen Appliances", services: 35 },
-  { id: 5, name: "Sofas", services: 35 },
-  { id: 6, name: "Drugs", services: 35 },
-  { id: 7, name: "Electronics", services: 35 },
-  { id: 8, name: "Movies", services: 35 },
-  { id: 9, name: "Books", services: 35 },
-  { id: 10, name: "Other", services: 35 },
+  { id: 1, name: "Cars", products: 35 },
+  { id: 2, name: "Houses", products: 35 },
+  { id: 3, name: "Bikes", products: 35 },
+  { id: 4, name: "Kitchen Appliances", products: 35 },
+  { id: 5, name: "Sofas", products: 35 },
+  { id: 6, name: "Drugs", products: 35 },
+  { id: 7, name: "Electronics", products: 35 },
+  { id: 8, name: "Movies", products: 35 },
+  { id: 9, name: "Books", products: 35 },
+  { id: 10, name: "Other", products: 35 },
 ];
 
 const CustomToolbar = () => {
@@ -60,7 +60,7 @@ const CustomToolbar = () => {
       rows.push(row);
     });
 
-    rows.push({id: rows.length+1, name: newCategory, services: 0});
+    rows.push({id: rows.length+1, name: newCategory, products: 0});
     console.log(rows);
     apiRef.current.setRows(rows);
     //TODO: Call POST api to add
@@ -118,7 +118,7 @@ const CustomToolbar = () => {
       />
       <DialogComponent
         dialogTitle="Remove selected Categories?"
-        dialogBody="Are you sure you want to remove all categories, which you selected? Category and all services inside this category will be removed and cannot be restored!"
+        dialogBody="Are you sure you want to remove all categories, which you selected? Category and all products inside this category will be removed and cannot be restored!"
         dialogOpen={removeDialogOpen}
         confirmButton={handleRemove}
         cancelButton={toggleRemoveDialog}
@@ -135,7 +135,7 @@ const CustomToolbar = () => {
   );
 };
 
-function ServiceCategoryPage() {
+function ProductsCategoryPage() {
   const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
 
   return (
@@ -166,4 +166,4 @@ function ServiceCategoryPage() {
   );
 }
 
-export default ServiceCategoryPage;
+export default ProductsCategoryPage;
