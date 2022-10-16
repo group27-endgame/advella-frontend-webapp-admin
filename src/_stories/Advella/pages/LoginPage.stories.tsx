@@ -43,6 +43,6 @@ WrongCredentials.play = async ({ canvasElement }) => {
   await userEvent.type(passwordInput, "");
 
   // Looks up the button and interacts with it.
-  const submitButton = canvas.getByRole("button");
-  await userEvent.click(submitButton);
+  const submitButton = canvas.getAllByRole("button");
+  await userEvent.click(submitButton[0]);
 };
