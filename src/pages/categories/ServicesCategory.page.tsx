@@ -11,15 +11,16 @@ import { useState } from "react";
 import DialogComponent from "../../components/Dialog.component";
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID" },
+  { field: "id", headerName: "ID", headerAlign: "left", },
   {
     field: "name",
     headerName: "Service Name",
     width: 250,
     align: "center",
     editable: true,
+    headerAlign: "center",
   },
-  { field: "products", headerName: "Products", width: 150, align: "right" },
+  { field: "products", headerName: "Products", width: 150, align: "right", headerAlign: "right", },
 ];
 
 const rows = [
