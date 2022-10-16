@@ -11,6 +11,7 @@ import ProductsDashboardPage from './pages/dashboard/ProductsDashboard.page';
 import ServicesDashboardPage from './pages/dashboard/ServicesDashboard.page';
 import UserDashboardPage from './pages/dashboard/UsersDashboard.page';
 import CategoryIcon from '@mui/icons-material/Category';
+import ProductsCategoryPage from './pages/categories/ProductsCategory.page';
 
 export type SubLink = {
     name: string;
@@ -54,7 +55,7 @@ export const links: MainLink[] = [
             {
                 name: "Products",
                 link: "/category/products",
-                element: <Box>Products category</Box>
+                element: <ProductsCategoryPage />
             },
             {
                 name: "Services",
