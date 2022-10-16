@@ -40,7 +40,7 @@ const rows = [
 function ServiceCategoryPage() {
   return (
     <Card sx={{height: "90vh", p: 5}}>
-      <DataGrid columns={columns} rows={rows} checkboxSelection pageSize={20} components={{Toolbar: CustomToolbar}} />
+      <DataGrid columns={columns} rows={rows} checkboxSelection pageSize={20} rowsPerPageOptions={[20]} components={{Toolbar: CustomToolbar}} />
     </Card>
   );
 }
