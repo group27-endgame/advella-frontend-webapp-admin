@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { userEvent, within } from '@storybook/testing-library';
 import ServiceCategoryPage from '../../../pages/categories/ServicesCategory.page';
 
 export default {
@@ -19,4 +20,15 @@ MainPhone.parameters = {
   viewport: {
     defaultViewport: "phone",
   },
+};
+
+
+export const AddNewCategory = Main.bind({});
+
+AddNewCategory.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  // Looks up the button and interacts with it.
+  const submitButton = canvas.getAllByRole("button");
+  await userEvent.click(submitButton[0]);
 };
