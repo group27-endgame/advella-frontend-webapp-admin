@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 function ProductsCategoryPage() {
     return ( 
         <Box>
-            Service Category
+            Product Category
         </Box>
      );
 }
