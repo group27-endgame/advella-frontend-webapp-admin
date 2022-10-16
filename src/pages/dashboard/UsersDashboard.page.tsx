@@ -66,13 +66,13 @@ function UserDashboardPage() {
       </Grid>
       <Grid item xs={6}>
         <BarChartComponent
-          graphLabel="New Users"
+          graphLabel="Registrations per Month"
           labels={["January", "February", "March", "April"]}
           data={[350, 450, 590, 780]}
         />
       </Grid>
       <Grid item xs={6}>
-        <ActionListComponent title="Newest Users" list={list} />
+        <ActionListComponent title="five newest Users" list={list} />
       </Grid>
     </Grid>
   );
