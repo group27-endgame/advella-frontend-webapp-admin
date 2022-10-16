@@ -63,7 +63,7 @@ function ProductsDashboardPage() {
     return ( 
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <MapChartComponent graphLabel="Users by Regions" regions={regions} />
+                <MapChartComponent graphLabel="Products by Region" regions={regions} />
             </Grid>
             <Grid item xs={12} lg={6}>
                         <BarChartComponent graphLabel="Products per Month" labels={["January", "February", "March", "April"]} data={[350, 450, 590, 780]} />

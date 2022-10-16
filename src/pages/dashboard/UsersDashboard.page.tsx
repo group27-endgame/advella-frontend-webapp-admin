@@ -62,7 +62,7 @@ function UserDashboardPage() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <MapChartComponent graphLabel="Products by Regions" regions={regions} />
+        <MapChartComponent graphLabel="Users by Region" regions={regions} />
       </Grid>
       <Grid item lg={6}>
         <BarChartComponent

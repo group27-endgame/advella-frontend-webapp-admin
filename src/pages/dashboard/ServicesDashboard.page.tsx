@@ -62,7 +62,7 @@ function ServicesDashboardPage() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <MapChartComponent graphLabel="Services by Regions" regions={regions} />
+        <MapChartComponent graphLabel="Services by Region" regions={regions} />
       </Grid>
       <Grid item md={6}>
         <BarChartComponent
