@@ -62,17 +62,17 @@ function UserDashboardPage() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <MapChartComponent graphLabel="Users by Regions" regions={regions} />
+        <MapChartComponent graphLabel="Products by Regions" regions={regions} />
       </Grid>
-      <Grid item md={6}>
+      <Grid item lg={6}>
         <BarChartComponent
           graphLabel="Registrations per Month"
           labels={["January", "February", "March", "April"]}
           data={[350, 450, 590, 780]}
         />
       </Grid>
-      <Grid item md={6}>
-        <ActionListComponent title="five newest Users" list={list} />
+      <Grid item lg={6}>
+        <ActionListComponent title="newest Users" list={list} />
       </Grid>
     </Grid>
   );

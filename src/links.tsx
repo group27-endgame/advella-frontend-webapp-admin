@@ -7,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import { ReactElement } from 'react';
 import { fontColor } from './constants';
 import { Box } from '@mui/material';
+import ProductsDashboardPage from './pages/dashboard/ProductsDashboard.page';
 import ServicesDashboardPage from './pages/dashboard/ServicesDashboard.page';
 import UserDashboardPage from './pages/dashboard/UsersDashboard.page';
 import CategoryIcon from '@mui/icons-material/Category';
@@ -36,7 +37,7 @@ export const links: MainLink[] = [
             {
                 name: "Products",
                 link: "/dashboard/products",
-                element: <Box>Dashboard Products</Box>
+                element: <ProductsDashboardPage />
             },
 
             {
