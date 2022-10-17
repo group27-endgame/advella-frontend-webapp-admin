@@ -6,6 +6,8 @@ import {
   GridCellEditCommitParams,
   GridCellEditStartParams,
   GridValidRowModel,
+  GridToolbarFilterButton,
+  GridToolbarContainer,
 } from "@mui/x-data-grid";
 import { useState } from "react";
 import DialogComponent from "../../components/Dialog.component";
@@ -44,7 +46,9 @@ const rows = [
   { id: 9, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
 ];
 
-const CustomToolbar = () => {
+const CustomToolbar: React.FunctionComponent<{
+  setFilterButtonEl: React.Dispatch<React.SetStateAction<HTMLButtonElement | null>>;
+}> = ({ setFilterButtonEl }) => {
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
 
   const apiRef = useGridApiContext();
@@ -76,7 +80,12 @@ const CustomToolbar = () => {
 
   return (
     <Grid container>
-      <Grid item xs={12} textAlign="right">
+      <Grid item xs={6} textAlign="left">
+        <GridToolbarContainer>
+          <GridToolbarFilterButton ref={setFilterButtonEl} />
+        </GridToolbarContainer>
+      </Grid>
+      <Grid item xs={6} textAlign="right">
         <Button
           color="error"
           disabled={selectedRow.size === 0}
