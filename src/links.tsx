@@ -15,6 +15,7 @@ import ProductsCategoryPage from './pages/categories/ProductsCategory.page';
 import ServiceCategoryPage from './pages/categories/ServicesCategory.page';
 import AllUsersPage from './pages/users/AllUsers.page';
 import AllProductsPage from './pages/products/AllProducts.page';
+import AllServicesPage from './pages/services/AllServices.page';
 
 export type SubLink = {
     name: string;
@@ -101,7 +102,7 @@ export const links: MainLink[] = [
             {
                 name: "All Services",
                 link: "/services",
-                element: <Box>All Services</Box>
+                element: <AllServicesPage />
             },
             {
                 name: "Bids",
