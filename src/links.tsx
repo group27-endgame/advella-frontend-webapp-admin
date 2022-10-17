@@ -14,6 +14,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import ProductsCategoryPage from './pages/categories/ProductsCategory.page';
 import ServiceCategoryPage from './pages/categories/ServicesCategory.page';
 import AllUsersPage from './pages/users/AllUsers.page';
+import AllProductsPage from './pages/products/AllProducts.page';
 
 export type SubLink = {
     name: string;
@@ -84,7 +85,7 @@ export const links: MainLink[] = [
             {
                 name: "All Products",
                 link: "/products",
-                element: <Box>All Products</Box>
+                element: <AllProductsPage />
             },
             {
                 name: "Bids",
