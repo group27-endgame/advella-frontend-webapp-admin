@@ -32,6 +32,7 @@ const columns: GridColDef[] = [
         </Link>
       );
     },
+    valueGetter: (params) => params.row.username,
     headerName: "Author",
     headerAlign: "center",
     align: "center",

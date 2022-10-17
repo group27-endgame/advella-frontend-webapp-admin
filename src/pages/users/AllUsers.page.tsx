@@ -20,6 +20,15 @@ const columns: GridColDef[] = [
     width: 200,
     align: "center",
     headerAlign: "center",
+    renderCell: (params) => {
+      const { id, username } = params.row;
+      
+      return (
+        <Link href={`/users/${id}`}>
+          {username}
+        </Link>
+      )
+    }
   },
   {
     field: "email",
