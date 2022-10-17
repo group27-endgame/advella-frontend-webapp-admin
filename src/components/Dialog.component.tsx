@@ -29,6 +29,7 @@ function DialogComponent(props: DialogComponentProps) {
 
   return (
     <Dialog
+      fullWidth
       open={dialogOpen}
       onClose={cancelButton}
       aria-labelledby="alert-dialog-title"

@@ -41,6 +41,8 @@ const CustomToolbar = () => {
   const [addDialogOpen, setAddDialogOpen] = useState(false);
 
   const [newCategory, setNewCategory] = useState("");
+  const [newCategoryErr, setNewCategoryErr] = useState(false);
+  const [newCategoryErrMsg, setNewCategoryErrMsg] = useState("");
 
   const apiRef = useGridApiContext();
   const selectedRow = apiRef.current.getSelectedRows();
@@ -54,17 +56,34 @@ const CustomToolbar = () => {
   };
 
   const handleAdd = () => {
+    setNewCategoryErr(false);
+    setNewCategoryErrMsg("");
+
+    if(newCategory.length < 2){
+      setNewCategoryErr(true);
+      setNewCategoryErrMsg("Category name must have at least 3 characters.");
+
+      return;
+    }
+
     const rows: GridValidRowModel[] = [];
 
     apiRef.current.getRowModels().forEach((row) => {
       rows.push(row);
     });
 
+    if(rows.find(f => f.name === newCategory)){
+      setNewCategoryErr(true);
+      setNewCategoryErrMsg("Category with this name already exists.");
+
+      return
+    }
+
     rows.push({id: rows.length+1, name: newCategory, services: 0});
     console.log(rows);
     apiRef.current.setRows(rows);
     //TODO: Call POST api to add
-    setRemoveDialogOpen(false);
+    toggleAddDialogOpen();
   };
 
   const handleRemove = () => {
@@ -103,7 +122,7 @@ const CustomToolbar = () => {
       </Grid>
       <DialogComponent
         dialogTitle={"Add New Category?"}
-        dialogBody={<TextField onChange={(e) => setNewCategory(e.target.value)} sx={{mt:2}} variant="outlined" fullWidth label="Category Name" />}
+        dialogBody={<TextField error={newCategoryErr} helperText={newCategoryErrMsg} onChange={(e) => setNewCategory(e.target.value)} sx={{mt:2}} variant="outlined" fullWidth label="Category Name" />}
         confirmButton={handleAdd}
         cancelButton={toggleAddDialogOpen}
         dialogOpen={addDialogOpen}
