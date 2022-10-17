@@ -33,7 +33,8 @@ const columns: GridColDef[] = [
       );
     },
     headerName: "Author",
-    headerAlign: "left",
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "price",
