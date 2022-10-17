@@ -110,13 +110,13 @@ export const links: MainLink[] = [
         ]
     },
     {
-        name: "Ratings",
+        name: "Highlighted",
         icon: <GradeIcon sx={{ color: fontColor }} />,
         subLinks: [
             {
                 name: "All Ratings",
-                link: "/ratings",
-                element: <Box>Ratings</Box>
+                link: "/best",
+                element: <Box>Highlighted</Box>
             },
         ]
     },
