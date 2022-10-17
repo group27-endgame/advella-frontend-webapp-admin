@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.10.4",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.6",
-    "@mui/material": "^5.10.8",
+    "@mui/material": "^5.10.9",
     "@mui/styled-engine-sc": "^5.10.6",
     "@mui/x-data-grid": "^5.17.7",
     "@storybook/addon-actions": "^6.5.12",
