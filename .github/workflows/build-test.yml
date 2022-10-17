@@ -39,6 +39,9 @@ jobs:
       with:
         node-version: '16'
         cache: 'yarn'
+    
+    - name: install
+      run: yarn --prefer-offline
         
     - name: Publish Project to Chromatic
       uses: chromaui/action@v1
