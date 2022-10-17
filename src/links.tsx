@@ -13,6 +13,7 @@ import UserDashboardPage from './pages/dashboard/UsersDashboard.page';
 import CategoryIcon from '@mui/icons-material/Category';
 import ProductsCategoryPage from './pages/categories/ProductsCategory.page';
 import ServiceCategoryPage from './pages/categories/ServicesCategory.page';
+import AllUsersPage from './pages/users/AllUsers.page';
 
 export type SubLink = {
     name: string;
@@ -72,12 +73,7 @@ export const links: MainLink[] = [
             {
                 name: "All Users",
                 link: "/users",
-                element: <Box>All Users</Box>
-            },
-            {
-                name: "Users Chat",
-                link: "/users/chat",
-                element: <Box>Users Chat</Box>
+                element: <AllUsersPage />
             },
         ]
     },
