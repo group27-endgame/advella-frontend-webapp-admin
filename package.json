@@ -34,7 +34,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.0",
     "chart.js": "^3.9.1",
-    "chartjs-chart-geo": "3.7.2",
+    "chartjs-chart-geo": "3.10.0",
     "framer-motion": "^7.5.3",
     "lottie-web": "^5.9.6",
     "react": "^18.2.0",
