@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import DashboardPage from '../../../pages/Dashboard.page';
+import DashboardPage from '../../../pages/dashboard/Dashboard.page';
 
 export default {
   title: 'Advella/Pages/Dashboard',

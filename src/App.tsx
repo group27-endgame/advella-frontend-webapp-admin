@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import AdvellaAppBar from "./components/AppBar.component";
 import { links } from "./links";
-import DashboardPage from "./pages/Dashboard.page";
+import DashboardPage from "./pages/dashboard/Dashboard.page";
 import FourOhFourPage from "./pages/FourOhFour.page";
 import LoginPage from "./pages/Login.page";
 import { useCookies } from "react-cookie";

@@ -45,9 +45,9 @@ function UserDetailPage() {
               </Avatar>
             </Grid>
             <Grid item xs={12} textAlign="center" pt={2}>
-              <Tooltip title={3.75} arrow>
+              <Tooltip title={3.7} arrow>
                 <Box>
-                  <Rating readOnly value={3.75} precision={0.01} />
+                  <Rating readOnly value={3.7} precision={0.1} />
                 </Box>
               </Tooltip>
             </Grid>

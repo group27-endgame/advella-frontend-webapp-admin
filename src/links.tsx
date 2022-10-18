@@ -16,7 +16,7 @@ import ServiceCategoryPage from './pages/categories/ServicesCategory.page';
 import AllUsersPage from './pages/users/AllUsers.page';
 import AllProductsPage from './pages/products/AllProducts.page';
 import AllServicesPage from './pages/services/AllServices.page';
-import DashboardPage from './pages/Dashboard.page';
+import DashboardPage from './pages/dashboard/Dashboard.page';
 
 export type SubLink = {
     name: string;

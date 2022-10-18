@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
 // import { useEffect, useState } from "react";
-import ActionListComponent from "../components/ActionList.component";
-import BarChartComponent from "../components/BarChart.component";
-import CardComponent from "../components/Card.component";
+import ActionListComponent from "../../components/ActionList.component";
+import BarChartComponent from "../../components/BarChart.component";
+import CardComponent from "../../components/Card.component";
 // import LoadingLottie from "../components/LoadingLottie.component";
-import { PieChart } from "../_stories/Advella/components/PieChart.stories";
+import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
 const list = [
     {
