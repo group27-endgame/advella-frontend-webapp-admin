@@ -1,4 +1,4 @@
-import { Button, Card, Grid } from "@mui/material";
+import { Button, Card, Grid, Link } from "@mui/material";
 import {
   DataGrid,
   GridColDef,
@@ -13,41 +13,155 @@ import { useState } from "react";
 import DialogComponent from "../../components/Dialog.component";
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", headerAlign: "left", },
+  { field: "id", headerName: "ID", headerAlign: "left" },
   {
     field: "username",
     headerName: "Username",
     width: 200,
     align: "center",
     headerAlign: "center",
+    renderCell: (params) => {
+      const { id, username } = params.row;
+      
+      return (
+        <Link href={`/users/${id}`}>
+          {username}
+        </Link>
+      )
+    }
   },
   {
     field: "email",
     headerName: "Email",
     width: 250,
     align: "center",
-    headerAlign: "center"
+    headerAlign: "center",
+    renderCell: (params) => {
+      const { email } = params.row;
+      return <Link href={`mailto:${email}`}>{email}</Link>;
+    },
   },
-  { field: "services", headerName: "Services", width: 150, align: "center", headerAlign: "center", },
-  { field: "products", headerName: "Products", width: 150, align: "center", headerAlign: "center", },
-  { field: "registrationDate", headerName: "Registration Date", width: 200, align: "center", headerAlign: "center", type: "date" },
-  { field: "admin", headerName: "Admin?", width: 100, align: "right", headerAlign: "right", type: "boolean", editable: true },
+  {
+    field: "services",
+    headerName: "Services",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "products",
+    headerName: "Products",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "registrationDate",
+    headerName: "Registration Date",
+    width: 200,
+    align: "center",
+    headerAlign: "center",
+    type: "date",
+  },
+  {
+    field: "admin",
+    headerName: "Admin?",
+    width: 100,
+    align: "right",
+    headerAlign: "right",
+    type: "boolean",
+    editable: true,
+  },
 ];
 
 const rows = [
-  { id: 1, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 2, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 3, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 4, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 5, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 6, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 7, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 8, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
-  { id: 9, username: "seymore", email: "seymore@buttz.com", services: 35, products: 35, registrationDate: "2022-01-02", admin: true },
+  {
+    id: 1,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 2,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 3,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 4,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 5,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 6,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 7,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 8,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
+  {
+    id: 9,
+    username: "seymore",
+    email: "seymore@buttz.com",
+    services: 35,
+    products: 35,
+    registrationDate: "2022-01-02",
+    admin: true,
+  },
 ];
 
 const CustomToolbar: React.FunctionComponent<{
-  setFilterButtonEl: React.Dispatch<React.SetStateAction<HTMLButtonElement | null>>;
+  setFilterButtonEl: React.Dispatch<
+    React.SetStateAction<HTMLButtonElement | null>
+  >;
 }> = ({ setFilterButtonEl }) => {
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
 
@@ -137,7 +251,7 @@ function AllUsersPage() {
             editingValue.value !== params.value
           ) {
             //TODO: Call PUT api to edit
-            console.log(params.value)
+            console.log(params.value);
           }
         }}
       />

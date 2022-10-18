@@ -1,4 +1,4 @@
-import { Button, Card, Grid } from "@mui/material";
+import { Button, Card, Grid, Link } from "@mui/material";
 import {
   DataGrid,
   GridColDef,
@@ -13,7 +13,7 @@ import { useState } from "react";
 import DialogComponent from "../../components/Dialog.component";
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", headerAlign: "left", },
+  { field: "id", headerName: "ID", headerAlign: "left" },
   {
     field: "title",
     headerName: "Title",
@@ -22,31 +22,157 @@ const columns: GridColDef[] = [
     headerAlign: "center",
   },
   {
+    field: "user",
+    width: 200,
+    renderCell: (params) => {
+      const { userId, username } = params.row;
+      return (
+        <Link href={`/users/${userId}`} target="_blank">
+          {username}
+        </Link>
+      );
+    },
+    valueGetter: (params) => params.row.username,
+    headerName: "Author",
+    headerAlign: "center",
+    align: "center",
+  },
+  {
     field: "price",
     headerName: "Price",
     width: 100,
     align: "center",
-    headerAlign: "center"
+    headerAlign: "center",
   },
-  { field: "location", headerName: "Location", width: 150, align: "center", headerAlign: "center", },
-  { field: "posted", headerName: "Posted", width: 150, align: "center", headerAlign: "center", },
-  { field: "deadline", headerName: "Deadline", width: 200, align: "center", headerAlign: "center", type: "date" },
-  { field: "bids", headerName: "Bids", width: 100, align: "center", headerAlign: "center" },
-  { field: "status", headerName: "Status", width: 100, align: "center", headerAlign: "center" },
+  {
+    field: "location",
+    headerName: "Location",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "posted",
+    headerName: "Posted",
+    width: 150,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "deadline",
+    headerName: "Deadline",
+    width: 200,
+    align: "center",
+    headerAlign: "center",
+    type: "date",
+  },
+  {
+    field: "bids",
+    headerName: "Bids",
+    width: 100,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "status",
+    headerName: "Status",
+    width: 100,
+    align: "center",
+    headerAlign: "center",
+  },
 ];
 
 const rows = [
-  { id: 1, title: "Fiat 500", price: 300, location: "Arhus", posted: "30-12-2022 12:00", deadline: "30-12-2022 14:00", bids: 5, status: "Open" },
-  { id: 2, title: "Fiat 500", price: 300, location: "Arhus", posted: "30-12-2022 12:00", deadline: "30-12-2022 14:00", bids: 5, status: "Open" },
-  { id: 3, title: "Fiat 500", price: 300, location: "Arhus", posted: "30-12-2022 12:00", deadline: "30-12-2022 14:00", bids: 5, status: "Open" },
-  { id: 4, title: "Fiat 500", price: 300, location: "Arhus", posted: "30-12-2022 12:00", deadline: "30-12-2022 14:00", bids: 5, status: "Open" },
-  { id: 5, title: "Fiat 500", price: 300, location: "Arhus", posted: "30-12-2022 12:00", deadline: "30-12-2022 14:00", bids: 5, status: "Open" },
-  { id: 6, title: "Fiat 500", price: 300, location: "Arhus", posted: "30-12-2022 12:00", deadline: "30-12-2022 14:00", bids: 5, status: "Open" },
-  { id: 7, title: "Fiat 500", price: 300, location: "Arhus", posted: "30-12-2022 12:00", deadline: "30-12-2022 14:00", bids: 5, status: "Open" },
+  {
+    id: 1,
+    userId: 1,
+    username: "Seymore",
+    title: "Fiat 500",
+    price: 300,
+    location: "Arhus",
+    posted: "30-12-2022 12:00",
+    deadline: "30-12-2022 14:00",
+    bids: 5,
+    status: "Open",
+  },
+  {
+    id: 2,
+    userId: 1,
+    username: "Seymore",
+    title: "Fiat 500",
+    price: 300,
+    location: "Arhus",
+    posted: "30-12-2022 12:00",
+    deadline: "30-12-2022 14:00",
+    bids: 5,
+    status: "Open",
+  },
+  {
+    id: 3,
+    userId: 1,
+    username: "Seymore",
+    title: "Fiat 500",
+    price: 300,
+    location: "Arhus",
+    posted: "30-12-2022 12:00",
+    deadline: "30-12-2022 14:00",
+    bids: 5,
+    status: "Open",
+  },
+  {
+    id: 4,
+    userId: 1,
+    username: "Seymore",
+    title: "Fiat 500",
+    price: 300,
+    location: "Arhus",
+    posted: "30-12-2022 12:00",
+    deadline: "30-12-2022 14:00",
+    bids: 5,
+    status: "Open",
+  },
+  {
+    id: 5,
+    userId: 1,
+    username: "Seymore",
+    title: "Fiat 500",
+    price: 300,
+    location: "Arhus",
+    posted: "30-12-2022 12:00",
+    deadline: "30-12-2022 14:00",
+    bids: 5,
+    status: "Open",
+  },
+  {
+    id: 6,
+    userId: 1,
+    username: "Seymore",
+    title: "Fiat 500",
+    price: 300,
+    location: "Arhus",
+    posted: "30-12-2022 12:00",
+    deadline: "30-12-2022 14:00",
+    bids: 5,
+    status: "Open",
+  },
+  {
+    id: 7,
+    userId: 1,
+    username: "Seymore",
+    title: "Fiat 500",
+    price: 300,
+    location: "Arhus",
+    posted: "30-12-2022 12:00",
+    deadline: "30-12-2022 14:00",
+    bids: 5,
+    status: "Open",
+  },
 ];
 
 const CustomToolbar: React.FunctionComponent<{
-  setFilterButtonEl: React.Dispatch<React.SetStateAction<HTMLButtonElement | null>>;
+  setFilterButtonEl: React.Dispatch<
+    React.SetStateAction<HTMLButtonElement | null>
+  >;
 }> = ({ setFilterButtonEl }) => {
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
 
@@ -136,7 +262,7 @@ function AllServicesPage() {
             editingValue.value !== params.value
           ) {
             //TODO: Call PUT api to edit
-            console.log(params.value)
+            console.log(params.value);
           }
         }}
       />
