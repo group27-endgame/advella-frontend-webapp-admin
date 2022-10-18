@@ -32,7 +32,18 @@ function UserDetailPage() {
                 Nick
               </Avatar>
             </Grid>
-            <Grid item xs={12} textAlign="center" pt={1}>
+            <Grid item xs={12} pt={2}>
+             <Typography
+                variant="h6"
+                alignItems="center"
+                justifyContent="center"
+                display="flex"
+                fontSize={16}
+              >
+                <LocationOnIcon fontSize="small" /> Horsens, Denmark
+              </Typography>
+            </Grid>
+            <Grid item xs={12} textAlign="center">
               <Typography variant="h6" fontSize={16}>
                 popal.nicolas@gmail.com
               </Typography>
@@ -49,15 +60,6 @@ function UserDetailPage() {
                 containing Lorem Ipsum passages, and more recently with desktop
                 publishing software like Aldus PageMaker including versions of
                 Lorem Ipsum.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} pt={2}>
-              <Typography
-                variant="subtitle1"
-                alignContent="center"
-                sx={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}
-              >
-                <LocationOnIcon fontSize="small" /> Horsens, Denmark
               </Typography>
             </Grid>
           </Grid>
