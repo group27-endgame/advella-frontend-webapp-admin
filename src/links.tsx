@@ -16,6 +16,7 @@ import ServiceCategoryPage from './pages/categories/ServicesCategory.page';
 import AllUsersPage from './pages/users/AllUsers.page';
 import AllProductsPage from './pages/products/AllProducts.page';
 import AllServicesPage from './pages/services/AllServices.page';
+import DashboardPage from './pages/Dashboard.page';
 
 export type SubLink = {
     name: string;
@@ -34,6 +35,11 @@ export const links: MainLink[] = [
         name: "Dashboard",
         icon: <EqualizerIcon sx={{ color: fontColor }} />,
         subLinks: [
+            {
+                name: "General",
+                link: "/dashboard",
+                element: <DashboardPage />
+            },
             {
                 name: "Users",
                 link: "/dashboard/users",
