@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, Grid, Tab, Tabs, Typography } from "@mui/material";
+import { Avatar, Card, Grid, Tab, Tabs, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { tertiaryColor } from "../../constants";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
