@@ -16,7 +16,7 @@ function UserDetailPage() {
   return (
     <Card elevation={12}>
       <Grid container spacing={2} p={2}>
-        <Grid item md={3}>
+        <Grid item md={4} lg={3}>
           <Grid container>
             <Grid item xs={12}>
               <Avatar
@@ -64,7 +64,7 @@ function UserDetailPage() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={9}>
+        <Grid item md={8} lg={9}>
           <Tabs value={tabValue} onChange={handleChange} sx={{pb: 2}}>
             <Tab label="Products" />
             <Tab label="Services" />
