@@ -1,4 +1,4 @@
-import { Avatar, Card, Grid, Tab, Tabs, Typography } from "@mui/material";
+import { Avatar, Box, Card, Grid, Rating, Tab, Tabs, Tooltip, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { tertiaryColor } from "../../constants";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -32,7 +32,14 @@ function UserDetailPage() {
                 Nick
               </Avatar>
             </Grid>
-            <Grid item xs={12} pt={2}>
+            <Grid item xs={12} textAlign="center" pt={2}>
+                <Tooltip title={3.75} arrow>
+                  <Box>
+                    <Rating readOnly value={3.75} precision={0.01} />
+                  </Box>
+                </Tooltip>
+            </Grid>
+            <Grid item xs={12}>
              <Typography
                 variant="h6"
                 alignItems="center"
