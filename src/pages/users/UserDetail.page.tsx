@@ -68,9 +68,11 @@ function UserDetailPage() {
           <Tabs value={tabValue} onChange={handleChange} sx={{pb: 2}}>
             <Tab label="Products" />
             <Tab label="Services" />
+            <Tab label="Bids" />
           </Tabs>
             <div hidden={tabValue !== 0}>Products</div>
             <div hidden={tabValue !== 1}>Services</div>
+            <div hidden={tabValue !== 2}>Bids</div>
         </Grid>
       </Grid>
     </Card>
