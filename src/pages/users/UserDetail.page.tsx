@@ -1,8 +1,20 @@
-import { Avatar, Box, Card, Grid, Rating, Tab, Tabs, Tooltip, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Card,
+  Grid,
+  Link,
+  Rating,
+  Tab,
+  Tabs,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { useParams } from "react-router-dom";
 import { tertiaryColor } from "../../constants";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function UserDetailPage() {
   const { userId } = useParams();
@@ -33,14 +45,14 @@ function UserDetailPage() {
               </Avatar>
             </Grid>
             <Grid item xs={12} textAlign="center" pt={2}>
-                <Tooltip title={3.75} arrow>
-                  <Box>
-                    <Rating readOnly value={3.75} precision={0.01} />
-                  </Box>
-                </Tooltip>
+              <Tooltip title={3.75} arrow>
+                <Box>
+                  <Rating readOnly value={3.75} precision={0.01} />
+                </Box>
+              </Tooltip>
             </Grid>
             <Grid item xs={12}>
-             <Typography
+              <Typography
                 variant="h6"
                 alignItems="center"
                 justifyContent="center"
@@ -72,14 +84,92 @@ function UserDetailPage() {
           </Grid>
         </Grid>
         <Grid item md={8} lg={9}>
-          <Tabs value={tabValue} onChange={handleChange} sx={{pb: 2}}>
+          <Tabs value={tabValue} onChange={handleChange} sx={{ pb: 2 }}>
             <Tab label="Products" />
             <Tab label="Services" />
             <Tab label="Bids" />
           </Tabs>
-            <div hidden={tabValue !== 0}>Products</div>
-            <div hidden={tabValue !== 1}>Services</div>
-            <div hidden={tabValue !== 2}>Bids</div>
+          <div hidden={tabValue !== 0}>
+            <Grid container spacing={2}>
+
+              <Grid item xs={12} md={6} lg={4} xl={3}>
+                <motion.div
+                  whileHover={{scale: 1.1}}
+                >
+                  <Link sx={{ textDecoration: "none" }}
+                  href="https://advella.popal.dev/product/1"
+                  target="_blank">
+                  <Card elevation={12} sx={{ p: 2 }}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <Typography variant="h6">Selling car</Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography variant="body2">Status: CLOSED</Typography>
+                      </Grid>
+                    </Grid>
+                  </Card>
+                  </Link>
+                </motion.div>
+              </Grid>
+
+            </Grid>
+          </div>
+          <div hidden={tabValue !== 1}>
+            <Grid container spacing={2}>
+
+            <Grid item xs={12} md={6} lg={4} xl={3}>
+                <motion.div
+                  whileHover={{scale: 1.1}}
+                >
+                  <Link sx={{ textDecoration: "none" }}
+                  href="https://advella.popal.dev/service/1"
+                  target="_blank">
+                  <Card elevation={12} sx={{ p: 2 }}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <Typography variant="h6">Renting car</Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography variant="body2">Status: OPEN</Typography>
+                      </Grid>
+                    </Grid>
+                  </Card>
+                  </Link>
+                </motion.div>
+              </Grid>
+
+            </Grid>
+          </div>
+          <div hidden={tabValue !== 2}>
+          <Grid container spacing={2}>
+
+<Grid item xs={12} md={6} lg={4} xl={3}>
+    <motion.div
+      whileHover={{scale: 1.1}}
+    >
+      <Link sx={{ textDecoration: "none" }}
+      href="https://advella.popal.dev/service/1"
+      target="_blank">
+      <Card elevation={12} sx={{ p: 2 }}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="h6">Renting car</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body2">Status: OPEN</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body2">Bid: 30</Typography>
+          </Grid>
+        </Grid>
+      </Card>
+      </Link>
+    </motion.div>
+  </Grid>
+
+</Grid>
+          </div>
         </Grid>
       </Grid>
     </Card>
