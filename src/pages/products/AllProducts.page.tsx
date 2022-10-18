@@ -20,6 +20,14 @@ const columns: GridColDef[] = [
     width: 200,
     align: "center",
     headerAlign: "center",
+    renderCell: (params) => {
+      const { id, title } = params.row;
+      return (
+        <Link href={`https://advella.popal.dev/product/${id}`} target="_blank">
+          {title}
+        </Link>
+      );
+    },
   },
   {
     field: "user",
