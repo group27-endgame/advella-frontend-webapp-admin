@@ -19,8 +19,6 @@ function ActionListComponent(props: ActionListProps) {
     const timeNow = Date.now();
 
     const difference = (timeNow - dateTime)/1000;
-    
-    console.log(difference);
 
     if(difference  < 60)
       return "Less than minute ago";
