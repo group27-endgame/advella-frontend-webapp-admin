@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
 // import { useEffect, useState } from "react";
-import ActionListComponent from "../components/ActionList.component";
-import BarChartComponent from "../components/BarChart.component";
-import CardComponent from "../components/Card.component";
+import ActionListComponent from "../../components/ActionList.component";
+import BarChartComponent from "../../components/BarChart.component";
+import CardComponent from "../../components/Card.component";
 // import LoadingLottie from "../components/LoadingLottie.component";
-import { PieChart } from "../_stories/Advella/components/PieChart.stories";
+import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
 const list = [
     {
@@ -15,28 +15,28 @@ const list = [
         subscription: "Seymore added new Product"
     },
     {
-        listId: 1,
+        listId: 2,
         title: "New Product",
         dateTime: Date.now()-(5*60000),
         color: "#0bb4ff",
         subscription: "Seymore added new Product"
     },
     {
-        listId: 1,
+        listId: 3,
         title: "New Product",
         dateTime: Date.now()-(2*60*60000),
         color: "#50e991",
         subscription: "Seymore added new Product"
     },
     {
-        listId: 1,
+        listId: 4,
         title: "New Product",
         dateTime: Date.now()-(4*60*60000),
         color: "#e6d800",
         subscription: "Seymore added new Product"
     },
     {
-        listId: 1,
+        listId: 5,
         title: "New Product",
         dateTime: Date.now()-(60*60*60000),
         color: "#b3d4ff",

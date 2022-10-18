@@ -80,7 +80,7 @@ const CustomToolbar = () => {
     }
 
     rows.push({id: rows.length+1, name: newCategory, services: 0});
-    console.log(rows);
+
     apiRef.current.setRows(rows);
     //TODO: Call POST api to add
     toggleAddDialogOpen();

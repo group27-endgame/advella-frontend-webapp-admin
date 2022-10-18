@@ -251,7 +251,6 @@ function AllUsersPage() {
             editingValue.value !== params.value
           ) {
             //TODO: Call PUT api to edit
-            console.log(params.value);
           }
         }}
       />

@@ -2,7 +2,6 @@ import { Grid } from "@mui/material";
 import ActionListComponent from "../../components/ActionList.component";
 import BarChartComponent from "../../components/BarChart.component";
 import MapChartComponent from "../../components/MapChart.component";
-import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
 const list = [
     {

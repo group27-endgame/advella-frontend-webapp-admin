@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import AdvellaAppBar from "./components/AppBar.component";
 import { links } from "./links";
-import DashboardPage from "./pages/Dashboard.page";
+import DashboardPage from "./pages/dashboard/Dashboard.page";
 import FourOhFourPage from "./pages/FourOhFour.page";
 import LoginPage from "./pages/Login.page";
 import { useCookies } from "react-cookie";
+import UserDetailPage from "./pages/users/UserDetail.page";
 
 function App() {
   const [cookie, ,] = useCookies(["token"]);
@@ -18,6 +19,18 @@ function App() {
           cookie.token ? (
             <AdvellaAppBar links={links}>
               <DashboardPage />
+            </AdvellaAppBar>
+          ) : (
+            <FourOhFourPage />
+          )
+        }
+      ></Route>
+      <Route
+        path="/users/:userId"
+        element={
+          cookie.token ? (
+            <AdvellaAppBar links={links}>
+              <UserDetailPage />
             </AdvellaAppBar>
           ) : (
             <FourOhFourPage />
