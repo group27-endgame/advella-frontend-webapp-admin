@@ -17,6 +17,7 @@ import AllUsersPage from './pages/users/AllUsers.page';
 import AllProductsPage from './pages/products/AllProducts.page';
 import AllServicesPage from './pages/services/AllServices.page';
 import DashboardPage from './pages/dashboard/Dashboard.page';
+import HighlightedPage from './pages/highlighted/Highlighted.page';
 
 export type SubLink = {
     name: string;
@@ -124,7 +125,7 @@ export const links: MainLink[] = [
             {
                 name: "Highlighted",
                 link: "/top",
-                element: <Box>Highlighted</Box>
+                element: <HighlightedPage />
             },
         ]
     },
