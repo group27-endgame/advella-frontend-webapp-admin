@@ -14,6 +14,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Badge,
   Grid,
   Paper,
 } from "@mui/material";
@@ -130,9 +131,13 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   </AccordionSummary>
                   <AccordionDetails sx={{ pb: 0 }}>
                     {item.subLinks.map((sl) => (
-                      <Box pb={2} key={sl.name}>
-                        <RouterLink to={sl.link}>{sl.name}</RouterLink>
+                      <Badge key={sl.name} badgeContent={sl.unread} sx={{pr: 1}} color="primary" anchorOrigin={{vertical: "top", horizontal: "right"}}>
+                      <Box pb={2} >
+                        
+                          <RouterLink to={sl.link}>{sl.name}</RouterLink>
+                        
                       </Box>
+                      </Badge>
                     ))}
                   </AccordionDetails>
                 </Accordion>
