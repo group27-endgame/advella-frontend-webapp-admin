@@ -6,6 +6,7 @@ function MessagesPage() {
     <Grid container spacing={2}>
       <Grid item md={6} lg={4}>
         <MessageComponent
+          messageId={1}
           user={{
             userId: 1,
             username: "Seymore",
@@ -26,6 +27,7 @@ function MessagesPage() {
       </Grid>
       <Grid item md={6} lg={4}>
         <MessageComponent
+          messageId={2}
           user={{
             userId: 1,
             username: "Seymore",
@@ -46,6 +48,7 @@ function MessagesPage() {
       </Grid>
       <Grid item md={6} lg={4}>
         <MessageComponent
+          messageId={3}
           user={{
             userId: 1,
             username: "Seymore",
@@ -66,6 +69,7 @@ function MessagesPage() {
       </Grid>
       <Grid item md={6} lg={4}>
         <MessageComponent
+          messageId={4}
           user={{
             userId: 1,
             username: "Seymore",
@@ -86,6 +90,7 @@ function MessagesPage() {
       </Grid>
       <Grid item md={6} lg={4}>
         <MessageComponent
+          messageId={5}
           user={{
             userId: 1,
             username: "Seymore",
@@ -106,6 +111,7 @@ function MessagesPage() {
       </Grid>
       <Grid item md={6} lg={4}>
         <MessageComponent
+          messageId={6}
           user={{
             userId: 1,
             username: "Seymore",
