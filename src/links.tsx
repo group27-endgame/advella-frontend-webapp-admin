@@ -17,11 +17,13 @@ import AllUsersPage from './pages/users/AllUsers.page';
 import AllProductsPage from './pages/products/AllProducts.page';
 import AllServicesPage from './pages/services/AllServices.page';
 import DashboardPage from './pages/dashboard/Dashboard.page';
+import MessagesPage from './pages/messages/Messages.page';
 
 export type SubLink = {
     name: string;
     link: string;
     element: ReactElement;
+    unread?: number;
 };
 
 export type MainLink = {
@@ -135,7 +137,8 @@ export const links: MainLink[] = [
             {
                 name: "All Messages",
                 link: "/messages",
-                element: <Box>Messages</Box>
+                element: <MessagesPage />,
+                unread: 4
             },
         ]
     },
