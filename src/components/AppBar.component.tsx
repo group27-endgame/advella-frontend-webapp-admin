@@ -131,13 +131,11 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   </AccordionSummary>
                   <AccordionDetails sx={{ pb: 0 }}>
                     {item.subLinks.map((sl) => (
-                      <Badge key={sl.name} badgeContent={sl.unread} sx={{pr: 1}} color="primary" anchorOrigin={{vertical: "top", horizontal: "right"}}>
                       <Box pb={2} >
-                        
+                        <Badge key={sl.name} badgeContent={sl.unread} sx={{pr: 1}} color="primary" anchorOrigin={{vertical: "top", horizontal: "right"}}>
                           <RouterLink to={sl.link}>{sl.name}</RouterLink>
-                        
+                          </Badge>
                       </Box>
-                      </Badge>
                     ))}
                   </AccordionDetails>
                 </Accordion>
