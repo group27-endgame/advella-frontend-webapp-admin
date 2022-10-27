@@ -31,7 +31,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.0",
-    "@types/react": "^18.0.21",
+    "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.0",
     "chart.js": "^3.9.1",
     "chartjs-chart-geo": "3.10.0",
