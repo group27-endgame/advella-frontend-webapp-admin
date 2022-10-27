@@ -17,7 +17,7 @@
     "@mui/styled-engine-sc": "^5.10.6",
     "@mui/x-data-grid": "^5.17.7",
     "@storybook/addon-actions": "^6.5.13",
-    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addon-links": "^6.5.13",
     "@storybook/builder-webpack5": "^6.5.12",
