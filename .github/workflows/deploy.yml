@@ -38,7 +38,15 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          command_timeout: 200m
+          command_timeout: 200m # server slow :(
           script: |
-            sudo chmod +x /opt/deploy.sh
-            sh /opt/deploy.sh
+            docker build https://github.com/group27-endgame/advella-frontend-webapp-admin.git#main -t advella-webapp-admin
+            
+            docker run \
+            --name=advella-webapp-admin \
+            --network=advella \
+            -p 3002:80 \
+            --restart unless-stopped \
+            advella-webapp-admin
+            
+            
