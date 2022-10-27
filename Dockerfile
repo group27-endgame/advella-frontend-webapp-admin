@@ -5,7 +5,6 @@ WORKDIR /app
 # Cache and Install dependencies
 COPY package.json .
 COPY yarn.lock .
-RUN yarn config set "strict-ssl" false -g
 RUN yarn install
 # RUN npm install --omit=dev
 # Copy app files
