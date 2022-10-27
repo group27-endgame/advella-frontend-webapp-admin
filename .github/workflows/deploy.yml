@@ -42,11 +42,11 @@ jobs:
           script: |
             docker build https://github.com/group27-endgame/advella-frontend-webapp-admin.git#main -t advella-webapp-admin
             
-            docker run \
+            docker rm -f advella-webapp-admin
+            
+            docker run -d \
             --name=advella-webapp-admin \
             --network=advella \
             -p 3002:80 \
             --restart unless-stopped \
             advella-webapp-admin
-            
-            
