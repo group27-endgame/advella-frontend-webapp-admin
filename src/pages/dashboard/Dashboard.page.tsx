@@ -61,11 +61,11 @@ function DashboardPage() {
         const serviceService: ServiceService = new ServiceService();
 
         productService.getTotalCount(cookie.token).then(res => {
-            setTotalProducts(1);
+            setTotalProducts(res);
         }).catch(err => setTotalProducts(0));
 
         serviceService.getTotalCount(cookie.token).then(res => {
-            setTotalServices(2);
+            setTotalServices(res);
         }).catch(err => setTotalServices(0));
 
         setIsLoading(false);
