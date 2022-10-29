@@ -10,7 +10,7 @@ export default class ProductService {
     }
 
     public async getLatestProducts(token: string, amount: number = 5): Promise<ProductModel[]>{
-        const response = await axios.get(`${backendUrl}/api/products/latest?${amount}`, {headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.get(`${backendUrl}/api/products/latest?amount=${amount}`, {headers: { Authorization: `Bearer ${token}` } });
 
         return response.data as ProductModel[];
     }

@@ -10,7 +10,7 @@ export default class UserService{
     }
 
     public async getLatestUsers(token: string, amount: number = 5): Promise<UserModel[]>{
-        const response = await axios.get(`${backendUrl}/api/users/latest?${amount}`, {headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.get(`${backendUrl}/api/users/latest?amount=${amount}`, {headers: { Authorization: `Bearer ${token}` } });
 
         return response.data as UserModel[];
     }
