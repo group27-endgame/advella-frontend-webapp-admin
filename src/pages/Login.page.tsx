@@ -12,7 +12,7 @@ import { useState } from "react";
 import LoadingLottie from "../components/LoadingLottie.component";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import AuthService from "../services/AuthService.page";
+import AuthService from "../services/Auth.service";
 
 function LoginPage() {
   const [, setCookie] = useCookies(["token"]);
