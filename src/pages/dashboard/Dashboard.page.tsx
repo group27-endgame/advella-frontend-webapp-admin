@@ -1,8 +1,13 @@
 import { Grid } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 // import { useEffect, useState } from "react";
 import ActionListComponent from "../../components/ActionList.component";
 import BarChartComponent from "../../components/BarChart.component";
 import CardComponent from "../../components/Card.component";
+import LoadingLottie from "../../components/LoadingLottie.component";
+import ProductService from "../../services/Product.service";
+import ServiceService from "../../services/Service.service";
 // import LoadingLottie from "../components/LoadingLottie.component";
 import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
@@ -45,19 +50,29 @@ const list = [
 ]
 
 function DashboardPage() {
+    const [cookie,,] = useCookies(["token"]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // const [isLoading, setIsLoading] = useState(false);
+    const [totalProducts, setTotalProducts] = useState(0);
+    const [totalServices, setTotalServices] = useState(0);
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     setTimeout(function () {
-    //         setIsLoading(false);
-            
-    //     }, 5000);
-    // },[]);
+    useEffect(() => {
+        const productService: ProductService = new ProductService();
+        const serviceService: ServiceService = new ServiceService();
 
-    // if(isLoading)
-    //     return <LoadingLottie open={isLoading} />
+        productService.getTotalCount(cookie.token).then(res => {
+            setTotalProducts(1);
+        }).catch(err => setTotalProducts(0));
+
+        serviceService.getTotalCount(cookie.token).then(res => {
+            setTotalServices(2);
+        }).catch(err => setTotalServices(0));
+
+        setIsLoading(false);
+    },[]);
+
+    if(isLoading)
+        return <LoadingLottie open={isLoading} />
     
     return ( 
         <Grid container spacing={2}>
@@ -85,7 +100,7 @@ function DashboardPage() {
                 </Grid>
             </Grid>
             <Grid item xs={12} lg={6}>
-                <PieChart graphLabel="Product/Services" labels={["Products", "Services"]} data={[350, 400]} />
+                <PieChart graphLabel="Product/Services" labels={["Products", "Services"]} data={[totalProducts, totalServices]} />
             </Grid>
         </Grid>
      );
