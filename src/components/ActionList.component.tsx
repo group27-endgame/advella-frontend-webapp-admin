@@ -2,14 +2,16 @@ import { Grid, Paper, PaperProps, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import CircleIcon from "@mui/icons-material/Circle";
 
-interface ActionListProps extends PaperProps {
-  list: {
-    listId: number;
+export interface IActionList {
+  listId: number;
     title: string;
     dateTime: number;
-    color: string;
+    type: "user" | "product" | "service";
     subscription: string;
-  }[];
+}
+
+interface ActionListProps extends PaperProps {
+  list: IActionList[];
 }
 
 function ActionListComponent(props: ActionListProps) {
@@ -18,17 +20,26 @@ function ActionListComponent(props: ActionListProps) {
   const timePosted = (dateTime: number) => {
     const timeNow = Date.now();
 
-    const difference = (timeNow - dateTime)/1000;
+    const difference = (timeNow - dateTime) / 1000;
 
-    if(difference  < 60)
-      return "Less than minute ago";
-    else if(difference < 3600)
-      return `${Math.floor(difference/60)} minute(s) ago`
-    else if(difference < 24*3600)
-      return `${Math.floor(difference/3600)} hour(s) ago`
-    else
-    return `${Math.floor(difference/(24*3600))} day(s) ago`
-  }
+    if (difference < 60) return "Less than minute ago";
+    else if (difference < 3600)
+      return `${Math.floor(difference / 60)} minute(s) ago`;
+    else if (difference < 24 * 3600)
+      return `${Math.floor(difference / 3600)} hour(s) ago`;
+    else return `${Math.floor(difference / (24 * 3600))} day(s) ago`;
+  };
+
+  const getColorFromType = (type: string) => {
+    switch (type) {
+      case "user":
+        return "#0bb4ff";
+      case "product":
+        return "#e6d800";
+      case "service":
+        return "#50e991";
+    }
+  };
 
   return (
     <motion.div whileHover={{ y: -5 }}>
@@ -45,8 +56,15 @@ function ActionListComponent(props: ActionListProps) {
           {list.map((l) => (
             <Grid item xs={12} key={l.listId}>
               <Grid container>
-                <Grid item xs={1} textAlign="center" alignItems="center" justifyContent="center" display="flex">
-                  <CircleIcon fontSize="small" sx={{ color: l.color }} />
+                <Grid
+                  item
+                  xs={1}
+                  textAlign="center"
+                  alignItems="center"
+                  justifyContent="center"
+                  display="flex"
+                >
+                  <CircleIcon fontSize="small" sx={{ color: getColorFromType(l.type) }} />
                 </Grid>
                 <Grid item xs={11}>
                   <Grid container>

@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import ActionListComponent from "../../components/ActionList.component";
+import ActionListComponent, { IActionList } from "../../components/ActionList.component";
 import BarChartComponent from "../../components/BarChart.component";
 import CardComponent from "../../components/Card.component";
 import LoadingLottie from "../../components/LoadingLottie.component";
@@ -11,40 +11,40 @@ import ServiceService from "../../services/Service.service";
 import UserService from "../../services/User.service";
 import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
-const list = [
+const list: IActionList[] = [
     {
         listId: 1,
         title: "New Product",
         dateTime: Date.now(),
-        color: "#e60049",
+        type: "product",
         subscription: "Seymore added new Product"
     },
     {
         listId: 2,
         title: "New Product",
         dateTime: Date.now()-(5*60000),
-        color: "#0bb4ff",
+        type: "service",
         subscription: "Seymore added new Product"
     },
     {
         listId: 3,
         title: "New Product",
         dateTime: Date.now()-(2*60*60000),
-        color: "#50e991",
+        type: "user",
         subscription: "Seymore added new Product"
     },
     {
         listId: 4,
         title: "New Product",
         dateTime: Date.now()-(4*60*60000),
-        color: "#e6d800",
+        type: "service",
         subscription: "Seymore added new Product"
     },
     {
         listId: 5,
         title: "New Product",
         dateTime: Date.now()-(60*60*60000),
-        color: "#b3d4ff",
+        type: "product",
         subscription: "Seymore added new Product"
     }
 ]
@@ -57,6 +57,7 @@ function DashboardPage() {
     const [totalServices, setTotalServices] = useState(0);
     const [totalUsers, setTotalUsers] = useState(0);
     const [totalSpending, setTotalSpending] = useState(0);
+    const [latestActionsList, setLatestActionsList] = useState<IActionList[]>([]);
 
     useEffect(() => {
         const productService: ProductService = new ProductService();
@@ -64,7 +65,7 @@ function DashboardPage() {
         const userService: UserService = new UserService();
         const productsServicesService: ProductsServicesService = new ProductsServicesService();
 
-        const latestActions: {listId: number, title: string, dateTime: Date, color: string, subscription: string}[] = [];
+        const latestActions: IActionList[] = [];
 
         Promise.all(
             [
@@ -83,6 +84,20 @@ function DashboardPage() {
                 productsServicesService.getTotalSpending(cookie.token).then(res => {
                     setTotalSpending(res);
                 }).catch(err => setTotalSpending(0)),
+                Promise.all([
+                    userService.getLatestUsers(cookie.token).then(res => {
+                        latestActions.push();
+                    }).catch(err => setTotalSpending(0)),
+                    productService.getLatestProducts(cookie.token).then(res => {
+                        latestActions.push();
+                    }).catch(err => setTotalSpending(0)),
+                    serviceService.getLatestServices(cookie.token).then(res => {
+                        latestActions.push();
+                    }).catch(err => setTotalSpending(0)),
+                ]).then(() => {
+                    //TODO: latest action list sort by date
+                    setLatestActionsList(latestActions);
+                })
             ]
         ).then(() => setIsLoading(false))
     },[]);
