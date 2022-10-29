@@ -12,6 +12,6 @@ export default class ServiceService {
     public async getLatestServices(token: string, amount: number = 5): Promise<ServiceModel[]>{
         const response = await axios.get(`${backendUrl}/api/services/latest?${amount}`, {headers: { Authorization: `Bearer ${token}` } });
 
-        return [];
+        return response.data as ServiceModel[];
     }
 }

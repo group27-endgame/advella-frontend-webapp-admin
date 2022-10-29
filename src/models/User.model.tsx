@@ -13,7 +13,7 @@ export interface UserModel {
     username: string;
     description: string;
     location: string;
-    registrationDateTime: Date;
+    registrationDateTime: number;
     products: ProductModel[];
     services: ServiceModel[];
     contact: ContactModel[];

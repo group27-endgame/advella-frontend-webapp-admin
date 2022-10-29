@@ -9,8 +9,8 @@ export interface ServiceModel {
     detail: string;
     moneyAmount: number;
     duration: number;
-    postedDateTime: Date;
-    deadline: Date;
+    postedDateTime: number;
+    deadline: number;
     location: string;
     numberOfBids: number;
     numberOfLikes: number;

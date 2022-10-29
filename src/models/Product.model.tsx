@@ -9,8 +9,8 @@ export interface ProductModel {
     detail: string;
     moneyAmount: number;
     pickUpLocation: string;
-    postedDateTime: Date;
-    deadline: Date;
+    postedDateTime: number;
+    deadline: number;
     numberOfBids: number;
     users: UserModel[];
     productCategory: ProductCategoryModel;

@@ -86,16 +86,46 @@ function DashboardPage() {
                 }).catch(err => setTotalSpending(0)),
                 Promise.all([
                     userService.getLatestUsers(cookie.token).then(res => {
-                        latestActions.push();
-                    }).catch(err => setTotalSpending(0)),
+                        res.map((user) => {
+                            const action: IActionList = {
+                                listId: latestActions.length+1,
+                                title: `${user.username} registered`,
+                                type: "user",
+                                subscription: `New user with username ${user.username} and email ${user.email} was registered.`,
+                                dateTime: user.registrationDateTime,
+                            };
+
+                            latestActions.push(action);
+                        });
+                    }),
                     productService.getLatestProducts(cookie.token).then(res => {
-                        latestActions.push();
-                    }).catch(err => setTotalSpending(0)),
+                        res.map(prod => {
+                            const action: IActionList = {
+                                listId: latestActions.length+1,
+                                title: `${prod.title} added`,
+                                type: "product",
+                                subscription: `New product with title ${prod.title} added.`,
+                                dateTime: prod.postedDateTime,
+                            };
+
+                            latestActions.push(action);
+                        })
+                    }),
                     serviceService.getLatestServices(cookie.token).then(res => {
-                        latestActions.push();
-                    }).catch(err => setTotalSpending(0)),
+                        res.map(serv => {
+                            const action: IActionList = {
+                                listId: latestActions.length+1,
+                                title: `${serv.title} added`,
+                                type: "service",
+                                subscription: `New service with title ${serv.title} added.`,
+                                dateTime: serv.postedDateTime,
+                            };
+
+                            latestActions.push(action);
+                        })
+                    }),
                 ]).then(() => {
-                    //TODO: latest action list sort by date
+                    latestActions.sort((l1, l2) => l2.dateTime - l1.dateTime);
                     setLatestActionsList(latestActions);
                 })
             ]
@@ -126,7 +156,7 @@ function DashboardPage() {
                         <BarChartComponent graphLabel="Money Spend" labels={["January", "February", "March", "April"]} data={[350, 450, 590, 780]} />
                     </Grid>
                     <Grid item xs={12}>
-                        <ActionListComponent title="Latest Actions" list={list} />
+                        <ActionListComponent title="Latest Actions" list={latestActionsList} />
                     </Grid>
                 </Grid>
             </Grid>
