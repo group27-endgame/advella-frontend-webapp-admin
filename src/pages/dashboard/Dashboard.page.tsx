@@ -6,7 +6,9 @@ import BarChartComponent from "../../components/BarChart.component";
 import CardComponent from "../../components/Card.component";
 import LoadingLottie from "../../components/LoadingLottie.component";
 import ProductService from "../../services/Product.service";
+import ProductsServicesService from "../../services/ProductsServices.service";
 import ServiceService from "../../services/Service.service";
+import UserService from "../../services/User.service";
 import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
 const list = [
@@ -53,20 +55,36 @@ function DashboardPage() {
 
     const [totalProducts, setTotalProducts] = useState(0);
     const [totalServices, setTotalServices] = useState(0);
+    const [totalUsers, setTotalUsers] = useState(0);
+    const [totalSpending, setTotalSpending] = useState(0);
 
     useEffect(() => {
         const productService: ProductService = new ProductService();
         const serviceService: ServiceService = new ServiceService();
+        const userService: UserService = new UserService();
+        const productsServicesService: ProductsServicesService = new ProductsServicesService();
 
-        productService.getTotalCount(cookie.token).then(res => {
-            setTotalProducts(res);
-        }).catch(err => setTotalProducts(0));
+        const latestActions: {listId: number, title: string, dateTime: Date, color: string, subscription: string}[] = [];
 
-        serviceService.getTotalCount(cookie.token).then(res => {
-            setTotalServices(res);
-        }).catch(err => setTotalServices(0));
+        Promise.all(
+            [
+                productService.getTotalCount(cookie.token).then(res => {
+                    setTotalProducts(res);
+                }).catch(err => setTotalProducts(0)),
 
-        setIsLoading(false);
+                serviceService.getTotalCount(cookie.token).then(res => {
+                    setTotalServices(res);
+                }).catch(err => setTotalServices(0)),
+        
+                userService.getTotalCount(cookie.token).then(res => {
+                    setTotalUsers(res)
+                }).catch(err => setTotalUsers(0)),
+        
+                productsServicesService.getTotalSpending(cookie.token).then(res => {
+                    setTotalSpending(res);
+                }).catch(err => setTotalSpending(0)),
+            ]
+        ).then(() => setIsLoading(false))
     },[]);
 
     if(isLoading)
@@ -75,16 +93,16 @@ function DashboardPage() {
     return ( 
         <Grid container spacing={2}>
             <Grid item xs={12} md={6} lg={3}>
-                <CardComponent cardTitle={"Total Earnings"} trendingPercentage={10.5} trendingValue={10000} valueSign="$" />
+                <CardComponent cardTitle={"Total Earnings"} trendingPercentage={10.5} trendingValue={totalSpending} valueSign="DKK " />
             </Grid>
             <Grid item xs={12} md={6} lg={3}>
-                <CardComponent cardTitle={"Total Users"} trendingPercentage={5} trendingValue={300} />
+                <CardComponent cardTitle={"Total Users"} trendingPercentage={5} trendingValue={totalUsers} />
             </Grid>
             <Grid item xs={12} md={6} lg={3}>
-                <CardComponent cardTitle={"Total Products"} trendingPercentage={-1.3} trendingValue={300} />
+                <CardComponent cardTitle={"Total Products"} trendingPercentage={-1.3} trendingValue={totalProducts} />
             </Grid>
             <Grid item xs={12} md={6} lg={3}>
-                <CardComponent cardTitle={"Total Services"} trendingPercentage={12.2} trendingValue={300} />
+                <CardComponent cardTitle={"Total Services"} trendingPercentage={12.2} trendingValue={totalServices} />
             </Grid>
 
             <Grid item xs={12} lg={6}>
