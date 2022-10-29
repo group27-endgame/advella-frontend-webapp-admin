@@ -1,14 +1,12 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-// import { useEffect, useState } from "react";
 import ActionListComponent from "../../components/ActionList.component";
 import BarChartComponent from "../../components/BarChart.component";
 import CardComponent from "../../components/Card.component";
 import LoadingLottie from "../../components/LoadingLottie.component";
 import ProductService from "../../services/Product.service";
 import ServiceService from "../../services/Service.service";
-// import LoadingLottie from "../components/LoadingLottie.component";
 import { PieChart } from "../../_stories/Advella/components/PieChart.stories";
 
 const list = [
