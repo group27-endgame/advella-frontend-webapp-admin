@@ -26,7 +26,10 @@ export default class AuthService{
         if(!token)
             return false;
 
+        const payloadBase64 = token.split(".")[1];
+        const payload = JSON.parse(atob(payloadBase64));
+        const roles: string[] = payload['roles'];
 
-        return true;
+        return roles.includes("admin");
     }
 }
