@@ -36,10 +36,9 @@ function DashboardPage() {
     setMonthList(getMonthList(new Date().getMonth()));
 
     const latestActions: IActionList[] = [];
-    const monthSpending: number[] = [];
+    const monthSpending: {month: string, value: number}[] = [];
 
     Promise.all([
-      () => {
         getMonthList(new Date().getMonth()).map((d) => {
           productsServicesService
             .getTotalSpending(
@@ -48,11 +47,9 @@ function DashboardPage() {
               Date.parse(`31 ${d}`)
             )
             .then((res) => {
-              monthSpending.push(res);
+              monthSpending.push({month: d, value: res});
             });
-        });
-        setMonthListSpending(monthSpending);
-      },
+        }),
       productService
         .getTotalCount(cookie.token)
         .then((res) => {
@@ -122,9 +119,18 @@ function DashboardPage() {
         }),
       ]).then(() => {
         latestActions.sort((l1, l2) => l2.dateTime - l1.dateTime);
-        setLatestActionsList(latestActions);
+        setLatestActionsList(latestActions.slice(0, 5));
       }),
-    ]).then(() => setIsLoading(false));
+    ]).then(() => {
+      setIsLoading(false);
+      
+      monthSpending.sort((s1, s2) => {
+        return new Date(`1 ${s1.month}`).getTime() - new Date(`1 ${s2.month}`).getTime();
+      });
+      const sp: number[] = [];
+      monthSpending.map(m => sp.push(m.value));
+      setMonthListSpending(sp);
+    });
   }, []);
 
   if (isLoading) return <LoadingLottie open={isLoading} />;
