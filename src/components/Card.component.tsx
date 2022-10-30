@@ -15,7 +15,7 @@ function CardComponent(props: CardComponentProps) {
   const {
     elevation = 12,
     cardTitle,
-    trendingPercentage,
+    // trendingPercentage,
     trendingValue,
     valueSign,
     children: _children,
@@ -42,7 +42,7 @@ function CardComponent(props: CardComponentProps) {
               flexWrap: "wrap",
             }}
           >
-            <Typography
+            {/* <Typography
               color={trendingPercentage > 0 ? "success.main" : "error.main"}
               style={{
                 display: "flex",
@@ -69,7 +69,7 @@ function CardComponent(props: CardComponentProps) {
                   {trendingPercentage}%
                 </>
               )}
-            </Typography>
+            </Typography> */}
           </Grid>
           <Grid item xs={12} mt={2}>
             <Typography textAlign="left" variant="body2" fontSize={24}>
