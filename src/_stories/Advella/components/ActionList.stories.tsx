@@ -10,7 +10,7 @@ export default {
       listId: 1,
       title: "New Product",
       dateTime: Date.now(),
-      color: "#e60049",
+      type: "product",
       subscription: "Seymore added new Product"
   },],
   },
