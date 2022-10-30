@@ -1,42 +1,42 @@
 import { Grid } from "@mui/material";
-import ActionListComponent from "../../components/ActionList.component";
+import ActionListComponent, { IActionList } from "../../components/ActionList.component";
 import BarChartComponent from "../../components/BarChart.component";
 import MapChartComponent from "../../components/MapChart.component";
 
-const list = [
+const list: IActionList[] = [
   {
     listId: 1,
     title: "Mike Hunt",
     dateTime: Date.now()-2000000,
-    color: "#e6d800",
+    type: "user",
     subscription: "",
   },
   {
     listId: 2,
     title: "Seymore Butz",
     dateTime: Date.now()-9000000,
-    color: "#e6d800",
+    type: "user",
     subscription: "",
   },
   {
     listId: 3,
     title: "Knee Grow",
     dateTime: Date.now()-12000000,
-    color: "#e6d800",
+    type: "user",
     subscription: "",
   },
   {
     listId: 4,
     title: "Moe Lester",
     dateTime: Date.now()-140000000,
-    color: "#e6d800",
+    type: "user",
     subscription: "",
   },
   {
     listId: 5,
     title: "Dixie Normous",
     dateTime: Date.now()-180000000,
-    color: "#e6d800",
+    type: "user",
     subscription: "",
   },
 ];

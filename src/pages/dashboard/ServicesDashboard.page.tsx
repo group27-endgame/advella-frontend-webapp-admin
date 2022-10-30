@@ -1,42 +1,42 @@
 import { Grid } from "@mui/material";
-import ActionListComponent from "../../components/ActionList.component";
+import ActionListComponent, { IActionList } from "../../components/ActionList.component";
 import BarChartComponent from "../../components/BarChart.component";
 import MapChartComponent from "../../components/MapChart.component";
 
-const list = [
+const list: IActionList[] = [
   {
     listId: 1,
     title: "Car Cleaning",
     dateTime: Date.now()-500000,
-    color: "#e60049",
+    type: "service",
     subscription: "Added by Seymore",
   },
   {
     listId: 2,
     title: "Bike Cleaning",
     dateTime: Date.now()-1500000,
-    color: "#e60049",
+    type: "service",
     subscription: "Added by Seymore",
   },
   {
     listId: 3,
     title: "Home Cleaning",
     dateTime: Date.now()-2500000,
-    color: "#e60049",
+    type: "service",
     subscription: "Added by Seymore",
   },
   {
     listId: 4,
     title: "Windows Cleaning",
     dateTime: Date.now()-3500000,
-    color: "#e60049",
+    type: "service",
     subscription: "Added by Seymore",
   },
   {
     listId: 5,
     title: "General Cleaning",
     dateTime: Date.now()-4500000,
-    color: "#e60049",
+    type: "service",
     subscription: "Added by Seymore",
   },
 ];

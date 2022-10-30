@@ -144,3 +144,5 @@ export const links: MainLink[] = [
         ]
     },
 ];
+
+export const backendUrl: string = "https://api.advella.popal.dev";

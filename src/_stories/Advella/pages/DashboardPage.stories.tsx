@@ -11,11 +11,11 @@ export const Main: ComponentStory<typeof DashboardPage> = () => <DashboardPage /
 export const MainPhone: ComponentStory<typeof DashboardPage> = () => <DashboardPage />;
 
 Main.parameters = {
-  chromatic: { delay: 1000  },
+  chromatic: { delay: 10000  },
 }
 
 MainPhone.parameters = {
-  chromatic: { viewports: [400], delay: 1000  },
+  chromatic: { viewports: [400], delay: 10000  },
   viewport: {
     defaultViewport: "phone",
   },
