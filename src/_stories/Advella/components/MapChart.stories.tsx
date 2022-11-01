@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import MapChartComponent from '../../../components/MapChart.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: MapChartComponent,
   args: {
     graphLabel: "Map Chart",

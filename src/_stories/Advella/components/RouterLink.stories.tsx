@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import RouterLink from '../../../components/RouterLink.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: RouterLink,
   args: {
     children: "Link",

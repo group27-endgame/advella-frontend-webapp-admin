@@ -5,7 +5,7 @@ import { userEvent, within } from "@storybook/testing-library";
 import { links } from "../../../links";
 
 export default {
-  title: "Advella/Components/AppBar",
+  title: "Advella/AppBar",
   component: AdvellaAppBar,
   args: {
     title: "Advella",
