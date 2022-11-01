@@ -4,7 +4,7 @@ import { ServiceCategoryModel } from "../models/ServiceCategory.model";
 
 export default class ServiceCategoryService{
     public async getAllCategories(token: string): Promise<ServiceCategoryModel[]>{
-        const response = await axios.get(`${backendUrl}/api/service-categories/dash-board/all`, {headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.get(`${backendUrl}/api/service-categories/all`, {headers: { Authorization: `Bearer ${token}` } });
 
         return response.data as ServiceCategoryModel[];
     }
