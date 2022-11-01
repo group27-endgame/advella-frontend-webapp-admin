@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import PieChartComponent from '../../../components/PieChart.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: PieChartComponent,
   args: {
     graphLabel: "Pie Chart",

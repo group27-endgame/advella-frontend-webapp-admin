@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import MessageComponent from '../../../components/Message.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: MessageComponent,
   args: {
     messageId: 1,

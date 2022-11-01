@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import BarChartComponent from '../../../components/BarChart.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: BarChartComponent,
   args: {
     graphLabel: "Bar Chart",
