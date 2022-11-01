@@ -3,8 +3,8 @@ import { backendUrl } from "../links";
 import { ProductModel } from "../models/Product.model";
 
 export default class ProductService {
-    public async getTotalCount(token: string): Promise<number> {
-        const response = await axios.get(`${backendUrl}/api/products/dash-board/count`, {headers: { Authorization: `Bearer ${token}` } });
+    public async getTotalCount(token: string, startDate: number = 0, endDate: number = Date.now()): Promise<number> {
+        const response = await axios.get(`${backendUrl}/api/products/dash-board/${startDate}/${endDate}`, {headers: { Authorization: `Bearer ${token}` } });
 
         return response.data
     }
