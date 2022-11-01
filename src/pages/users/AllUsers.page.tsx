@@ -112,6 +112,7 @@ const CustomToolbar: React.FunctionComponent<{
         1
       );
 
+      //TODO: Fix API endpoint
       userService.deleteUser(cookie.token, rowToDelete.id);
     });
 
