@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import FourOhFourLottie from '../../../components/FourOhFourLottie.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: FourOhFourLottie,
   parameters: {
     chromatic: {

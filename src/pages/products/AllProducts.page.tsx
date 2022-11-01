@@ -250,7 +250,7 @@ function AllProductsPage() {
   const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
 
   return (
-    <Card sx={{ height: "95vh", p: 5 }}>
+    <Card sx={{ height: "95vh", p: 5 }} elevation={12}>
       <DataGrid
         columns={columns}
         rows={rows}
@@ -258,20 +258,6 @@ function AllProductsPage() {
         pageSize={50}
         rowsPerPageOptions={[50]}
         components={{ Toolbar: CustomToolbar }}
-        onCellEditStart={(params: GridCellEditStartParams) => {
-          setEditingValue({
-            id: Number(params.id),
-            value: params.formattedValue,
-          });
-        }}
-        onCellEditCommit={(params: GridCellEditCommitParams) => {
-          if (
-            editingValue.id !== params.id ||
-            editingValue.value !== params.value
-          ) {
-            //TODO: Call PUT api to edit
-          }
-        }}
       />
     </Card>
   );

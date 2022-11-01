@@ -1,7 +1,7 @@
 import { ProductModel } from "./Product.model";
 
 export interface ProductCategoryModel {
-    productCategoryId: number;
+    productCategoryId?: number;
     title: string;
-    products: ProductModel[];
+    products?: ProductModel[];
 }

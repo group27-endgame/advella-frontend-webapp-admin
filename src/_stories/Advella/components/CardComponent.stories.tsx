@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import CardComponent from '../../../components/Card.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: CardComponent,
   args: {
     trendingPercentage: 10,

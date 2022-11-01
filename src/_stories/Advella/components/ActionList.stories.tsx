@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import ActionListComponent from '../../../components/ActionList.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: ActionListComponent,
   args: {
     title: "Title",
