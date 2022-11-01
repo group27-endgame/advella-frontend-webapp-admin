@@ -12,16 +12,15 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />}></Route>
       <Route
-        path="/dashboard"
+        path="/"
         element={
           cookie.token ? (
             <AdvellaAppBar links={links}>
               <DashboardPage />
             </AdvellaAppBar>
           ) : (
-            <FourOhFourPage />
+            <LoginPage />
           )
         }
       ></Route>
