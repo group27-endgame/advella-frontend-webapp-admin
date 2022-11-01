@@ -231,7 +231,7 @@ function AllUsersPage() {
   const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
 
   return (
-    <Card sx={{ height: "95vh", p: 5 }}>
+    <Card sx={{ height: "95vh", p: 5 }} elevation={12}>
       <DataGrid
         columns={columns}
         rows={rows}

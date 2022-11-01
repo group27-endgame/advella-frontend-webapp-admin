@@ -10,7 +10,7 @@ interface ActionListProps extends PaperProps {
 }
 
 function MessageComponent(props: ActionListProps) {
-  const { messageId, user, date: _date, message, ...rest } = props;
+  const { messageId, user, date: _date, message, elevation = 12, ...rest } = props;
   const date = new Date(_date);
 
   const handleRemove = () => {
@@ -19,7 +19,7 @@ function MessageComponent(props: ActionListProps) {
 
   return (
     <motion.div whileHover={{ y: -5 }}>
-      <Card {...rest}>
+      <Card {...rest} elevation={elevation}>
         <Grid container p={2}>
           <Grid item xs={11}>
             <Typography variant="h6" fontSize={18}>
