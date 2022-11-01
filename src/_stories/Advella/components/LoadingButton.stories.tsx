@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import LoadingButton from '../../../components/LoadingButton.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: LoadingButton,
   args: {
     children: "Button"

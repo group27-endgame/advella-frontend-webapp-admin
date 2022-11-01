@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import LoadingLottie from '../../../components/LoadingLottie.component';
 
 export default {
-  title: 'Advella/Components',
+  title: 'Advella',
   component: LoadingLottie,
   args: {
     open: true
