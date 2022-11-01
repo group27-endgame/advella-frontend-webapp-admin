@@ -118,7 +118,8 @@ const CustomToolbar = () => {
     serviceCategoryService.getAllCategories(cookie.token).then(res => {
       rows.splice(0);
       res.map(sc => {
-        rows.push({id: sc.serviceCategoryId, name: sc.title, services: sc.services?.length});
+        //TODO: Fix returning of correct number of size of services
+        rows.push({id: sc.serviceCategoryId, name: sc.title, services: sc.services ? sc.services.length : 0});
       });
     });
     apiRef.current.setRows(rows);
@@ -187,7 +188,8 @@ function ServiceCategoryPage() {
 
     serviceCategoryService.getAllCategories(cookie.token).then(res => {
       const allRows:IServiceCategory[] = [];
-      res.map(sc => allRows.push({id: sc.serviceCategoryId!, name: sc.title, services: sc.services!.length}));
+      //TODO: Fix returning of correct number of size of services
+      res.map(sc => allRows.push({id: sc.serviceCategoryId!, name: sc.title, services: sc.services ? sc.services.length : 0}));
       setRows(allRows);
       setIsLoading(false);
     });
