@@ -196,7 +196,7 @@ function ProductsCategoryPage() {
     return <LoadingLottie open={isLoading} />
 
   return (
-    <Card sx={{ height: "95vh", p: 5 }}>
+    <Card sx={{ height: "95vh", p: 5 }} elevation={12}>
       <DataGrid
         columns={columns}
         rows={rows}
