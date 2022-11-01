@@ -12,15 +12,15 @@ import {
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import DialogComponent from "../../components/Dialog.component";
-import { UserModel } from "../../models/User.model";
+import LoadingLottie from "../../components/LoadingLottie.component";
 import UserService from "../../services/User.service";
 
 interface IUser {
   id: number;
   username: string;
-  email:string;
+  email: string;
   services: number;
-  products: number
+  products: number;
   registrationDate: string;
   admin: boolean;
 }
@@ -35,13 +35,9 @@ const columns: GridColDef[] = [
     headerAlign: "center",
     renderCell: (params) => {
       const { id, username } = params.row;
-      
-      return (
-        <Link href={`/users/${id}`}>
-          {username}
-        </Link>
-      )
-    }
+
+      return <Link href={`/users/${id}`}>{username}</Link>;
+    },
   },
   {
     field: "email",
@@ -87,95 +83,12 @@ const columns: GridColDef[] = [
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 2,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 3,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 4,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 5,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 6,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 7,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 8,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-  {
-    id: 9,
-    username: "seymore",
-    email: "seymore@buttz.com",
-    services: 35,
-    products: 35,
-    registrationDate: "2022-01-02",
-    admin: true,
-  },
-];
-
 const CustomToolbar: React.FunctionComponent<{
   setFilterButtonEl: React.Dispatch<
     React.SetStateAction<HTMLButtonElement | null>
   >;
 }> = ({ setFilterButtonEl }) => {
+  const [cookie, ,] = useCookies(["token"]);
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
 
   const apiRef = useGridApiContext();
@@ -186,6 +99,7 @@ const CustomToolbar: React.FunctionComponent<{
   };
 
   const handleRemove = () => {
+    const userService: UserService = new UserService();
     const rows: GridValidRowModel[] = [];
 
     apiRef.current.getRowModels().forEach((row) => {
@@ -198,9 +112,38 @@ const CustomToolbar: React.FunctionComponent<{
         1
       );
 
-      //TODO: Call DELETE api to remove
+      userService.deleteUser(cookie.token, rowToDelete.id);
     });
 
+    interface IUser {
+      id: number;
+      username: string;
+      email: string;
+      services: number;
+      products: number;
+      registrationDate: string;
+      admin: boolean;
+    }
+
+    userService.getAllUsers(cookie.token).then((res) => {
+      rows.splice(0);
+      res.map((user) => {
+        const registrationDate = new Date(user.registrationDateTime);
+        //TODO: Remove if when API will be fixed
+        if (user.userId !== undefined)
+          rows.push({
+            id: user.userId,
+            username: user.username,
+            email: user.email,
+            services: user.services.length,
+            products: user.products.length,
+            registrationDate: `${registrationDate.getDate()}/${
+              registrationDate.getMonth() + 1
+            }/${registrationDate.getFullYear()}`,
+            admin: false,
+          });
+      });
+    });
     apiRef.current.setRows(rows);
     setRemoveDialogOpen(false);
   };
@@ -241,8 +184,9 @@ const CustomToolbar: React.FunctionComponent<{
 };
 
 function AllUsersPage() {
-  const [cookie,,] = useCookies(["token"]);
+  const [cookie, ,] = useCookies(["token"]);
 
+  const [isLoading, setIsLoading] = useState(true);
   const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
 
   const [users, setUsers] = useState<IUser[]>([]);
@@ -250,25 +194,33 @@ function AllUsersPage() {
   useEffect(() => {
     const userService: UserService = new UserService();
 
-    userService.getAllUsers(cookie.token).then(res => {
+    userService.getAllUsers(cookie.token).then((res) => {
       const allUsers: IUser[] = [];
-      
-      res.map(user => {
+
+      res.map((user) => {
         const registrationDate = new Date(user.registrationDateTime);
-        allUsers.push({
-          id: user.userId,
-          username: user.username,
-          email: user.email,
-          products: user.products.length,
-          services: user.services.length,
-          registrationDate: `${registrationDate.getDate()}/${registrationDate.getMonth()+1}/${registrationDate.getFullYear()}`,
-          admin: false,
-        });
+        //TODO: Remove if when API will be fixed
+        if (user.userId !== undefined)
+          allUsers.push({
+            id: user.userId,
+            username: user.username,
+            email: user.email,
+            products: user.products.length,
+            services: user.services.length,
+            registrationDate: `${registrationDate.getDate()}/${
+              registrationDate.getMonth() + 1
+            }/${registrationDate.getFullYear()}`,
+            admin: false,
+          });
+
+        setIsLoading(false);
       });
 
       setUsers(allUsers);
     });
-  }, [])
+  }, []);
+
+  if (isLoading) return <LoadingLottie open={isLoading} />;
 
   return (
     <Card sx={{ height: "95vh", p: 5 }} elevation={12}>
