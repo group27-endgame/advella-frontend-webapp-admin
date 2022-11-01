@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import DialogComponent from "../../components/Dialog.component";
 import LoadingLottie from "../../components/LoadingLottie.component";
-import ProductCategoryService from "../../services/ProductCategory.service";
 import ServiceCategoryService from "../../services/ServiceCategory.service";
 
 interface IServiceCategory {
