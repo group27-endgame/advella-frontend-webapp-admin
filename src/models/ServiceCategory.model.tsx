@@ -1,7 +1,7 @@
 import { ServiceModel } from "./Service.model";
 
 export interface ServiceCategoryModel {
-    serviceCategoryId: number;
+    serviceCategoryId?: number;
     title: string;
-    services: ServiceModel[];
+    services?: ServiceModel[];
 }
