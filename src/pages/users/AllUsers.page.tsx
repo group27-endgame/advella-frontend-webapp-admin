@@ -9,8 +9,21 @@ import {
   GridToolbarFilterButton,
   GridToolbarContainer,
 } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import DialogComponent from "../../components/Dialog.component";
+import { UserModel } from "../../models/User.model";
+import UserService from "../../services/User.service";
+
+interface IUser {
+  id: number;
+  username: string;
+  email:string;
+  services: number;
+  products: number
+  registrationDate: string;
+  admin: boolean;
+}
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", headerAlign: "left" },
@@ -228,13 +241,40 @@ const CustomToolbar: React.FunctionComponent<{
 };
 
 function AllUsersPage() {
+  const [cookie,,] = useCookies(["token"]);
+
   const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
+
+  const [users, setUsers] = useState<IUser[]>([]);
+
+  useEffect(() => {
+    const userService: UserService = new UserService();
+
+    userService.getAllUsers(cookie.token).then(res => {
+      const allUsers: IUser[] = [];
+      
+      res.map(user => {
+        const registrationDate = new Date(user.registrationDateTime);
+        allUsers.push({
+          id: user.userId,
+          username: user.username,
+          email: user.email,
+          products: user.products.length,
+          services: user.services.length,
+          registrationDate: `${registrationDate.getDate()}/${registrationDate.getMonth()+1}/${registrationDate.getFullYear()}`,
+          admin: false,
+        });
+      });
+
+      setUsers(allUsers);
+    });
+  }, [])
 
   return (
     <Card sx={{ height: "95vh", p: 5 }} elevation={12}>
       <DataGrid
         columns={columns}
-        rows={rows}
+        rows={users}
         checkboxSelection
         pageSize={50}
         rowsPerPageOptions={[50]}
