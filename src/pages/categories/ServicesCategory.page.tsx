@@ -7,8 +7,18 @@ import {
   GridCellEditStartParams,
   GridValidRowModel,
 } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import DialogComponent from "../../components/Dialog.component";
+import LoadingLottie from "../../components/LoadingLottie.component";
+import ProductCategoryService from "../../services/ProductCategory.service";
+import ServiceCategoryService from "../../services/ServiceCategory.service";
+
+interface IServiceCategory {
+  id:number;
+  name:string;
+  services:number;
+};
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", headerAlign: "left", },
@@ -37,6 +47,8 @@ const rows = [
 ];
 
 const CustomToolbar = () => {
+  const [cookie,,] = useCookies(["token"]);
+  
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
 
@@ -56,10 +68,11 @@ const CustomToolbar = () => {
   };
 
   const handleAdd = () => {
+    const serviceCategoryService: ServiceCategoryService = new ServiceCategoryService();
     setNewCategoryErr(false);
     setNewCategoryErrMsg("");
 
-    if(newCategory.length < 2){
+    if(newCategory.length < 3){
       setNewCategoryErr(true);
       setNewCategoryErrMsg("Category name must have at least 3 characters.");
 
@@ -79,14 +92,15 @@ const CustomToolbar = () => {
       return
     }
 
-    rows.push({id: rows.length+1, name: newCategory, services: 0});
+    rows.push({id: rows[rows.length-1].id+1, name: newCategory, services: 0});
 
     apiRef.current.setRows(rows);
-    //TODO: Call POST api to add
+    serviceCategoryService.addCategory({title: newCategory}, cookie.token);
     toggleAddDialogOpen();
   };
 
   const handleRemove = () => {
+    const serviceCategoryService: ServiceCategoryService = new ServiceCategoryService();
     const rows: GridValidRowModel[] = [];
 
     apiRef.current.getRowModels().forEach((row) => {
@@ -99,9 +113,15 @@ const CustomToolbar = () => {
         1
       );
 
-      //TODO: Call DELETE api to remove
+      serviceCategoryService.deleteCategory(rowToDelete.id, cookie.token);
     });
 
+    serviceCategoryService.getAllCategories(cookie.token).then(res => {
+      rows.splice(0);
+      res.map(sc => {
+        rows.push({id: sc.serviceCategoryId, name: sc.title, services: sc.services?.length});
+      });
+    });
     apiRef.current.setRows(rows);
     setRemoveDialogOpen(false);
   };
@@ -155,7 +175,27 @@ const CustomToolbar = () => {
 };
 
 function ServiceCategoryPage() {
+  const [cookie,,] = useCookies(["token"]);
+
+  const [isLoading, setIsLoading] = useState(true);
+
   const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
+
+  const [rows, setRows] = useState<IServiceCategory[]>([]);
+
+  useEffect(() => {
+    const serviceCategoryService: ServiceCategoryService = new ServiceCategoryService();
+
+    serviceCategoryService.getAllCategories(cookie.token).then(res => {
+      const allRows:IServiceCategory[] = [];
+      res.map(sc => allRows.push({id: sc.serviceCategoryId!, name: sc.title, services: sc.services!.length}));
+      setRows(allRows);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if(isLoading)
+    return <LoadingLottie open={isLoading} />
 
   return (
     <Card sx={{ height: "95vh", p: 5 }}>
@@ -177,7 +217,9 @@ function ServiceCategoryPage() {
             editingValue.id !== params.id ||
             editingValue.value !== params.value
           ) {
-            //TODO: Call PUT api to edit
+            const serviceCategoryService: ServiceCategoryService = new ServiceCategoryService();
+
+            serviceCategoryService.editCategory({serviceCategoryId: editingValue.id, title: params.value}, cookie.token);
           }
         }}
       />
