@@ -10,14 +10,14 @@ export default class ProductCategoryService{
     }
 
     public async deleteCategory(categoryId: number, token: string): Promise<void>{
-        const response = await axios.delete(`${backendUrl}/api/product-categories/dash-board/${categoryId}`, {headers: { Authorization: `Bearer ${token}` } });
+        await axios.delete(`${backendUrl}/api/product-categories/dash-board/${categoryId}`, {headers: { Authorization: `Bearer ${token}` } });
     }
 
     public async editCategory(category: ProductCategoryModel, token: string): Promise<void>{
-        const response = await axios.put(`${backendUrl}/api/product-categories/dash-board`, category, {headers: { Authorization: `Bearer ${token}` } });
+        await axios.put(`${backendUrl}/api/product-categories/dash-board`, category, {headers: { Authorization: `Bearer ${token}` } });
     }
 
     public async addCategory(category: ProductCategoryModel, token: string): Promise<void>{
-        const response = await axios.post(`${backendUrl}/api/product-categories/dash-board`, category, {headers: { Authorization: `Bearer ${token}` } });
+        await axios.post(`${backendUrl}/api/product-categories/dash-board`, category, {headers: { Authorization: `Bearer ${token}` } });
     }
 }
