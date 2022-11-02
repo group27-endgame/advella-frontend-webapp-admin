@@ -118,7 +118,8 @@ const CustomToolbar = () => {
     productCategoryService.getAllCategories(cookie.token).then(res => {
       rows.splice(0);
       res.map(pc => {
-        rows.push({id: pc.productCategoryId, name: pc.title, products: pc.products?.length});
+        //TODO: Fix returning of correct number of size of products
+        rows.push({id: pc.productCategoryId, name: pc.title, products: pc.products ? pc.products.length : 0});
       });
     });
     apiRef.current.setRows(rows);
@@ -185,8 +186,10 @@ function ProductsCategoryPage() {
     const productCategoryService: ProductCategoryService = new ProductCategoryService();
 
     productCategoryService.getAllCategories(cookie.token).then(res => {
+      console.log(res);
       const allRows:IProductCategory[] = [];
-      res.map(pc => allRows.push({id: pc.productCategoryId!, name: pc.title, products: pc.products!.length}));
+      //TODO: Fix returning of correct number of size of products
+      res.map(pc => allRows.push({id: pc.productCategoryId!, name: pc.title, products: pc.products ? pc.products.length : 0}));
       setRows(allRows);
       setIsLoading(false);
     });
