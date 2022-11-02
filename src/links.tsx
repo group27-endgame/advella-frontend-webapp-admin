@@ -2,11 +2,9 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
-import GradeIcon from '@mui/icons-material/Grade';
 import EmailIcon from '@mui/icons-material/Email';
 import { ReactElement } from 'react';
 import { fontColor } from './constants';
-import { Box } from '@mui/material';
 import ProductsDashboardPage from './pages/dashboard/ProductsDashboard.page';
 import ServicesDashboardPage from './pages/dashboard/ServicesDashboard.page';
 import UserDashboardPage from './pages/dashboard/UsersDashboard.page';
@@ -96,11 +94,6 @@ export const links: MainLink[] = [
                 link: "/products",
                 element: <AllProductsPage />
             },
-            {
-                name: "Bids",
-                link: "/products/bids",
-                element: <Box>Products Bids</Box>
-            },
         ]
     },
     {
@@ -111,22 +104,6 @@ export const links: MainLink[] = [
                 name: "All Services",
                 link: "/services",
                 element: <AllServicesPage />
-            },
-            {
-                name: "Bids",
-                link: "/services/bids",
-                element: <Box>Services Bids</Box>
-            },
-        ]
-    },
-    {
-        name: "Highlighted",
-        icon: <GradeIcon sx={{ color: fontColor }} />,
-        subLinks: [
-            {
-                name: "Highlighted",
-                link: "/top",
-                element: <Box>Highlighted</Box>
             },
         ]
     },
