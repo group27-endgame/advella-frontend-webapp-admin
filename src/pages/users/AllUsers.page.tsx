@@ -196,8 +196,6 @@ function AllUsersPage() {
     userService.getAllUsers(cookie.token).then((res) => {
       const allUsers: IUser[] = [];
 
-      console.log(res);
-
       res.map((user) => {
         const registrationDate = new Date(user.registrationDateTime);
           allUsers.push({
@@ -209,7 +207,7 @@ function AllUsersPage() {
             registrationDate: `${registrationDate.getDate()}/${
               registrationDate.getMonth() + 1
             }/${registrationDate.getFullYear()}`,
-            admin: false,
+            admin: user.roles.some(r => r['name'] === 'admin'),
           });
 
         setIsLoading(false);
@@ -241,7 +239,9 @@ function AllUsersPage() {
             editingValue.id !== params.id ||
             editingValue.value !== params.value
           ) {
-            //TODO: Call PUT api to edit
+            const userService: UserService = new UserService();
+
+            userService.updateUser(cookie.token, Number(params.id));
           }
         }}
       />
