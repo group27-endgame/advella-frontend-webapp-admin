@@ -28,6 +28,7 @@ export default class UserService{
 
     public async updateUser(token: string, user: UserModel): Promise<void>{
         await axios.put(`${backendUrl}/api/users/dash-board`, user, {headers: { Authorization: `Bearer ${token}` } });
+    }
 
     public async getUserById(token: string, userId: number): Promise<UserModel>{
         const response = await axios.get(`${backendUrl}/api/users/dash-board/${userId}`, {headers: { Authorization: `Bearer ${token}` } });
