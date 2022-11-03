@@ -1,135 +1,57 @@
 import { Grid } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import MessageComponent from "../../components/Message.component";
+import { ContactModel } from "../../models/Contact.model";
+import ContactService from "../../services/Contact.service";
+import { LottieLoading } from "../../_stories/Advella/components/Loading.stories";
 
 function MessagesPage() {
+  const [cookie,,] = useCookies(["token"]);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [messages, setMessages] = useState<ContactModel[]>([]);
+
+  useEffect(() => {
+    const contactService: ContactService = new ContactService();
+
+    contactService.getAllMessages(cookie.token).then(res => {
+      setMessages(res);
+      setIsLoading(false);
+    });
+
+    contactService.setAllMessagesAsRead(cookie.token);
+  },[]);
+
+  const handleRemove = (messageId: number) => {
+    const contactService: ContactService = new ContactService();
+
+    contactService.removeMessage(messageId, cookie.token).then(() => {
+      const messagesCopy = messages;
+      messagesCopy.splice(messagesCopy.findIndex(m => m.contactId === messageId), 1);  
+      setMessages(messagesCopy);
+    })
+  }
+
+  if(isLoading)
+    return <LottieLoading open={isLoading} />
+
   return (
     <Grid container spacing={2}>
-      <Grid item md={6} lg={4}>
+      {messages.map(m => <Grid key={m.contactId} item md={6} lg={4}>
         <MessageComponent
-          messageId={1}
+          messageId={m.contactId}
           user={{
-            userId: 1,
-            username: "Seymore",
+            userId: m.contactUser.userId,
+            username: m.contactUser.username,
           }}
-          date={Date.now()}
-          message="Lorem Ipsum is simply dummy text 
-            of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy 
-            text ever since the 1500s, when an unknown printer took a 
-            galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, 
-            but also the leap into electronic typesetting, 
-            remaining essentially unchanged. It was popularised in the 1960s 
-            with the release of Letraset sheets containing Lorem Ipsum passages, 
-            and more recently with desktop publishing software like 
-            Aldus PageMaker including versions of Lorem Ipsum."
+          date={m.messageDateTime}
+          message={m.content}
+          handleRemove={() => handleRemove(m.contactId)}
         />
       </Grid>
-      <Grid item md={6} lg={4}>
-        <MessageComponent
-          messageId={2}
-          user={{
-            userId: 1,
-            username: "Seymore",
-          }}
-          date={Date.now()}
-          message="Lorem Ipsum is simply dummy text 
-            of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy 
-            text ever since the 1500s, when an unknown printer took a 
-            galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, 
-            but also the leap into electronic typesetting, 
-            remaining essentially unchanged. It was popularised in the 1960s 
-            with the release of Letraset sheets containing Lorem Ipsum passages, 
-            and more recently with desktop publishing software like 
-            Aldus PageMaker including versions of Lorem Ipsum."
-        />
-      </Grid>
-      <Grid item md={6} lg={4}>
-        <MessageComponent
-          messageId={3}
-          user={{
-            userId: 1,
-            username: "Seymore",
-          }}
-          date={Date.now()}
-          message="Lorem Ipsum is simply dummy text 
-            of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy 
-            text ever since the 1500s, when an unknown printer took a 
-            galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, 
-            but also the leap into electronic typesetting, 
-            remaining essentially unchanged. It was popularised in the 1960s 
-            with the release of Letraset sheets containing Lorem Ipsum passages, 
-            and more recently with desktop publishing software like 
-            Aldus PageMaker including versions of Lorem Ipsum."
-        />
-      </Grid>
-      <Grid item md={6} lg={4}>
-        <MessageComponent
-          messageId={4}
-          user={{
-            userId: 1,
-            username: "Seymore",
-          }}
-          date={Date.now()}
-          message="Lorem Ipsum is simply dummy text 
-            of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy 
-            text ever since the 1500s, when an unknown printer took a 
-            galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, 
-            but also the leap into electronic typesetting, 
-            remaining essentially unchanged. It was popularised in the 1960s 
-            with the release of Letraset sheets containing Lorem Ipsum passages, 
-            and more recently with desktop publishing software like 
-            Aldus PageMaker including versions of Lorem Ipsum."
-        />
-      </Grid>
-      <Grid item md={6} lg={4}>
-        <MessageComponent
-          messageId={5}
-          user={{
-            userId: 1,
-            username: "Seymore",
-          }}
-          date={Date.now()}
-          message="Lorem Ipsum is simply dummy text 
-            of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy 
-            text ever since the 1500s, when an unknown printer took a 
-            galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, 
-            but also the leap into electronic typesetting, 
-            remaining essentially unchanged. It was popularised in the 1960s 
-            with the release of Letraset sheets containing Lorem Ipsum passages, 
-            and more recently with desktop publishing software like 
-            Aldus PageMaker including versions of Lorem Ipsum."
-        />
-      </Grid>
-      <Grid item md={6} lg={4}>
-        <MessageComponent
-          messageId={6}
-          user={{
-            userId: 1,
-            username: "Seymore",
-          }}
-          date={Date.now()}
-          message="Lorem Ipsum is simply dummy text 
-            of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy 
-            text ever since the 1500s, when an unknown printer took a 
-            galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, 
-            but also the leap into electronic typesetting, 
-            remaining essentially unchanged. It was popularised in the 1960s 
-            with the release of Letraset sheets containing Lorem Ipsum passages, 
-            and more recently with desktop publishing software like 
-            Aldus PageMaker including versions of Lorem Ipsum."
-        />
-      </Grid>
+      )}
     </Grid>
   );
 }

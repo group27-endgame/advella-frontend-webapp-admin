@@ -17,4 +17,5 @@ export interface ProductModel {
     reportedProducts: ReportedProductModel[];
     posted: UserModel;
     chatProducts: ChatProductModel[];
+    productStatus: string;
 }
