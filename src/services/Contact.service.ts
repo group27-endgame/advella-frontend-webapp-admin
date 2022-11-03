@@ -18,7 +18,7 @@ export default class ContactService
         await axios.delete(`${backendUrl}/api/contacts/dash-board/${messageId}`, { headers: { Authorization: `Bearer ${token}` } });
     }
 
-    public async getNumberOfUnreadMessages(token: string): Promise<number>{
+    public async getNumberOfUnreadMessages(token: string): Promise<number>{ 
         const response = await axios.get(`${backendUrl}/api/contacts/dash-board/unseen`, { headers: { Authorization: `Bearer ${token}` } });
 
         return response.data as number;
