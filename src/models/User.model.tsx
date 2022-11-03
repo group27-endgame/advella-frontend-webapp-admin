@@ -26,4 +26,5 @@ export interface UserModel {
     posterChatService: ChatServiceModel[];
     bidderChatProduct: ChatProductModel[];
     posterChatProduct: ChatProductModel[];
+    roles: [];
 }
