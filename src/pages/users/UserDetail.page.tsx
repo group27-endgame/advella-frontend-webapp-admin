@@ -33,7 +33,6 @@ function UserDetailPage() {
 
     userService.getUserById(cookie.token, Number(userId)).then((res) => {
       setUser(res);
-      console.log(res);
     });
   }, []);
 
