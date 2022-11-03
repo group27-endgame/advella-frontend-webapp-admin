@@ -16,7 +16,6 @@ import ProductCategoryService from "../../services/ProductCategory.service";
 interface IProductCategory {
   id:number;
   name:string;
-  products:number;
 };
 
 const columns: GridColDef[] = [
@@ -29,20 +28,6 @@ const columns: GridColDef[] = [
     editable: true,
     headerAlign: "center",
   },
-  { field: "products", headerName: "Products", width: 150, align: "right", headerAlign: "right", },
-];
-
-const rows = [
-  { id: 1, name: "Cars", products: 35 },
-  { id: 2, name: "Houses", products: 35 },
-  { id: 3, name: "Bikes", products: 35 },
-  { id: 4, name: "Kitchen Appliances", products: 35 },
-  { id: 5, name: "Sofas", products: 35 },
-  { id: 6, name: "Drugs", products: 35 },
-  { id: 7, name: "Electronics", products: 35 },
-  { id: 8, name: "Movies", products: 35 },
-  { id: 9, name: "Books", products: 35 },
-  { id: 10, name: "Other", products: 35 },
 ];
 
 const CustomToolbar = () => {
@@ -119,7 +104,7 @@ const CustomToolbar = () => {
       rows.splice(0);
       res.map(pc => {
         //TODO: Fix returning of correct number of size of products
-        rows.push({id: pc.productCategoryId, name: pc.title, products: pc.products ? pc.products.length : 0});
+        rows.push({id: pc.productCategoryId, name: pc.title });
       });
     });
     apiRef.current.setRows(rows);
@@ -188,8 +173,7 @@ function ProductsCategoryPage() {
     productCategoryService.getAllCategories(cookie.token).then(res => {
       console.log(res);
       const allRows:IProductCategory[] = [];
-      //TODO: Fix returning of correct number of size of products
-      res.map(pc => allRows.push({id: pc.productCategoryId!, name: pc.title, products: pc.products ? pc.products.length : 0}));
+      res.map(pc => allRows.push({id: pc.productCategoryId!, name: pc.title}));
       setRows(allRows);
       setIsLoading(false);
     });
