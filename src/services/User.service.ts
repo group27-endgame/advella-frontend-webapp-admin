@@ -15,6 +15,21 @@ export default class UserService{
         return response.data as UserModel[];
     }
 
+
+    public async getAllUsers(token: string): Promise<UserModel[]>{
+        const response = await axios.get(`${backendUrl}/api/users/dash-board`, {headers: { Authorization: `Bearer ${token}` } });
+
+        return response.data as UserModel[];
+    }
+
+    public async deleteUser(token: string, userId: number): Promise<void>{
+        await axios.delete(`${backendUrl}/api/users/dash-board/${userId}`, {headers: { Authorization: `Bearer ${token}` } });
+    }
+
+    public async updateUser(token: string, userId: number): Promise<void>{
+        await axios.put(`${backendUrl}/api/users/dash-board?userId=${userId}`, {}, {headers: { Authorization: `Bearer ${token}` } });
+    }
+
     public async getUserById(token: string, userId: number): Promise<UserModel>{
         const response = await axios.get(`${backendUrl}/api/users/dash-board/${userId}`, {headers: { Authorization: `Bearer ${token}` } });
 
