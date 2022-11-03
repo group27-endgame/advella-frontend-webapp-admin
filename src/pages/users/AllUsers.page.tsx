@@ -198,6 +198,8 @@ function AllUsersPage() {
     userService.getAllUsers(cookie.token).then((res) => {
       const allUsers: IUser[] = [];
 
+      console.log(res);
+
       res.map((user) => {
         const registrationDate = new Date(user.registrationDateTime);
         //TODO: Remove if when API will be fixed
@@ -206,8 +208,8 @@ function AllUsersPage() {
             id: user.userId,
             username: user.username,
             email: user.email,
-            products: user.products.length,
-            services: user.services.length,
+            products: user.postedProduct.length,
+            services: user.postedService.length,
             registrationDate: `${registrationDate.getDate()}/${
               registrationDate.getMonth() + 1
             }/${registrationDate.getFullYear()}`,
