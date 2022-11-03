@@ -21,6 +21,8 @@ import {
 import { MainLink } from "../links";
 import RouterLink from "./RouterLink.component";
 import LogoutComponent from "./Logout.component";
+import ContactService from "../services/Contact.service";
+import { useCookies } from "react-cookie";
 
 type AdvellaAppBarProps = {
   window?: () => Window;
@@ -40,12 +42,22 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
     drawerWidth = 250,
     defaultExpanded = false,
   } = props;
+  const [cookie,,] = useCookies(["token"]);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [expanded, setExpanded] = React.useState("");
+  const [unseenMessages, setUnseenMessages] = React.useState(0);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  React.useEffect(() => {
+    const contactService: ContactService = new ContactService();
+
+    contactService.getNumberOfUnreadMessages(cookie.token).then(res => {
+      setUnseenMessages(res);
+    })
+  })
 
   const drawer = (
     <Box>
@@ -132,7 +144,7 @@ export default function AdvellaAppBar(props: AdvellaAppBarProps) {
                   <AccordionDetails sx={{ pb: 0 }}>
                     {item.subLinks.map((sl) => (
                       <Box pb={2} key={sl.name} >
-                        <Badge key={sl.name} badgeContent={sl.unread} sx={{pr: 1}} color="primary" anchorOrigin={{vertical: "top", horizontal: "right"}}>
+                        <Badge key={sl.name} badgeContent={sl.unread ? unseenMessages : 0} sx={{pr: 1}} color="primary" anchorOrigin={{vertical: "top", horizontal: "right"}}>
                           <RouterLink to={sl.link}>{sl.name}</RouterLink>
                           </Badge>
                       </Box>
