@@ -61,8 +61,15 @@ function UserDetailPage() {
                 {user.username}
               </Avatar>
             </Grid>
+            {/* <Grid item xs={12} textAlign="center" pt={2}>
+              <Tooltip title={3.7} arrow>
+                <Box>
+                  <Rating readOnly value={3.7} precision={0.1} />
+                </Box>
+              </Tooltip>
+            </Grid> */}
             {user.location && (
-              <Grid item xs={12}>
+              <Grid item xs={12} pt={2}>
                 <Typography
                   variant="h6"
                   alignItems="center"
