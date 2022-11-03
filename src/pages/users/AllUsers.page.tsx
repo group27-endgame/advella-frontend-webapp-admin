@@ -131,7 +131,6 @@ const CustomToolbar: React.FunctionComponent<{
       res.map((user) => {
         const registrationDate = new Date(user.registrationDateTime);
         //TODO: Remove if when API will be fixed
-        if (user.userId !== undefined)
           rows.push({
             id: user.userId,
             username: user.username,
@@ -203,7 +202,6 @@ function AllUsersPage() {
       res.map((user) => {
         const registrationDate = new Date(user.registrationDateTime);
         //TODO: Remove if when API will be fixed
-        if (user.userId !== undefined)
           allUsers.push({
             id: user.userId,
             username: user.username,
