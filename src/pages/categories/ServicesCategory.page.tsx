@@ -16,7 +16,6 @@ import ServiceCategoryService from "../../services/ServiceCategory.service";
 interface IServiceCategory {
   id:number;
   name:string;
-  services:number;
 };
 
 const columns: GridColDef[] = [
@@ -29,20 +28,6 @@ const columns: GridColDef[] = [
     editable: true,
     headerAlign: "center",
   },
-  { field: "services", headerName: "Services", width: 150, align: "right", headerAlign: "right", },
-];
-
-const rows = [
-  { id: 1, name: "Cars", services: 35 },
-  { id: 2, name: "Houses", services: 35 },
-  { id: 3, name: "Bikes", services: 35 },
-  { id: 4, name: "Kitchen Appliances", services: 35 },
-  { id: 5, name: "Sofas", services: 35 },
-  { id: 6, name: "Drugs", services: 35 },
-  { id: 7, name: "Electronics", services: 35 },
-  { id: 8, name: "Movies", services: 35 },
-  { id: 9, name: "Books", services: 35 },
-  { id: 10, name: "Other", services: 35 },
 ];
 
 const CustomToolbar = () => {
@@ -119,7 +104,7 @@ const CustomToolbar = () => {
       rows.splice(0);
       res.map(sc => {
         //TODO: Fix returning of correct number of size of services
-        rows.push({id: sc.serviceCategoryId, name: sc.title, services: sc.services ? sc.services.length : 0});
+        rows.push({id: sc.serviceCategoryId, name: sc.title });
       });
     });
     apiRef.current.setRows(rows);
@@ -189,7 +174,7 @@ function ServiceCategoryPage() {
     serviceCategoryService.getAllCategories(cookie.token).then(res => {
       const allRows:IServiceCategory[] = [];
       //TODO: Fix returning of correct number of size of services
-      res.map(sc => allRows.push({id: sc.serviceCategoryId!, name: sc.title, services: sc.services ? sc.services.length : 0}));
+      res.map(sc => allRows.push({id: sc.serviceCategoryId!, name: sc.title }));
       setRows(allRows);
       setIsLoading(false);
     });
