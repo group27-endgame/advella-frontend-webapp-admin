@@ -207,7 +207,7 @@ function AllUsersPage() {
             registrationDate: `${registrationDate.getDate()}/${
               registrationDate.getMonth() + 1
             }/${registrationDate.getFullYear()}`,
-            admin: user.roles.some(r => r['name'] === 'admin'),
+            admin: user.roles.length > 1,
           });
 
         setIsLoading(false);
