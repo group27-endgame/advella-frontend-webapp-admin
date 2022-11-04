@@ -171,7 +171,6 @@ function ProductsCategoryPage() {
     const productCategoryService: ProductCategoryService = new ProductCategoryService();
 
     productCategoryService.getAllCategories(cookie.token).then(res => {
-      console.log(res);
       const allRows:IProductCategory[] = [];
       res.map(pc => allRows.push({id: pc.productCategoryId!, name: pc.title}));
       setRows(allRows);
