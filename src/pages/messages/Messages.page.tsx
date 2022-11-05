@@ -28,9 +28,9 @@ function MessagesPage() {
     const contactService: ContactService = new ContactService();
 
     contactService.removeMessage(messageId, cookie.token).then(() => {
-      const messagesCopy = messages;
-      messagesCopy.splice(messagesCopy.findIndex(m => m.contactId === messageId), 1);  
-      setMessages(messagesCopy);
+      contactService.getAllMessages(cookie.token).then(res => {
+        setMessages(res)
+      });
     })
   }
 
@@ -48,7 +48,7 @@ function MessagesPage() {
           }}
           date={m.messageDateTime}
           message={m.content}
-          handleRemove={() => handleRemove(m.contactId)}
+          handleRemove={handleRemove}
         />
       </Grid>
       )}
