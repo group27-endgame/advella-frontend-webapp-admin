@@ -65,7 +65,7 @@ function UserDashboardPage() {
                           type: "user"
                       })
                   })
-                }).catch(err => console.log(err))
+                })
           ]
       ).then(() => {
           setIsLoading(false);

@@ -185,8 +185,6 @@ function AllProductsPage() {
         status: p.productStatus,
         title: p.title,
       });
-      
-      console.log(p);
     });
 
       setRows(allProducts);
