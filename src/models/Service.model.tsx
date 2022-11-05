@@ -14,7 +14,7 @@ export interface ServiceModel {
     location: string;
     numberOfBids: number;
     numberOfLikes: number;
-    serviceStatus: number;
+    serviceStatus: string;
     users: UserModel[];
     serviceCategory: ServiceCategoryModel;
     reportedServices: ReportedServiceModel[];
