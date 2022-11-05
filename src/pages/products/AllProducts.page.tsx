@@ -3,14 +3,25 @@ import {
   DataGrid,
   GridColDef,
   useGridApiContext,
-  GridCellEditCommitParams,
-  GridCellEditStartParams,
   GridValidRowModel,
   GridToolbarFilterButton,
   GridToolbarContainer,
 } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import DialogComponent from "../../components/Dialog.component";
+import ProductService from "../../services/Product.service";
+import { LottieLoading } from "../../_stories/Advella/components/Loading.stories";
+
+interface Product {
+  id: number;
+  title: string;
+  // user: UserModel;
+  price: number;
+  location: string;
+  posted: string;
+  status: string;
+}
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", headerAlign: "left" },
@@ -29,22 +40,22 @@ const columns: GridColDef[] = [
       );
     },
   },
-  {
-    field: "user",
-    width: 200,
-    renderCell: (params) => {
-      const { userId, username } = params.row;
-      return (
-        <Link href={`/users/${userId}`} target="_blank">
-          {username}
-        </Link>
-      );
-    },
-    valueGetter: (params) => params.row.username,
-    headerName: "Author",
-    headerAlign: "center",
-    align: "center",
-  },
+  // {
+  //   field: "user",
+  //   width: 200,
+  //   renderCell: (params) => {
+  //     const { userId, username } = params.row;
+  //     return (
+  //       <Link href={`/users/${userId}`} target="_blank">
+  //         {username}
+  //       </Link>
+  //     );
+  //   },
+  //   valueGetter: (params) => params.row.username,
+  //   headerName: "Author",
+  //   headerAlign: "center",
+  //   align: "center",
+  // },
   {
     field: "price",
     headerName: "Price",
@@ -55,7 +66,7 @@ const columns: GridColDef[] = [
   {
     field: "location",
     headerName: "Location",
-    width: 150,
+    width: 250,
     align: "center",
     headerAlign: "center",
   },
@@ -63,21 +74,6 @@ const columns: GridColDef[] = [
     field: "posted",
     headerName: "Posted",
     width: 150,
-    align: "center",
-    headerAlign: "center",
-  },
-  {
-    field: "deadline",
-    headerName: "Deadline",
-    width: 200,
-    align: "center",
-    headerAlign: "center",
-    type: "date",
-  },
-  {
-    field: "bids",
-    headerName: "Bids",
-    width: 100,
     align: "center",
     headerAlign: "center",
   },
@@ -90,99 +86,14 @@ const columns: GridColDef[] = [
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 2,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 3,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 4,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 5,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 6,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 7,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-];
-
 const CustomToolbar: React.FunctionComponent<{
   setFilterButtonEl: React.Dispatch<
     React.SetStateAction<HTMLButtonElement | null>
   >;
 }> = ({ setFilterButtonEl }) => {
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
+
+  const [cookie,,] = useCookies(["token"]);
 
   const apiRef = useGridApiContext();
   const selectedRow = apiRef.current.getSelectedRows();
@@ -193,6 +104,7 @@ const CustomToolbar: React.FunctionComponent<{
 
   const handleRemove = () => {
     const rows: GridValidRowModel[] = [];
+    const productService: ProductService = new ProductService();
 
     apiRef.current.getRowModels().forEach((row) => {
       rows.push(row);
@@ -204,7 +116,8 @@ const CustomToolbar: React.FunctionComponent<{
         1
       );
 
-      //TODO: Call DELETE api to remove
+      //TODO: Fix delete method
+      productService.deleteProducts(rowToDelete.id, cookie.token);
     });
 
     apiRef.current.setRows(rows);
@@ -247,7 +160,41 @@ const CustomToolbar: React.FunctionComponent<{
 };
 
 function AllProductsPage() {
-  const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
+
+  const [cookie,,] = useCookies(["token"]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [rows, setRows] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const productService: ProductService = new ProductService();
+    const allProducts: Product[] = [];
+
+    productService.getAllProducts(cookie.token).then(res => {
+      res.map(p => {
+        const registrationDate = new Date(Number(p.postedDateTime));
+        //TODO: fix API response
+        if(p.productId)
+        allProducts.push({
+        id: p.productId,
+        location: p.pickUpLocation,
+        posted: `${registrationDate.getDate()}/${
+          registrationDate.getMonth() + 1
+        }/${registrationDate.getFullYear()}`,
+        price: p.moneyAmount,
+        status: p.productStatus,
+        title: p.title,
+      });
+    });
+
+      setRows(allProducts);
+      setIsLoading(false);
+    });
+
+  }, []);
+
+  if(isLoading)
+    return <LottieLoading open={isLoading} />
 
   return (
     <Card sx={{ height: "95vh", p: 5 }} elevation={12}>

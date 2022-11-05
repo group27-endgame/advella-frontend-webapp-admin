@@ -14,4 +14,14 @@ export default class ProductService {
 
         return response.data as ProductModel[];
     }
+
+    public async getAllProducts(token: string): Promise<ProductModel[]>{
+        const response = await axios.get(`${backendUrl}/api/products`, {headers: { Authorization: `Bearer ${token}` } });
+
+        return response.data as ProductModel[];
+    }
+    
+    public async deleteProducts(productId: number, token: string): Promise<void>{
+        await axios.delete(`${backendUrl}/api/products/dash-board/${productId}`, {headers: { Authorization: `Bearer ${token}` } });
+    }
 }

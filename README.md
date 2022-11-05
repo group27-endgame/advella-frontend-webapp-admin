@@ -8,15 +8,15 @@ Administration panel for management for Advella WebApp and App. Part of bachelor
 | [404 Page](https://admin.advella.popal.dev/404) | :white_check_mark: | :white_check_mark: |
 | [Login Page](https://admin.advella.popal.dev/) | :white_check_mark: | :white_check_mark: |
 | [General Dashboard Page](https://admin.advella.popal.dev/dashboard) | :white_check_mark: | :white_check_mark: |
-| [Users Dashboard Page](https://admin.advella.popal.dev/dashboard/users) | :white_check_mark: | :construction: |
+| [Users Dashboard Page](https://admin.advella.popal.dev/dashboard/users) | :white_check_mark: | :white_check_mark: |
 | [Products Dashboard Page](https://admin.advella.popal.dev/dashboard/products) | :white_check_mark: | :white_check_mark: |
 | [Services Dashboard Page](https://admin.advella.popal.dev/dashboard/services) | :white_check_mark: | :construction: |
 | [Products Categories Page](https://admin.advella.popal.dev/category/products) | :white_check_mark: | :white_check_mark: |
 | [Services Categories Page](https://admin.advella.popal.dev/category/services) | :white_check_mark: | :white_check_mark: |
 | [All Users Page](https://admin.advella.popal.dev/users) | :white_check_mark: | :white_check_mark: |
 | [Users Info Page](https://admin.advella.popal.dev/users) | :white_check_mark: | :white_check_mark: |
-| [All Products Page](https://admin.advella.popal.dev/products) | :white_check_mark: | :construction: |
-| [All Services Page](https://admin.advella.popal.dev/services) | :white_check_mark: | :construction: | 
+| [All Products Page](https://admin.advella.popal.dev/products) | :white_check_mark: | :white_check_mark: |
+| [All Services Page](https://admin.advella.popal.dev/services) | :white_check_mark: | :white_check_mark: | 
 | [All Messages Page](https://admin.advella.popal.dev/messages) | :white_check_mark: | :white_check_mark: |
 
 ## GitHub
