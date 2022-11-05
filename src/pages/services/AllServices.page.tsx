@@ -206,7 +206,6 @@ const CustomToolbar: React.FunctionComponent<{
         1
       );
 
-      //TODO: Fix delete method
       serviceService.deleteServices(rowToDelete.id, cookie.token);
     });
 
