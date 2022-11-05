@@ -103,7 +103,6 @@ const CustomToolbar = () => {
     productCategoryService.getAllCategories(cookie.token).then(res => {
       rows.splice(0);
       res.map(pc => {
-        //TODO: Fix returning of correct number of size of products
         rows.push({id: pc.productCategoryId, name: pc.title });
       });
     });
