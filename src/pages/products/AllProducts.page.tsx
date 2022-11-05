@@ -28,7 +28,7 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Title",
-    width: 200,
+    width: 400,
     align: "center",
     headerAlign: "center",
     renderCell: (params) => {
