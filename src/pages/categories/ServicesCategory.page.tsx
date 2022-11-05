@@ -103,7 +103,6 @@ const CustomToolbar = () => {
     serviceCategoryService.getAllCategories(cookie.token).then(res => {
       rows.splice(0);
       res.map(sc => {
-        //TODO: Fix returning of correct number of size of services
         rows.push({id: sc.serviceCategoryId, name: sc.title });
       });
     });
@@ -173,7 +172,6 @@ function ServiceCategoryPage() {
 
     serviceCategoryService.getAllCategories(cookie.token).then(res => {
       const allRows:IServiceCategory[] = [];
-      //TODO: Fix returning of correct number of size of services
       res.map(sc => allRows.push({id: sc.serviceCategoryId!, name: sc.title }));
       setRows(allRows);
       setIsLoading(false);
