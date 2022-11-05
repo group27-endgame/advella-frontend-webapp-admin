@@ -15,8 +15,8 @@ Administration panel for management for Advella WebApp and App. Part of bachelor
 | [Services Categories Page](https://admin.advella.popal.dev/category/services) | :white_check_mark: | :white_check_mark: |
 | [All Users Page](https://admin.advella.popal.dev/users) | :white_check_mark: | :white_check_mark: |
 | [Users Info Page](https://admin.advella.popal.dev/users) | :white_check_mark: | :white_check_mark: |
-| [All Products Page](https://admin.advella.popal.dev/products) | :white_check_mark: | :construction: |
-| [All Services Page](https://admin.advella.popal.dev/services) | :white_check_mark: | :construction: | 
+| [All Products Page](https://admin.advella.popal.dev/products) | :white_check_mark: | :white_check_mark: |
+| [All Services Page](https://admin.advella.popal.dev/services) | :white_check_mark: | :white_check_mark: | 
 | [All Messages Page](https://admin.advella.popal.dev/messages) | :white_check_mark: | :white_check_mark: |
 
 ## GitHub
