@@ -174,11 +174,11 @@ function AllProductsPage() {
       res.map(p => {
         const registrationDate = new Date(Number(p.postedDateTime));
         //TODO: fix API response
-        if(p.productId && p.posted)
+        if(p.productId)
         allProducts.push({
         id: p.productId,
-        userId: p.posted.userId,
-        username: p.posted.username,
+        userId: p.posted ? p.posted.userId : 0,
+        username: p.posted ? p.posted.username : "",
         location: p.pickUpLocation,
         posted: `${registrationDate.getDate()}/${
           registrationDate.getMonth() + 1
