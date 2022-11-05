@@ -7,7 +7,7 @@ export default {
   args: {
     messageId: 1,
     user: {userId: 1, username: "Seymore"},
-    date: Date.now(),
+    date: 1667641912757,
     message: "Lorem ipsum blah blah"
   },
 } as ComponentMeta<typeof MessageComponent>;
