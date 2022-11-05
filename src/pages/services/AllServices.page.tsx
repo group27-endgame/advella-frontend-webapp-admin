@@ -3,8 +3,6 @@ import {
   DataGrid,
   GridColDef,
   useGridApiContext,
-  GridCellEditCommitParams,
-  GridCellEditStartParams,
   GridValidRowModel,
   GridToolbarFilterButton,
   GridToolbarContainer,
