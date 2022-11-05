@@ -177,12 +177,12 @@ function AllServicesPage() {
         const registrationDate = new Date(Number(s.postedDateTime));
         
         //TODO: fix API response
-        if(s.serviceId && s.posted)
+        if(s.serviceId)
         allProducts.push({
         id: s.serviceId,
         location: s.location,
-        userId: s.posted.userId,
-        username: s.posted.username,
+        userId: s.posted ? s.posted.userId : 0,
+        username: s.posted ? s.posted.username : "",
         posted: `${registrationDate.getDate()}/${
           registrationDate.getMonth() + 1
         }/${registrationDate.getFullYear()}`,
