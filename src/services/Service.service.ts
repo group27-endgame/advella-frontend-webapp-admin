@@ -14,4 +14,14 @@ export default class ServiceService {
 
         return response.data as ServiceModel[];
     }
+
+    public async getAllServices(token: string): Promise<ServiceModel[]>{
+        const response = await axios.get(`${backendUrl}/api/services`, {headers: { Authorization: `Bearer ${token}` } });
+
+        return response.data as ServiceModel[];
+    }
+    
+    public async deleteServices(serviceId: number, token: string): Promise<void>{
+        await axios.delete(`${backendUrl}/api/services/dash-board/${serviceId}`, {headers: { Authorization: `Bearer ${token}` } });
+    }
 }
