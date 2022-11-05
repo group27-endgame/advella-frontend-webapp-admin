@@ -16,7 +16,8 @@ import { LottieLoading } from "../../_stories/Advella/components/Loading.stories
 interface Product {
   id: number;
   title: string;
-  // user: UserModel;
+  userId: number;
+  username: string;
   price: number;
   location: string;
   posted: string;
@@ -40,22 +41,22 @@ const columns: GridColDef[] = [
       );
     },
   },
-  // {
-  //   field: "user",
-  //   width: 200,
-  //   renderCell: (params) => {
-  //     const { userId, username } = params.row;
-  //     return (
-  //       <Link href={`/users/${userId}`} target="_blank">
-  //         {username}
-  //       </Link>
-  //     );
-  //   },
-  //   valueGetter: (params) => params.row.username,
-  //   headerName: "Author",
-  //   headerAlign: "center",
-  //   align: "center",
-  // },
+  {
+    field: "user",
+    width: 200,
+    renderCell: (params) => {
+      const { userId, username } = params.row;
+      return (
+        <Link href={`/users/${userId}`} target="_blank">
+          {username}
+        </Link>
+      );
+    },
+    valueGetter: (params) => params.row.username,
+    headerName: "Author",
+    headerAlign: "center",
+    align: "center",
+  },
   {
     field: "price",
     headerName: "Price",
@@ -173,9 +174,11 @@ function AllProductsPage() {
       res.map(p => {
         const registrationDate = new Date(Number(p.postedDateTime));
         //TODO: fix API response
-        if(p.productId)
+        if(p.productId && p.posted)
         allProducts.push({
         id: p.productId,
+        userId: p.posted.userId,
+        username: p.posted.username,
         location: p.pickUpLocation,
         posted: `${registrationDate.getDate()}/${
           registrationDate.getMonth() + 1
