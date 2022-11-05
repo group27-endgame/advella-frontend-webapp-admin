@@ -9,8 +9,21 @@ import {
   GridToolbarFilterButton,
   GridToolbarContainer,
 } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import DialogComponent from "../../components/Dialog.component";
+import ServiceService from "../../services/Service.service";
+import { LottieLoading } from "../../_stories/Advella/components/Loading.stories";
+
+interface Service {
+  id: number;
+  title: string;
+  // user: UserModel;
+  price: number;
+  location: string;
+  posted: string;
+  status: string;
+}
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", headerAlign: "left" },
@@ -29,22 +42,22 @@ const columns: GridColDef[] = [
       );
     },
   },
-  {
-    field: "user",
-    width: 200,
-    renderCell: (params) => {
-      const { userId, username } = params.row;
-      return (
-        <Link href={`/users/${userId}`} target="_blank">
-          {username}
-        </Link>
-      );
-    },
-    valueGetter: (params) => params.row.username,
-    headerName: "Author",
-    headerAlign: "center",
-    align: "center",
-  },
+  // {
+  //   field: "user",
+  //   width: 200,
+  //   renderCell: (params) => {
+  //     const { userId, username } = params.row;
+  //     return (
+  //       <Link href={`/users/${userId}`} target="_blank">
+  //         {username}
+  //       </Link>
+  //     );
+  //   },
+  //   valueGetter: (params) => params.row.username,
+  //   headerName: "Author",
+  //   headerAlign: "center",
+  //   align: "center",
+  // },
   {
     field: "price",
     headerName: "Price",
@@ -63,21 +76,6 @@ const columns: GridColDef[] = [
     field: "posted",
     headerName: "Posted",
     width: 150,
-    align: "center",
-    headerAlign: "center",
-  },
-  {
-    field: "deadline",
-    headerName: "Deadline",
-    width: 200,
-    align: "center",
-    headerAlign: "center",
-    type: "date",
-  },
-  {
-    field: "bids",
-    headerName: "Bids",
-    width: 100,
     align: "center",
     headerAlign: "center",
   },
@@ -184,6 +182,8 @@ const CustomToolbar: React.FunctionComponent<{
 }> = ({ setFilterButtonEl }) => {
   const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
 
+  const [cookie,,] = useCookies(["token"]);
+
   const apiRef = useGridApiContext();
   const selectedRow = apiRef.current.getSelectedRows();
 
@@ -193,6 +193,8 @@ const CustomToolbar: React.FunctionComponent<{
 
   const handleRemove = () => {
     const rows: GridValidRowModel[] = [];
+
+    const serviceService: ServiceService = new ServiceService();
 
     apiRef.current.getRowModels().forEach((row) => {
       rows.push(row);
@@ -204,7 +206,8 @@ const CustomToolbar: React.FunctionComponent<{
         1
       );
 
-      //TODO: Call DELETE api to remove
+      //TODO: Fix delete method
+      serviceService.deleteServices(rowToDelete.id, cookie.token);
     });
 
     apiRef.current.setRows(rows);
@@ -247,7 +250,41 @@ const CustomToolbar: React.FunctionComponent<{
 };
 
 function AllServicesPage() {
-  const [editingValue, setEditingValue] = useState({ id: 0, value: "" });
+  
+  const [cookie,,] = useCookies(["token"]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [rows, setRows] = useState<Service[]>([]);
+
+  useEffect(() => {
+    const productService: ServiceService = new ServiceService();
+    const allProducts: Service[] = [];
+
+    productService.getAllServices(cookie.token).then(res => {
+      res.map(s => {
+        const registrationDate = new Date(Number(s.postedDateTime));
+        //TODO: fix API response
+        if(s.serviceId)
+        allProducts.push({
+        id: s.serviceId,
+        location: s.location,
+        posted: `${registrationDate.getDate()}/${
+          registrationDate.getMonth() + 1
+        }/${registrationDate.getFullYear()}`,
+        price: s.moneyAmount,
+        status: s.serviceStatus,
+        title: s.title,
+      });
+    });
+
+      setRows(allProducts);
+      setIsLoading(false);
+    });
+
+  }, []);
+
+  if(isLoading)
+  return <LottieLoading open={isLoading} />
 
   return (
     <Card sx={{ height: "95vh", p: 5 }} elevation={12}>
@@ -258,20 +295,6 @@ function AllServicesPage() {
         pageSize={50}
         rowsPerPageOptions={[50]}
         components={{ Toolbar: CustomToolbar }}
-        onCellEditStart={(params: GridCellEditStartParams) => {
-          setEditingValue({
-            id: Number(params.id),
-            value: params.formattedValue,
-          });
-        }}
-        onCellEditCommit={(params: GridCellEditCommitParams) => {
-          if (
-            editingValue.id !== params.id ||
-            editingValue.value !== params.value
-          ) {
-            //TODO: Call PUT api to edit
-          }
-        }}
       />
     </Card>
   );
