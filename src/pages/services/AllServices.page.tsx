@@ -3,8 +3,6 @@ import {
   DataGrid,
   GridColDef,
   useGridApiContext,
-  GridCellEditCommitParams,
-  GridCellEditStartParams,
   GridValidRowModel,
   GridToolbarFilterButton,
   GridToolbarContainer,
@@ -12,13 +10,15 @@ import {
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import DialogComponent from "../../components/Dialog.component";
+import { UserModel } from "../../models/User.model";
 import ServiceService from "../../services/Service.service";
 import { LottieLoading } from "../../_stories/Advella/components/Loading.stories";
 
 interface Service {
   id: number;
   title: string;
-  // user: UserModel;
+  userId: number;
+  username: string;
   price: number;
   location: string;
   posted: string;
@@ -30,7 +30,7 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Title",
-    width: 200,
+    width: 400,
     align: "center",
     headerAlign: "center",
     renderCell: (params) => {
@@ -42,22 +42,22 @@ const columns: GridColDef[] = [
       );
     },
   },
-  // {
-  //   field: "user",
-  //   width: 200,
-  //   renderCell: (params) => {
-  //     const { userId, username } = params.row;
-  //     return (
-  //       <Link href={`/users/${userId}`} target="_blank">
-  //         {username}
-  //       </Link>
-  //     );
-  //   },
-  //   valueGetter: (params) => params.row.username,
-  //   headerName: "Author",
-  //   headerAlign: "center",
-  //   align: "center",
-  // },
+  {
+    field: "user",
+    width: 200,
+    renderCell: (params) => {
+      const { userId, username } = params.row;
+      return (
+        <Link href={`/users/${userId}`} target="_blank">
+          {username}
+        </Link>
+      );
+    },
+    valueGetter: (params) => params.row.username,
+    headerName: "Author",
+    headerAlign: "center",
+    align: "center",
+  },
   {
     field: "price",
     headerName: "Price",
@@ -68,7 +68,7 @@ const columns: GridColDef[] = [
   {
     field: "location",
     headerName: "Location",
-    width: 150,
+    width: 250,
     align: "center",
     headerAlign: "center",
   },
@@ -85,93 +85,6 @@ const columns: GridColDef[] = [
     width: 100,
     align: "center",
     headerAlign: "center",
-  },
-];
-
-const rows = [
-  {
-    id: 1,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 2,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 3,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 4,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 5,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 6,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
-  },
-  {
-    id: 7,
-    userId: 1,
-    username: "Seymore",
-    title: "Fiat 500",
-    price: 300,
-    location: "Arhus",
-    posted: "30-12-2022 12:00",
-    deadline: "30-12-2022 14:00",
-    bids: 5,
-    status: "Open",
   },
 ];
 
@@ -262,11 +175,14 @@ function AllServicesPage() {
     productService.getAllServices(cookie.token).then(res => {
       res.map(s => {
         const registrationDate = new Date(Number(s.postedDateTime));
+        
         //TODO: fix API response
         if(s.serviceId)
         allProducts.push({
         id: s.serviceId,
         location: s.location,
+        userId: s.posted ? s.posted.userId : 0,
+        username: s.posted ? s.posted.username : "",
         posted: `${registrationDate.getDate()}/${
           registrationDate.getMonth() + 1
         }/${registrationDate.getFullYear()}`,
