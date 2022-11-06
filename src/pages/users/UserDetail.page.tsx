@@ -1,13 +1,10 @@
 import {
   Avatar,
-  Box,
   Card,
   Grid,
   Link,
-  Rating,
   Tab,
   Tabs,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { useParams } from "react-router-dom";

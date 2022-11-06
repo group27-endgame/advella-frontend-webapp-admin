@@ -115,16 +115,6 @@ const CustomToolbar: React.FunctionComponent<{
       userService.deleteUser(cookie.token, rowToDelete.id);
     });
 
-    interface IUser {
-      id: number;
-      username: string;
-      email: string;
-      services: number;
-      products: number;
-      registrationDate: string;
-      admin: boolean;
-    }
-
     userService.getAllUsers(cookie.token).then((res) => {
       rows.splice(0);
       res.map((user) => {

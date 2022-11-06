@@ -16,7 +16,8 @@ import { LottieLoading } from "../../_stories/Advella/components/Loading.stories
 interface Product {
   id: number;
   title: string;
-  // user: UserModel;
+  userId: number;
+  username: string;
   price: number;
   location: string;
   posted: string;
@@ -28,7 +29,7 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Title",
-    width: 200,
+    width: 400,
     align: "center",
     headerAlign: "center",
     renderCell: (params) => {
@@ -40,22 +41,22 @@ const columns: GridColDef[] = [
       );
     },
   },
-  // {
-  //   field: "user",
-  //   width: 200,
-  //   renderCell: (params) => {
-  //     const { userId, username } = params.row;
-  //     return (
-  //       <Link href={`/users/${userId}`} target="_blank">
-  //         {username}
-  //       </Link>
-  //     );
-  //   },
-  //   valueGetter: (params) => params.row.username,
-  //   headerName: "Author",
-  //   headerAlign: "center",
-  //   align: "center",
-  // },
+  {
+    field: "user",
+    width: 200,
+    renderCell: (params) => {
+      const { userId, username } = params.row;
+      return (
+        <Link href={`/users/${userId}`} target="_blank">
+          {username}
+        </Link>
+      );
+    },
+    valueGetter: (params) => params.row.username,
+    headerName: "Author",
+    headerAlign: "center",
+    align: "center",
+  },
   {
     field: "price",
     headerName: "Price",
@@ -176,6 +177,8 @@ function AllProductsPage() {
         if(p.productId)
         allProducts.push({
         id: p.productId,
+        userId: p.posted ? p.posted.userId : 0,
+        username: p.posted ? p.posted.username : "",
         location: p.pickUpLocation,
         posted: `${registrationDate.getDate()}/${
           registrationDate.getMonth() + 1
