@@ -56,7 +56,6 @@ function ProductsDashboardPage() {
                       });
                   }),
                   productService.getLatestProducts(cookie.token, 5).then(res => {
-                    console.log(res);
                     res.map(p => {
                         latestActions.push({
                             listId: p.productId,
@@ -66,7 +65,7 @@ function ProductsDashboardPage() {
                             type: "product"
                         })
                     })
-                  }).catch(err => console.log(err))
+                  })
             ]
         ).then(() => {
             setIsLoading(false);
