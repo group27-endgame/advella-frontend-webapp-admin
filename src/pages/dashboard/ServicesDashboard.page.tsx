@@ -65,7 +65,7 @@ function ServicesDashboardPage() {
                           type: "service"
                       })
                   })
-                }).catch(err => console.log(err))
+                })
           ]
       ).then(() => {
           setIsLoading(false);
