@@ -10,7 +10,7 @@ Administration panel for management for Advella WebApp and App. Part of bachelor
 | [General Dashboard Page](https://admin.advella.popal.dev/dashboard) | :white_check_mark: | :white_check_mark: |
 | [Users Dashboard Page](https://admin.advella.popal.dev/dashboard/users) | :white_check_mark: | :white_check_mark: |
 | [Products Dashboard Page](https://admin.advella.popal.dev/dashboard/products) | :white_check_mark: | :white_check_mark: |
-| [Services Dashboard Page](https://admin.advella.popal.dev/dashboard/services) | :white_check_mark: | :construction: |
+| [Services Dashboard Page](https://admin.advella.popal.dev/dashboard/services) | :white_check_mark: | :white_check_mark: |
 | [Products Categories Page](https://admin.advella.popal.dev/category/products) | :white_check_mark: | :white_check_mark: |
 | [Services Categories Page](https://admin.advella.popal.dev/category/services) | :white_check_mark: | :white_check_mark: |
 | [All Users Page](https://admin.advella.popal.dev/users) | :white_check_mark: | :white_check_mark: |
