@@ -22,6 +22,6 @@ export default class ServiceService {
     }
     
     public async deleteServices(serviceId: number, token: string): Promise<void>{
-        await axios.delete(`${backendUrl}/api/services/dash-board/${serviceId}`, {headers: { Authorization: `Bearer ${token}` } });
+        await axios.delete(`${backendUrl}/api/services/${serviceId}`, {headers: { Authorization: `Bearer ${token}` } });
     }
 }
