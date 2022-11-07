@@ -22,6 +22,6 @@ export default class ProductService {
     }
     
     public async deleteProducts(productId: number, token: string): Promise<void>{
-        await axios.delete(`${backendUrl}/api/products/dash-board/${productId}`, {headers: { Authorization: `Bearer ${token}` } });
+        await axios.delete(`${backendUrl}/api/products/${productId}`, {headers: { Authorization: `Bearer ${token}` } });
     }
 }
