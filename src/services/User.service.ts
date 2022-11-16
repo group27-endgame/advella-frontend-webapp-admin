@@ -31,7 +31,7 @@ export default class UserService{
     }
 
     public async getUserById(token: string, userId: number): Promise<UserModel>{
-        const response = await axios.get(`${backendUrl}/api/users/dash-board/${userId}`, {headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.get(`${backendUrl}/api/users/${userId}`, {headers: { Authorization: `Bearer ${token}` } });
 
         return response.data as UserModel;
     }
