@@ -90,7 +90,7 @@ function DashboardPage() {
 
             latestActions.push(action);
           });
-        }),
+        }).catch(err => console.log(err)),
         productService.getLatestProducts(cookie.token).then((res) => {
           res.map((prod) => {
             const action: IActionList = {
@@ -103,7 +103,7 @@ function DashboardPage() {
 
             latestActions.push(action);
           });
-        }),
+        }).catch(err => console.log(err)),
         serviceService.getLatestServices(cookie.token).then((res) => {
           res.map((serv) => {
             const action: IActionList = {
@@ -116,7 +116,7 @@ function DashboardPage() {
 
             latestActions.push(action);
           });
-        }),
+        }).catch(err => console.log(err)),
       ]).then(() => {
         latestActions.sort((l1, l2) => l2.dateTime - l1.dateTime);
         setLatestActionsList(latestActions.slice(0, 5));
