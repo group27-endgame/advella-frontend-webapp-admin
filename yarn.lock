@@ -7875,15 +7875,14 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@^7.6.6:
-  version "7.6.6"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.6.6.tgz#50e0d3bc29b899a79dbafb6085e398fb53a2f04a"
-  integrity sha512-7ti5mEzhTRBFCMlKs8Zxu9dWtVattpj2jPCNc4jaz4d7bDFekClALaBzmi1pGOKzsOWJsKMeV5ckIkD1DLI9lw==
+framer-motion@^7.6.19:
+  version "7.6.19"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.6.19.tgz#a24ea890881374f4184be5abb773ce8e4a0d3734"
+  integrity sha512-U+ogwGwNw6Y+pdq6GZB5xvnvLDlq3FTmcKaG5MCUjXuqRLrjKbKTqN4iwZISv3ajwUfgNHM6+tu31LRbYfF9YQ==
   dependencies:
     "@motionone/dom" "10.13.1"
     framesync "6.1.2"
     hey-listen "^1.0.8"
-    popmotion "11.0.5"
     style-value-types "5.1.2"
     tslib "2.4.0"
   optionalDependencies:
@@ -11440,16 +11439,6 @@ polished@^4.2.2:
   integrity sha512-Sz2Lkdxz6F2Pgnpi9U5Ng/WdWAUZxmHrNPoVlm3aAemxoy2Qy7LGjQg4uf8qKelDAUW94F4np3iH2YPf2qefcQ==
   dependencies:
     "@babel/runtime" "^7.17.8"
-
-popmotion@11.0.5:
-  version "11.0.5"
-  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-11.0.5.tgz#8e3e014421a0ffa30ecd722564fd2558954e1f7d"
-  integrity sha512-la8gPM1WYeFznb/JqF4GiTkRRPZsfaj2+kCxqQgr2MJylMmIKUwBfWW8Wa5fml/8gmtlD5yI01MP1QCZPWmppA==
-  dependencies:
-    framesync "6.1.2"
-    hey-listen "^1.0.8"
-    style-value-types "5.1.2"
-    tslib "2.4.0"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
